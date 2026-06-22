@@ -29,12 +29,26 @@ Dieses Projekt implementiert die Berechnung von s-glatten Zahlen und deren Darst
 - ⚠️ **Geometrische Visualisierung** - Aufgeprägte ℝ⁴-Parametrisierung
 - ⚠️ **Hübsch, aber nicht emergent** - Siehe Kritik unten
 
-### 🔬 Diskrete Topologie aus EABC-Chiralitäten - REVIDIERT! ⚠️
-- ⚠️ **Chiralitätsasymmetrie war Definitionsartefakt** - Siehe Robustheitstests
-- ✅ **TEST A (zufällige Ordnung)** - P(EABC) ≈ P(ECBA) ≈ 16.6% (symmetrisch!)
-- ✅ **TEST B-D (gerichtete Ordnung)** - Asymmetrie durch aufsteigende Konstruktion
-- ✅ **Holonomie-Observable H(X)** - Wohldefiniert, konstruktionsabhängig
-- ✅ **Mathematisch sauber** - Aber nicht "fundamentale Primzahl-Eigenschaft"
+### 🔬 EABC-Chiralität und arithmetische Holonomie - MATHEMATISCH SAUBER! ⭐
+
+Die **Holonomie-Observable** H(X) = Σ χ(Q) ist der mathematisch saubere Kern:
+
+#### Wohldefinierte Objekte:
+- ✅ **Chiralitäts-Observable χ(Q)** - +1 für EABC, -1 für ECBA, 0 sonst
+- ✅ **Holonomie Hᴄ(X)** - Summe über Quadrupel nach Konstruktion C
+- ✅ **Normalisierte Holonomie hᴄ(X)** - H(X) / N(X)
+
+#### Empirische Ergebnisse:
+- ✅ **h_random(X) ≈ 0** - Symmetrie bei zufälliger Ordnung (bestätigt!)
+- ✅ **h_consec(10⁵) ≈ 0.19** - Bias bei konsekutiver Ordnung
+- ⚠️ **Asymptotik offen** - Konvergiert h(X) → 0 oder bleibt Bias?
+
+#### Zentrale Forschungsfrage:
+```
+limsup |hᴄ(X)| > 0  für kanonische Konstruktion C?
+```
+
+**Klein-Flaschen-Metapher:** Nützlich für Intuition (EABC ↔ pos. Umlauf, ECBA ↔ neg. Umlauf), aber die harte Mathematik liegt in H(X), nicht in χ = -1.
 
 ### 🧪 Chiralitäts-Robustheitstests - KRITISCHE ÜBERPRÜFUNG! ⭐
 - ✅ **Test A: Zufällige Umordnung** - Symmetrie bewiesen
@@ -67,9 +81,10 @@ Dieses Projekt implementiert die Berechnung von s-glatten Zahlen und deren Darst
 - `EXTENDED_FEATURES.md` - Dokumentation der erweiterten Features
 - `EABC_MODEL.md` - EABC/ABCE-Bamberg-Modell
 - `LEAN_INTEGRATION.md` - Lean 4 formale Verifikation
-- `KLEIN_BOTTLE.md` - Klein-Flaschen-Geometrie (aufgeprägt, historisch)
-- `DISCRETE_TOPOLOGY.md` - Diskrete emergente Topologie (revidiert)
+- `EABC_HOLONOMY.md` - Arithmetische Holonomie-Observable ⭐ KERN
 - `ROBUSTNESS_TESTS.md` - Kritische Überprüfung ⭐ WICHTIG
+- `KLEIN_BOTTLE.md` - Klein-Flaschen-Geometrie (Metapher, historisch)
+- `DISCRETE_TOPOLOGY.md` - Diskrete emergente Topologie (revidiert)
 
 ### Lean 4 Formalisierung
 - `DickmanFunction.lean` - Dickman-de Bruijn Funktion
@@ -121,6 +136,69 @@ make demo-dickman
 ```
 
 Siehe `LEAN_INTEGRATION.md` für Details zur formalen Verifikation.
+
+## ⭐ EABC-Chiralität und arithmetische Holonomie (DER KERN)
+
+### Die Holonomie-Observable H(X)
+
+Der **mathematisch saubere Kern** dieser Arbeit ist die arithmetische Holonomie:
+
+```
+Hᴄ(X) = Σ_{Q≤X} χ(Q)
+```
+
+mit der Chiralitäts-Observable:
+
+```
+χ(Q) = ⎧ +1,  norm(sig(Q)) = EABC  (positiver Umlauf)
+       ⎨ -1,  norm(sig(Q)) = ECBA  (negativer Umlauf)
+       ⎩  0,  sonst
+```
+
+### Normalisierte Holonomie
+
+```
+hᴄ(X) = Hᴄ(X) / Nᴄ(X)
+```
+
+misst den "Chiralitäts-Bias" einer Konstruktionsmethode C.
+
+### Empirische Ergebnisse
+
+| Konstruktion C | h(X)  | Interpretation |
+|----------------|-------|----------------|
+| C_random (zufällig) | ≈ 0 | Symmetrisch ✓ |
+| C_consec (konsekutiv) | ≈ 0.19 | Bias vorhanden |
+
+### Zentrale Forschungsfrage
+
+**Asymptotisches Verhalten:**
+```
+lim_{X→∞} hᴄ(X) = 0  oder  limsup_{X→∞} |hᴄ(X)| > 0?
+```
+
+**Falls Bias bleibt:** Neue zahlentheoretische Observable mit Verbindung zu:
+- Primzahl-Lücken
+- Chebyshev-Bias (Primzahl-Rennen)
+- Quadratische Reste mod 12
+
+**Falls Bias verschwindet:** Stützt Zufallshypothese für Primzahlen mod 12.
+
+### Die Klein-Flaschen-Metapher
+
+Die Klein-Flasche ist **keine rigoros emergente Topologie**, sondern ein **heuristisches Bild**:
+
+```
+EABC ↔ positiver Umlauf (rechtshändig)
+ECBA ↔ negativer Umlauf (linkshändig)
+E-Klasse ↔ Kreuzungspunkt (Lemniskate ∞)
+```
+
+**Die harte Mathematik liegt in H(X), nicht in χ = -1.**
+
+**Siehe `EABC_HOLONOMY.md` für vollständige mathematische Details!** ⭐
+
+---
 
 ## 🧪 Chiralitäts-Robustheitstests (KRITISCHE ÜBERPRÜFUNG)
 
