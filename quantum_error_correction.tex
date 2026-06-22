@@ -1,0 +1,295 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{braket}
+\usepackage{booktabs}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\newtheorem{theorem}{Satz}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Bemerkung}
+\newtheorem{example}[theorem]{Beispiel}
+
+\title{Quantenfehlerkorrektur: \\
+Syndrommessung und diskrete Fehlerdiagnose}
+
+\author{
+Technische Dokumentation \\
+\texttt{smooth-numbers project} \\
+\texttt{Juni 2026}
+}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Diese Notiz präzisiert die mathematische Struktur der Quantenfehlerkorrektur am Beispiel des zyklischen $[\![5,1,3]\!]$-Stabilisatorcodes. Wir korrigieren zwei häufige Missverständnisse: (1) Der Code-Projektor $\mathcal{P}_{\text{Code}}$ allein korrigiert keine Fehler, sondern projiziert nur auf den Code-Unterraum; Fehlerkorrektur erfordert zusätzlich Syndrommessung und Recovery-Operatoren. (2) Die 24 Hurwitz-Einheiten bilden die binäre Tetraedergruppe $2T$, nicht die binäre Ikosaedergruppe $2I \cong \text{SL}(2,5)$, welche 120 Elemente besitzt.
+
+Wir entwickeln ein vollständiges Rechenbeispiel für einen Phasenfehler $Z_1$ und zeigen die exakte Syndromberechnung, Fehlerdiagnose und Recovery-Operation.
+\end{abstract}
+
+\section{Einleitung}
+
+\subsection{Motivation}
+
+Die Quantenfehlerkorrektur ist ein zentrales Konzept für die Realisierung skalierbarer Quantencomputer. Ein verbreitetes Missverständnis lautet:
+
+\begin{quote}
+\textit{„Der Code-Projektor $\mathcal{P}_{\text{Code}}$ filtert Rauschen heraus und stellt den fehlerfreien Zustand wieder her."}
+\end{quote}
+
+Diese Vorstellung ist \textbf{unvollständig}. Der Projektor allein kann keine Fehler korrigieren, da er lediglich auf den Code-Unterraum projiziert. Die eigentliche Fehlerkorrektur erfordert drei Schritte:
+
+\begin{enumerate}
+\item \textbf{Syndrommessung:} Bestimmung der Eigenwerte der Stabilisatorgeneratoren
+\item \textbf{Fehlerdiagnose:} Zuordnung des Syndroms zu einem diskreten Fehler
+\item \textbf{Recovery:} Anwendung des inversen Fehleroperators
+\end{enumerate}
+
+Diese Notiz entwickelt diese Struktur explizit am $[\![5,1,3]\!]$-Code.
+
+\subsection{Algebraische Präzisierungen}
+
+\subsubsection{Hurwitz-Einheiten und binäre Tetraedergruppe}
+
+Die \textbf{Hurwitz-Quaternionen} sind definiert als
+\[
+\mathcal{H} = \left\{ a + bi + cj + dk \mid a,b,c,d \in \mathbb{Z} \text{ oder } a,b,c,d \in \mathbb{Z} + \tfrac{1}{2}, \; a+b+c+d \in 2\mathbb{Z} \right\}.
+\]
+
+Die \textbf{Hurwitz-Einheiten} (Elemente mit Norm 1) bilden eine endliche Gruppe der Ordnung 24:
+\[
+\{\pm 1, \pm i, \pm j, \pm k, \tfrac{1}{2}(\pm 1 \pm i \pm j \pm k)\}.
+\]
+
+Diese Gruppe ist isomorph zur \textbf{binären Tetraedergruppe} $2T$, der doppelten Überlagerung der Tetraedergruppe $T \cong A_4$:
+\[
+2T \cong \text{SL}(2,3), \quad |2T| = 24.
+\]
+
+\textbf{Nicht zu verwechseln} mit der \textbf{binären Ikosaedergruppe}:
+\[
+2I \cong \text{SL}(2,5), \quad |2I| = 120.
+\]
+
+Die binäre Ikosaedergruppe ist die doppelte Überlagerung der Ikosaedergruppe $I \cong A_5$ und hat 120 Elemente, nicht 24.
+
+\section{Der zyklische $[\![5,1,3]\!]$-Stabilisatorcode}
+
+\subsection{Stabilisatorgeneratoren}
+
+Der zyklische $[\![5,1,3]\!]$-Code kodiert 1 logisches Qubit in 5 physischen Qubits und korrigiert 1 beliebigen Fehler. Die vier Stabilisatorgeneratoren lauten:
+
+\begin{align}
+S_1 &= X_1 Z_2 Z_3 X_4 I_5 = XZZXI, \\
+S_2 &= I_1 X_2 Z_3 Z_4 X_5 = IXZZX, \\
+S_3 &= X_1 I_2 X_3 Z_4 Z_5 = XIXZZ, \\
+S_4 &= Z_1 X_2 I_3 X_4 Z_5 = ZXIXZ.
+\end{align}
+
+\subsection{Code-Unterraum}
+
+Der \textbf{Code-Unterraum} $\mathcal{C}$ ist der gemeinsame $+1$-Eigenraum aller vier Generatoren:
+\[
+\mathcal{C} = \{\ket{\psi} \in (\mathbb{C}^2)^{\otimes 5} \mid S_m \ket{\psi} = \ket{\psi} \text{ für alle } m = 1,2,3,4\}.
+\]
+
+Der Unterraum ist 2-dimensional (1 logisches Qubit) und wird durch die logischen Basiszustände $\ket{0_L}, \ket{1_L}$ aufgespannt.
+
+\subsection{Code-Projektor}
+
+Der \textbf{Code-Projektor} ist definiert als
+\[
+\mathcal{P}_{\text{Code}} = \frac{1}{16} (I + S_1)(I + S_2)(I + S_3)(I + S_4).
+\]
+
+\begin{remark}[Wichtig]
+$\mathcal{P}_{\text{Code}}$ projiziert auf den Code-Unterraum $\mathcal{C}$, korrigiert aber \textbf{keine Fehler}. Ein fehlerhafter Zustand wird einfach auf den Code-Unterraum projiziert, was die Fehlerinformation zerstört, aber nicht den ursprünglichen logischen Zustand wiederherstellt.
+\end{remark}
+
+\section{Fehlerkorrektur: Phasenfehler $Z_1$}
+
+\subsection{Ausgangszustand und Fehler}
+
+Sei $\ket{\psi} \in \mathcal{C}$ ein gültiger Codezustand mit
+\[
+S_m \ket{\psi} = \ket{\psi} \quad \text{für alle } m = 1,2,3,4.
+\]
+
+Wir betrachten einen \textbf{Phasenfehler} auf dem ersten Qubit:
+\[
+E = Z_1 = Z \otimes I \otimes I \otimes I \otimes I = ZIIII.
+\]
+
+Der fehlerhafte Zustand lautet
+\[
+\ket{\psi'} = Z_1 \ket{\psi}.
+\]
+
+\subsection{Syndrommessung}
+
+Das \textbf{Syndrom} wird durch Messung der Stabilisatorgeneratoren bestimmt. Da $Z_1$ mit $X$ antikommutiert, aber mit $Z$ und $I$ kommutiert, erhalten wir:
+
+\begin{align}
+S_1 Z_1 \ket{\psi} &= (X_1 Z_2 Z_3 X_4 I_5)(Z_1) \ket{\psi} = -Z_1 X_1 Z_2 Z_3 X_4 I_5 \ket{\psi} = -Z_1 S_1 \ket{\psi} = -Z_1 \ket{\psi}, \\
+S_2 Z_1 \ket{\psi} &= (I_1 X_2 Z_3 Z_4 X_5)(Z_1) \ket{\psi} = +Z_1 I_1 X_2 Z_3 Z_4 X_5 \ket{\psi} = +Z_1 S_2 \ket{\psi} = +Z_1 \ket{\psi}, \\
+S_3 Z_1 \ket{\psi} &= (X_1 I_2 X_3 Z_4 Z_5)(Z_1) \ket{\psi} = -Z_1 X_1 I_2 X_3 Z_4 Z_5 \ket{\psi} = -Z_1 S_3 \ket{\psi} = -Z_1 \ket{\psi}, \\
+S_4 Z_1 \ket{\psi} &= (Z_1 X_2 I_3 X_4 Z_5)(Z_1) \ket{\psi} = +Z_1^2 X_2 I_3 X_4 Z_5 \ket{\psi} = +Z_1 S_4 \ket{\psi} = +Z_1 \ket{\psi}.
+\end{align}
+
+Das \textbf{Syndrom} ist daher
+\[
+\sigma(Z_1) = (-1, +1, -1, +1).
+\]
+
+In binärer Notation (mit $-1 \mapsto 1$ und $+1 \mapsto 0$):
+\[
+\sigma_{\text{bin}}(Z_1) = (1, 0, 1, 0) = 1010.
+\]
+
+\subsection{Syndromprojektor}
+
+Der \textbf{Syndromprojektor} für das Syndrom $(1,0,1,0)$ lautet
+\[
+\mathcal{P}_{1010} = \frac{1}{16} (I - S_1)(I + S_2)(I - S_3)(I + S_4).
+\]
+
+Dieser Projektor extrahiert den Unterraum aller Zustände mit diesem spezifischen Syndrom.
+
+\subsection{Recovery-Operation}
+
+Die Fehlerkorrektur besteht aus zwei Schritten:
+
+\begin{enumerate}
+\item \textbf{Syndrommessung:} Der Zustand $\ket{\psi'} = Z_1 \ket{\psi}$ wird durch die Messung in den Fehlerunterraum mit Syndrom $1010$ projiziert.
+\item \textbf{Recovery:} Der Recovery-Operator $R = Z_1$ wird angewendet:
+\[
+R \ket{\psi'} = Z_1 (Z_1 \ket{\psi}) = Z_1^2 \ket{\psi} = \ket{\psi}.
+\]
+\end{enumerate}
+
+Da $Z_1^2 = I$, wird der ursprüngliche Zustand exakt wiederhergestellt.
+
+\subsection{Vollständige Fehlerkorrektur}
+
+Die vollständige Fehlerkorrekturprozedur lautet:
+
+\begin{equation}
+\boxed{
+\begin{aligned}
+\ket{\psi} \quad &\xrightarrow{\text{Fehler } E = Z_1} \quad Z_1 \ket{\psi} \\
+&\xrightarrow{\text{Syndrommessung}} \quad \text{Syndrom } 1010 \\
+&\xrightarrow{\text{Fehlerdiagnose}} \quad \text{Fehler } Z_1 \text{ identifiziert} \\
+&\xrightarrow{\text{Recovery } R = Z_1} \quad Z_1 (Z_1 \ket{\psi}) = \ket{\psi}.
+\end{aligned}
+}
+\end{equation}
+
+\section{DMN/ECN-Metapher: Diskretisierung kontinuierlicher Störungen}
+
+\subsection{Von kontinuierlich zu diskret}
+
+Die Quantenfehlerkorrektur leistet eine fundamentale Transformation:
+
+\begin{center}
+\textbf{Kontinuierliche physikalische Störung} $\quad \longrightarrow \quad$ \textbf{Diskretes Fehlersyndrom}
+\end{center}
+
+In der Praxis tritt nicht ein exakter Pauli-Fehler $Z_1$ auf, sondern eine kontinuierliche Phasenstörung:
+\[
+\rho \mapsto \rho' = (1-\epsilon)\rho + \epsilon Z_1 \rho Z_1^\dagger + \text{(andere Terme)}.
+\]
+
+Die Syndrommessung \textbf{diskretisiert} diese kontinuierliche Störung in ein endliches Fehleralphabet:
+\[
+\{\text{kein Fehler}, X_1, Y_1, Z_1, X_2, \ldots\}.
+\]
+
+\subsection{Der Übergang: Nicht Löschung, sondern Diagnose}
+
+Die DMN/ECN-Metapher wird oft als „Hyperfokus löscht Rauschen aus" beschrieben. Eine präzisere Formulierung lautet:
+
+\begin{center}
+\begin{tabular}{ll}
+\textbf{Falsch:} & Rauschen $\mapsto$ 0 \\
+\textbf{Korrekt:} & Kontinuierliche Störung $\mapsto$ diskretes Syndrom $\mapsto$ korrigierbarer Fehler $\mapsto$ Zustand
+\end{tabular}
+\end{center}
+
+Das ECN (Error Correction Network) wirkt nicht als bloßer \textit{Filter}, sondern als \textit{Syndromapparat}:
+
+\begin{enumerate}
+\item \textbf{Erkennung:} Das Syndrom identifiziert die Art der Abweichung
+\item \textbf{Klassifikation:} Die Störung wird einem diskreten Fehlerraum zugeordnet
+\item \textbf{Korrektur:} Die passende Rückoperation wird ausgeführt
+\end{enumerate}
+
+\subsection{Quaternionische Lesart}
+
+Die Pauli-Operatoren $\{I, X, Y, Z\}$ entsprechen den Quaternionseinheiten $\{1, i, j, k\}$:
+
+\begin{align}
+I &\leftrightarrow 1, \\
+X &\leftrightarrow i, \\
+Y &\leftrightarrow -k, \\
+Z &\leftrightarrow j.
+\end{align}
+
+Die Fehlerkorrektur überführt eine \textbf{kontinuierliche Phasenabweichung} (im kontinuierlichen $\text{SU}(2)$) in ein \textbf{endliches, klassifizierbares Fehleralphabet} (in der diskreten Pauli-Gruppe).
+
+Dies ist analog zur Projektion einer reellen Zahl auf das nächste Element eines diskreten Gitters -- mit dem entscheidenden Unterschied, dass die Fehlerkorrektur \textit{ohne Informationsverlust} über den logischen Zustand erfolgt.
+
+\section{Zusammenfassung}
+
+\subsection{Präzisierte Aussagen}
+
+\begin{enumerate}
+\item \textbf{Code-Projektor:} $\mathcal{P}_{\text{Code}}$ allein korrigiert keine Fehler. Er projiziert nur auf den Code-Unterraum.
+\item \textbf{Fehlerkorrektur:} Erfordert Syndrommessung + Fehlerdiagnose + Recovery-Operator.
+\item \textbf{Hurwitz-Einheiten:} Die 24 Einheiten bilden die binäre Tetraedergruppe $2T \cong \text{SL}(2,3)$.
+\item \textbf{Binäre Ikosaedergruppe:} $2I \cong \text{SL}(2,5)$ hat 120 Elemente, nicht 24.
+\end{enumerate}
+
+\subsection{Die korrekte Fehlerkorrekturkette}
+
+\begin{equation}
+\boxed{
+\text{Kontinuierliche Störung} \quad \xrightarrow{\text{Messung}} \quad \text{Diskretes Syndrom} \quad \xrightarrow{\text{Diagnose}} \quad \text{Korrigierbarer Fehler} \quad \xrightarrow{\text{Recovery}} \quad \text{Rekonstruierter Zustand}
+}
+\end{equation}
+
+Das ist die saubere mathematische Struktur der Quantenfehlerkorrektur.
+
+\section*{Danksagung}
+
+Diese Notiz entstand aus der Notwendigkeit, zwei häufige Missverständnisse in der Darstellung der Quantenfehlerkorrektur zu präzisieren. Der Fokus liegt auf mathematischer Klarheit und der expliziten Trennung von Code-Projektion und vollständiger Fehlerkorrektur.
+
+\begin{thebibliography}{99}
+
+\bibitem{nielsen2000}
+M. A. Nielsen and I. L. Chuang, \textit{Quantum Computation and Quantum Information}, Cambridge University Press, 2000.
+
+\bibitem{gottesman1997}
+D. Gottesman, \textit{Stabilizer Codes and Quantum Error Correction}, Caltech PhD Thesis, 1997. arXiv:quant-ph/9705052.
+
+\bibitem{laflamme1996}
+R. Laflamme, C. Miquel, J. P. Paz, and W. H. Zurek, \textit{Perfect Quantum Error Correcting Code}, Physical Review Letters \textbf{77} (1996), 198--201.
+
+\bibitem{conway1988}
+J. H. Conway and D. A. Smith, \textit{On Quaternions and Octonions}, A K Peters, 2003.
+
+\bibitem{knill1997}
+E. Knill and R. Laflamme, \textit{Theory of quantum error-correcting codes}, Physical Review A \textbf{55} (1997), 900--911.
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,751 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{booktabs}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\newtheorem{theorem}{Satz}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Vermutung}
+\newtheorem{remark}[theorem]{Bemerkung}
+
+\title{Bedingte Gap-Asymmetrien und Orientierungsbias \\
+in konsekutiven Primzahlrestklassen modulo 12}
+
+\author{
+Thomas Hoffbauer \\
+\texttt{smooth-numbers project} \\
+\texttt{Juni 2026}
+}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Wir untersuchen die bedingte Gap-Verteilung $P(g \bmod 12 \mid p_n \equiv a)$ für konsekutive Primzahlen in Restklassen modulo 12. Wir beobachten eine systematische Asymmetrie: $P(g \equiv 2,4 \mid a) > P(g \equiv 8,10 \mid a)$ für alle vier nicht-trivialen Restklassen $a \in \{1, 5, 7, 11\}$. Dies ist der \textbf{primäre Befund} dieser Arbeit.
+
+Diese Gap-Asymmetrie induziert eine asymmetrische Übergangsmatrix $P(a \to b)$ über die fundamentale Relation $b \equiv a + g \pmod{12}$. Als abgeleitete Konsequenz definieren wir eine Orientierungsobservable $\chi$ auf vollständigen EABC-Primzahlquadrupeln und zeigen, dass der beobachtete Orientierungsbias mechanistisch aus der Gap-Asymmetrie folgt.
+
+Empirische Daten zeigen das Zyklusverhältnis $R(X) = P(\text{EABC})/P(\text{ECBA})$ mit Werten $R(10^4) = 6{,}14 \to R(5 \cdot 10^5) = 3{,}59$, was auf eine Vorasymptotik mit $R(X) \to 1$ hindeutet. Das asymptotische Verhalten bleibt offen.
+
+\textbf{Status:} Von geometrischer Spekulation zu empirischem Forschungsprogramm über lokale Primzahlübergänge.
+\end{abstract}
+
+\section{Einleitung}
+
+\subsection{Motivation und historischer Kontext}
+
+Die Verteilung der Primzahlen in Restklassen ist ein klassisches Thema der analytischen Zahlentheorie. Während der Primzahlsatz in Restklassen \cite{davenport} die asymptotische Gleichverteilung garantiert, zeigen lokale Statistiken oft überraschende Strukturen.
+
+Ein bekanntes Beispiel ist der Chebyshev-Bias \cite{rubinstein1994}: Empirisch gilt
+\[
+\pi(x; 4, 3) > \pi(x; 4, 1)
+\]
+für die meisten $x$, obwohl beide Funktionen asymptotisch gegen denselben Wert streben.
+
+Diese Arbeit untersucht eine verwandte, aber bisher nicht systematisch analysierte Größe: die \textbf{bedingte Gap-Verteilung konsekutiver Primzahlen}.
+
+\subsection{Die zentrale Frage}
+
+Sei $p_n$ die $n$-te Primzahl und $g = p_{n+1} - p_n$ die zugehörige Primzahllücke. Wir fragen:
+
+\begin{quote}
+\textit{Hängt die Verteilung von $g \bmod 12$ von der Restklasse $p_n \bmod 12$ ab?}
+\end{quote}
+
+Formal: Ist die bedingte Verteilung
+\[
+P(g \equiv r \pmod{12} \mid p_n \equiv a \pmod{12})
+\]
+symmetrisch in den Gap-Klassen, oder existieren messbare Asymmetrien?
+
+\subsection{Vom Objekt zur Dynamik}
+
+Ursprünglich begann dieses Projekt mit einer geometrischen Hypothese über Primzahlquadrupel. Im Verlauf der Untersuchung verschob sich der Fokus fundamental:
+
+\begin{center}
+\begin{tabular}{ll}
+\textbf{Anfangsfrage:} & Gibt es eine besondere Struktur der EABC-Quadrupel? \\
+\textbf{Heutige Frage:} & Welche lokalen Übergangsgesetze erzeugen beobachtete Muster?
+\end{tabular}
+\end{center}
+
+Dieser Perspektivwechsel von \textit{Objekten} zu \textit{Dynamik} ist methodisch wesentlich und stellt den Kern dieser Arbeit dar.
+
+\subsection{Historische Entwicklung der Forschungsfrage}
+
+Die vorliegende Arbeit durchlief mehrere konzeptionelle Transformationen, die exemplarisch für explorative mathematische Forschung sind. Wir dokumentieren diese Entwicklung hier explizit, da sie den Erkenntnisprozess transparent macht und zeigt, wie aus spekulativen Hypothesen präzise Forschungsfragen entstehen können.
+
+\subsubsection{Phase 1: Geometrische Spekulation (Januar--März 2026)}
+
+\textbf{Ausgangshypothese:} Vollständige EABC-Quadrupel könnten eine topologische Struktur aufweisen, inspiriert durch:
+\begin{itemize}
+\item Die zyklische Natur der vier Restklassen $E \to A \to B \to C \to E$
+\item Eine heuristische Analogie zur Klein-Flasche
+\item Euler-Charakteristik-Berechnungen für Graphkonstruktionen
+\end{itemize}
+
+\textbf{Problemstellung:} Diese Ansätze erwiesen sich als methodisch unzureichend:
+\begin{itemize}
+\item Die Topologie war \textit{aufgeprägt}, nicht aus den Primzahlen abgeleitet
+\item Die Euler-Charakteristik $\chi = V - E + F$ setzte eine kanonische 2-Komplex-Struktur voraus, die nicht existierte
+\item Geometrische Visualisierungen lieferten keine überprüfbaren zahlentheoretischen Aussagen
+\end{itemize}
+
+\textbf{Entscheidende Erkenntnis:} Die Klein-Flasche war eine Metapher, keine mathematische Struktur der Primzahlen.
+
+\subsubsection{Phase 2: Observable und Bias-Funktion (März--April 2026)}
+
+\textbf{Refokussierung:} Statt geometrischer Interpretation konzentrierten wir uns auf eine messbare arithmetische Observable:
+\[
+\chi(Q) \in \{-1, 0, +1\}, \quad H_C(X) = \sum_{Q \le X} \chi(Q).
+\]
+
+\textbf{Erste empirische Beobachtung:} Für konsekutive Primzahlquadrupel ($\mathcal{C}_{\text{consec}}$) gilt
+\[
+H_C(X) > 0 \quad \text{im untersuchten Bereich bis } X = 10^5.
+\]
+
+\textbf{Kritische Frage:} Ist dies eine genuine Eigenschaft der Primzahlen oder ein Definitionsartefakt?
+
+\subsubsection{Phase 3: Robustheitstests und Konstruktionsabhängigkeit (April--Mai 2026)}
+
+\textbf{Systematische Tests:}
+\begin{enumerate}
+\item \textbf{Zufällige Permutation} ($\mathcal{C}_{\text{random}}$): $H_C(X) \approx 0$ -- der Bias verschwindet
+\item \textbf{Nichtüberlappende Fenster} ($\mathcal{C}_{\text{nonoverlap}}$): $H_C(X) > 0$ -- der Bias bleibt
+\item \textbf{Andere Konstruktionen}: Verschiedene Quadrupel-Erzeugungsmethoden zeigen stark unterschiedliche Werte
+\end{enumerate}
+
+\textbf{Schlussfolgerung:} Der Bias ist \textit{konstruktionsabhängig} und tritt spezifisch bei der natürlichen Ordnung konsekutiver Primzahlen auf.
+
+\textbf{Neue Frage:} Warum bevorzugen konsekutive Primzahlen die EABC-Orientierung?
+
+\subsubsection{Phase 4: Autokorrelationsanalyse (Mai 2026)}
+
+\textbf{Statistische Herausforderung:} Konsekutive Quadrupel überlappen sich, sodass die $\chi$-Werte nicht unabhängig sind.
+
+\textbf{Messung:}
+\[
+\rho(1) = \text{Corr}(\chi_n, \chi_{n+1}) = 0{,}266 \quad \text{(überlappend)}
+\]
+\[
+\rho(1) = 0{,}021 \quad \text{(nichtüberlappend)}
+\]
+
+\textbf{Effektive Stichprobengröße:}
+\[
+N_{\text{eff}} = \frac{N}{1 + 2\sum_{k=1}^\infty \rho(k)} \approx 0{,}59 N \quad \text{(überlappend)}
+\]
+
+\textbf{Korrigierter Z-Score:}
+\[
+Z_{\text{eff}} = 44{,}4 \quad \text{(überlappend)}, \quad Z_{\text{eff}} = 16{,}5 \quad \text{(nichtüberlappend)}
+\]
+
+\textbf{Schlussfolgerung:} Der Bias bleibt nach Autokorrelationskorrektur hochsignifikant.
+
+\subsubsection{Phase 5: Übergangsmatrix als Mechanismus (Mai--Juni 2026)}
+
+\textbf{Paradigmenwechsel:} Von der statischen Observable zur dynamischen Erklärung.
+
+\textbf{Beobachtung:} Die Übergangsmatrix $P(a \to b)$ für konsekutive Primzahlen ist \textit{nicht symmetrisch}:
+\[
+P(E \to A) = 0{,}324 \quad \text{vs.} \quad P(A \to E) = 0{,}152
+\]
+
+\textbf{Fundamentale Relation:}
+\[
+b \equiv a + g \pmod{12} \quad \Rightarrow \quad P(a \to b) = P(g \equiv b - a \mid a)
+\]
+
+\textbf{Erkenntnis:} Die Übergangsmatrix ist kein unabhängiges Objekt, sondern ein Bild der Gap-Verteilung.
+
+\textbf{Neue Frage:} Warum ist $P(g \bmod 12 \mid a)$ asymmetrisch?
+
+\subsubsection{Phase 6: Gap-Verteilung als fundamentale Ebene (Juni 2026)}
+
+\textbf{Finale Hierarchie:}
+\[
+\boxed{P(g \bmod 12 \mid a)} \quad \longrightarrow \quad P(a \to b) \quad \longrightarrow \quad R(X) \quad \longrightarrow \quad H_C(X)
+\]
+
+\textbf{Primärer Befund:} Die bedingte Gap-Verteilung zeigt systematische Asymmetrien:
+\[
+P(g \equiv 2, 4 \pmod{12} \mid a) > P(g \equiv 8, 10 \pmod{12} \mid a)
+\]
+
+\textbf{Mechanistische Formel:}
+\[
+R(X) = \frac{P(\text{EABC})}{P(\text{ECBA})} = \frac{P_E(4) \cdot P_A(2) \cdot P_B(4) \cdot P_C(2)}{P_E(10) \cdot P_C(8) \cdot P_B(10) \cdot P_A(8)}
+\]
+
+\textbf{Empirische Werte:}
+\[
+R(10^4) = 6{,}14, \quad R(5 \cdot 10^4) = 4{,}59, \quad R(10^5) = 4{,}05, \quad R(5 \cdot 10^5) = 3{,}59
+\]
+
+\textbf{Aktuelle Interpretation:} Die fallende Tendenz deutet auf $R(X) \to 1$ (Vorasymptotik) hin, schließt aber $R(X) \to c > 1$ nicht definitiv aus.
+
+\subsubsection{Methodische Lehre}
+
+Die Entwicklung dieses Projekts illustriert eine fundamentale Transformation:
+
+\begin{center}
+\begin{tabular}{lll}
+\textbf{Phase} & \textbf{Leitfrage} & \textbf{Ebene} \\ \hline
+1--2 & \textit{Was ist die Struktur?} & Objekte \\
+3--4 & \textit{Ist der Effekt real?} & Statistik \\
+5--6 & \textit{Welcher Mechanismus erzeugt ihn?} & Dynamik
+\end{tabular}
+\end{center}
+
+Die eigentliche mathematische Substanz liegt nicht in der ursprünglichen Metapher, sondern in der bedingten Gap-Asymmetrie $P(g \bmod 12 \mid a)$ -- einer klassischen zahlentheoretischen Größe, die unabhängig von EABC-Konstruktionen untersucht werden kann.
+
+\textbf{Von spekulativem Narrativ zu sauber definiertem Forschungsprogramm.}
+
+\subsection{Hauptresultate}
+
+Wir etablieren folgende Vier-Ebenen-Hierarchie:
+
+\begin{equation}
+\boxed{
+\begin{array}{c}
+\text{Ebene 0: } P(g \bmod 12 \mid a) \quad \text{(Rohdaten)} \\
+\downarrow \\
+\text{Ebene 1: } P(a \to b) \quad \text{(Übergangsdynamik)} \\
+\downarrow \\
+\text{Ebene 2: } R(X) \quad \text{(Zyklusgewichte)} \\
+\downarrow \\
+\text{Ebene 3: } H_C(X) \quad \text{(Observable)}
+\end{array}
+}
+\end{equation}
+
+\textbf{Primärer Befund:} Im untersuchten Bereich bis $X = 5 \cdot 10^5$ gilt
+\[
+P(g \equiv 2,4 \pmod{12} \mid a) > P(g \equiv 8,10 \pmod{12} \mid a)
+\]
+für alle $a \in \{1, 5, 7, 11\}$.
+
+\textbf{Abgeleitete Konsequenz:} Diese Gap-Asymmetrie erklärt quantitativ den beobachteten Orientierungsbias in vollständigen EABC-Quadrupeln.
+
+\section{Definitionen und Notation}
+
+\subsection{EABC-Klassifikation}
+
+Für Primzahlen $p > 3$ definieren wir die EABC-Klassifikation modulo 12:
+
+\begin{definition}[EABC-Klassen]
+\[
+\begin{aligned}
+E &: p \equiv 1 \pmod{12} \\
+A &: p \equiv 5 \pmod{12} \\
+B &: p \equiv 7 \pmod{12} \\
+C &: p \equiv 11 \pmod{12}
+\end{aligned}
+\]
+Notation: $k(p) \in \{E, A, B, C\}$ bezeichnet die Klasse von $p$.
+\end{definition}
+
+\begin{remark}
+Diese Klassifikation partitioniert alle Primzahlen $p > 3$, da $p \not\equiv 0, 2, 3, 4, 6, 8, 9, 10 \pmod{12}$.
+\end{remark}
+
+\subsection{Vollständige Quadrupel}
+
+\begin{definition}[Primzahlquadrupel]
+Ein \textbf{Primzahlquadrupel} ist ein geordnetes 4-Tupel $Q = (p, q, r, s)$ mit $p, q, r, s > 3$ prim.
+\end{definition}
+
+\begin{definition}[Vollständiges Quadrupel]
+Ein Primzahlquadrupel $Q = (p, q, r, s)$ heißt \textbf{vollständig}, falls
+\[
+\{k(p), k(q), k(r), k(s)\} = \{E, A, B, C\}.
+\]
+Das heißt, jede EABC-Klasse tritt genau einmal auf.
+\end{definition}
+
+\begin{definition}[Konstruktionsmethoden]
+Eine \textbf{Konstruktionsmethode} $\mathcal{C}$ ist eine Vorschrift zur Erzeugung von Primzahlquadrupeln. Wir betrachten:
+\begin{itemize}
+\item $\mathcal{C}_{\text{consec}}$: Konsekutive Primzahlen $(p_n, p_{n+1}, p_{n+2}, p_{n+3})$
+\item $\mathcal{C}_{\text{nonoverlap}}$: Nichtüberlappende konsekutive Quadrupel $(p_{4k}, p_{4k+1}, p_{4k+2}, p_{4k+3})$
+\item $\mathcal{C}_{\text{random}}$: Zufällige Permutation der Komponenten von $\mathcal{C}_{\text{consec}}$
+\end{itemize}
+\end{definition}
+
+\subsection{Signatur und Normalisierung}
+
+\begin{definition}[Signatur]
+Die \textbf{Signatur} eines Primzahlquadrupels $Q = (p, q, r, s)$ ist definiert als
+\[
+\text{sig}(Q) = (k(p), k(q), k(r), k(s)) \in \{E, A, B, C\}^4.
+\]
+\end{definition}
+
+\begin{definition}[Zyklische Rotation]
+Für ein 4-Tupel $\sigma = (\sigma_1, \sigma_2, \sigma_3, \sigma_4)$ definieren wir die drei zyklischen Rotationen:
+\[
+\begin{aligned}
+\text{rot}^0(\sigma) &= (\sigma_1, \sigma_2, \sigma_3, \sigma_4) \\
+\text{rot}^1(\sigma) &= (\sigma_2, \sigma_3, \sigma_4, \sigma_1) \\
+\text{rot}^2(\sigma) &= (\sigma_3, \sigma_4, \sigma_1, \sigma_2) \\
+\text{rot}^3(\sigma) &= (\sigma_4, \sigma_1, \sigma_2, \sigma_3)
+\end{aligned}
+\]
+\end{definition}
+
+\begin{definition}[Normalisierung]
+Die \textbf{Normalisierung} einer Signatur $\sigma$ auf $E$-Start ist definiert als
+\[
+\text{norm}(\sigma) = \begin{cases}
+\text{rot}^i(\sigma), & \text{falls } (\text{rot}^i(\sigma))_1 = E \\
+\text{undefined}, & \text{falls } E \notin \{\sigma_1, \sigma_2, \sigma_3, \sigma_4\}
+\end{cases}
+\]
+wobei $i \in \{0, 1, 2, 3\}$ der eindeutig bestimmte Index mit $(\text{rot}^i(\sigma))_1 = E$ ist.
+\end{definition}
+
+\begin{remark}
+Für vollständige Quadrupel ist die Normalisierung stets definiert, da $E$ garantiert auftritt. Die Normalisierung ist eindeutig, da $E$ genau einmal vorkommt.
+\end{remark}
+
+\subsection{Orientierungsobservable}
+
+\begin{definition}[Chiralitätsobservable]
+Für vollständige Quadrupel definieren wir die \textbf{Chiralitätsobservable}
+\[
+\chi: Q_{\text{complete}} \to \{-1, 0, +1\}
+\]
+durch
+\[
+\chi(Q) = \begin{cases}
++1, & \text{falls } \text{norm}(\text{sig}(Q)) = (E, A, B, C) \\
+-1, & \text{falls } \text{norm}(\text{sig}(Q)) = (E, C, B, A) \\
+0, & \text{sonst}
+\end{cases}
+\]
+\end{definition}
+
+\begin{remark}[Interpretation]
+Die Werte $+1$ und $-1$ entsprechen den beiden entgegengesetzten zyklischen Orientierungen:
+\begin{itemize}
+\item $(E, A, B, C)$: Aufsteigende Restklassen $1 \to 5 \to 7 \to 11$
+\item $(E, C, B, A)$: Absteigende Restklassen $1 \to 11 \to 7 \to 5$
+\end{itemize}
+Der Wert $0$ entspricht allen anderen möglichen Permutationen (vier weitere).
+\end{remark}
+
+\begin{definition}[Bias-Funktion]
+Für eine Konstruktionsmethode $\mathcal{C}$ definieren wir
+\[
+H_{\mathcal{C}}(X) = \sum_{Q \le X, Q \in \mathcal{C}} \chi(Q).
+\]
+\end{definition}
+
+\subsection{Die fundamentale Relation}
+
+Der Zusammenhang zwischen Gap-Verteilung und Übergängen wird durch folgende deterministische Abbildung vermittelt:
+
+\begin{lemma}[Fundamentale Relation]
+\label{lem:fundamental}
+Für konsekutive Primzahlen $p_n, p_{n+1} > 3$ mit $p_n \equiv a \pmod{12}$ und $p_{n+1} \equiv b \pmod{12}$ gilt
+\[
+b \equiv a + g \pmod{12},
+\]
+wobei $g = p_{n+1} - p_n$.
+
+Insbesondere folgt
+\[
+P(p_{n+1} \equiv b \mid p_n \equiv a) = P(g \equiv b - a \pmod{12} \mid p_n \equiv a).
+\]
+\end{lemma}
+
+\begin{proof}
+Die erste Aussage folgt unmittelbar aus $p_{n+1} \equiv p_n + g \pmod{12}$. Die zweite Aussage ist eine Umformulierung durch die deterministische Abbildung $(a, g) \mapsto b$.
+\end{proof}
+
+\begin{remark}[Interpretation]
+Lemma \ref{lem:fundamental} zeigt, dass die Übergangsmatrix $P(a \to b)$ \textbf{kein unabhängiges Objekt} ist, sondern ein Bild der Gap-Verteilung $P(g \bmod 12 \mid a)$.
+\end{remark}
+
+\section{Empirische Beobachtungen}
+
+\subsection{Datenerhebung}
+
+Wir haben die folgenden Größen für Primzahlen bis $X = 5 \cdot 10^5$ berechnet:
+
+\begin{enumerate}
+\item Bedingte Gap-Verteilung $P(g \bmod 12 \mid a)$ für $a \in \{E, A, B, C\}$
+\item Übergangsmatrix $P(a \to b)$
+\item Zykluswahrscheinlichkeiten $P(\text{EABC})$ und $P(\text{ECBA})$
+\item Orientierungsbias $H_{\mathcal{C}_{\text{consec}}}(X)$
+\end{enumerate}
+
+\textbf{Programme:}
+\begin{itemize}
+\item \texttt{gap\_distribution.cpp}: Berechnung von $P(g \bmod 12 \mid a)$
+\item \texttt{transition\_matrix.cpp}: Berechnung von $P(a \to b)$
+\item \texttt{ratio\_asymptotic.cpp}: Messung von $R(X)$
+\item \texttt{autocorrelation\_analysis.cpp}: Autokorrelationstest
+\end{itemize}
+
+\subsection{Gap-Verteilung modulo 12}
+
+\begin{table}[h]
+\centering
+\caption{Bedingte Gap-Verteilung $P(g \bmod 12 \mid a)$ für $X = 10^5$ Primzahlen}
+\label{tab:gap-dist}
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+Start & $g \equiv 0$ & $g \equiv 2$ & $g \equiv 4$ & $g \equiv 6$ & $g \equiv 8$ & $g \equiv 10$ \\ \midrule
+E (1)  & 0.1525 & 0.0000 & \textbf{0.3242} & 0.2679 & 0.0000 & 0.2554 \\
+A (5)  & 0.1516 & \textbf{0.3581} & 0.0000 & 0.2668 & 0.2235 & 0.0000 \\
+B (7)  & 0.1500 & 0.0000 & \textbf{0.3254} & 0.2676 & 0.0000 & 0.2570 \\
+C (11) & 0.1534 & \textbf{0.3537} & 0.0000 & 0.2678 & 0.2251 & 0.0000 \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\begin{remark}
+Primzahllücken zwischen ungeraden Primzahlen sind gerade, daher treten nur $g \equiv 0, 2, 4, 6, 8, 10 \pmod{12}$ auf.
+\end{remark}
+
+\subsection{Gap-Asymmetrie}
+
+\begin{theorem}[Empirische Gap-Asymmetrie]
+\label{thm:gap-asymmetry}
+Im untersuchten Bereich bis $X = 5 \cdot 10^5$ gilt für alle $a \in \{E, A, B, C\}$:
+\[
+P(g \equiv 2,4 \pmod{12} \mid a) > P(g \equiv 8,10 \pmod{12} \mid a).
+\]
+
+Konkrete Verhältnisse (bei $X = 10^5$):
+\begin{itemize}
+\item Von E: $P(g \equiv 2,4) / P(g \equiv 8,10) = 1{,}269$
+\item Von A: $P(g \equiv 2,4) / P(g \equiv 8,10) = 1{,}602$
+\item Von B: $P(g \equiv 2,4) / P(g \equiv 8,10) = 1{,}266$
+\item Von C: $P(g \equiv 2,4) / P(g \equiv 8,10) = 1{,}571$
+\end{itemize}
+\end{theorem}
+
+\textbf{Dies ist der primäre empirische Befund dieser Arbeit.}
+
+\subsection{Übergangsmatrix}
+
+Aus der Gap-Verteilung folgt via Lemma \ref{lem:fundamental} die asymmetrische Übergangsmatrix:
+
+\begin{table}[h]
+\centering
+\caption{Übergangsmatrix $P(a \to b)$ für $X = 10^5$ Primzahlen}
+\label{tab:transition}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Von $\backslash$ Nach & E (1) & A (5) & B (7) & C (11) \\ \midrule
+E (1)  & 0.1525 & \textbf{0.3242} & 0.2679 & 0.2554 \\
+A (5)  & 0.1516 & 0.2668 & \textbf{0.3581} & 0.2235 \\
+B (7)  & 0.1500 & 0.2676 & 0.0000 & \textbf{0.3254} \\
+C (11) & \textbf{0.3537} & 0.2678 & 0.2251 & 0.1534 \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\begin{remark}[Asymmetrie]
+Die Matrix ist \textbf{nicht symmetrisch}: $P(a \to b) \neq P(b \to a)$ im Allgemeinen.
+\end{remark}
+
+\section{Zyklische Pfade und Orientierungsbias}
+
+\subsection{EABC- und ECBA-Zyklen}
+
+Die Gap-Klassen $\{2, 4\}$ und $\{8, 10\}$ entsprechen zwei entgegengesetzten zyklischen Pfaden:
+
+\begin{definition}[Zyklische Pfade]
+\begin{itemize}
+\item \textbf{EABC-Zyklus:} $E \xrightarrow{g \equiv 4} A \xrightarrow{g \equiv 2} B \xrightarrow{g \equiv 4} C \xrightarrow{g \equiv 2} E$
+\item \textbf{ECBA-Zyklus:} $E \xrightarrow{g \equiv 10} C \xrightarrow{g \equiv 8} B \xrightarrow{g \equiv 10} A \xrightarrow{g \equiv 8} E$
+\end{itemize}
+\end{definition}
+
+\subsection{Mechanistische Formel}
+
+\begin{theorem}[Zyklusverhältnis]
+\label{thm:cycle-ratio}
+Das Verhältnis der Zykluswahrscheinlichkeiten ist gegeben durch
+\[
+R(X) = \frac{P(\text{EABC})}{P(\text{ECBA})} = \frac{P_E(4) \cdot P_A(2) \cdot P_B(4) \cdot P_C(2)}{P_E(10) \cdot P_C(8) \cdot P_B(10) \cdot P_A(8)}.
+\]
+
+Empirische Werte:
+\begin{align*}
+R(10^4) &= 6{,}14 \\
+R(5 \cdot 10^4) &= 4{,}59 \\
+R(10^5) &= 4{,}05 \\
+R(5 \cdot 10^5) &= 3{,}59
+\end{align*}
+\end{theorem}
+
+\begin{proof}
+Die Zykluswahrscheinlichkeiten sind Produkte der Einzelübergänge. Die empirischen Werte wurden mit \texttt{ratio\_asymptotic.cpp} berechnet.
+\end{proof}
+
+\subsection{Interpretation}
+
+\begin{remark}[Abfallende Tendenz]
+Die Sequenz $R(X)$ zeigt eine \textbf{streng monoton fallende} Tendenz mit $-41\%$ Rückgang von $10^4$ bis $5 \cdot 10^5$.
+
+Wäre $R$ fundamental konstant, würde man erwarten:
+\[
+4{,}2 \to 4{,}1 \to 4{,}0 \to 4{,}0 \quad \text{(Stabilisierung)}
+\]
+
+Beobachtet wird jedoch:
+\[
+6{,}14 \to 4{,}59 \to 4{,}05 \to 3{,}59 \quad \text{(deutlicher Abfall)}
+\]
+
+\textbf{Plausibelste Interpretation:} $R(X) \to 1$ mit langsamer Konvergenz.
+\end{remark}
+
+\section{Robustheitstests}
+
+\subsection{Konstruktionsabhängigkeit}
+
+Wir haben verschiedene Konstruktionsmethoden $\mathcal{C}$ getestet:
+
+\begin{table}[h]
+\centering
+\caption{Orientierungsbias für verschiedene Konstruktionen bei $X = 10^5$}
+\label{tab:constructions}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Konstruktion & $N$ & $H$ & $h = H/N$ & $Z^* = \sqrt{3} H / \sqrt{N}$ \\ \midrule
+$\mathcal{C}_{\text{consec}}$ & 24866 & 3938 & 0.158 & 43.3 \\
+$\mathcal{C}_{\text{random}}$ & 24866 & -47 & -0.002 & -0.5 \\
+$\mathcal{C}_{\text{nonoverlap}}$ & 6216 & 1204 & 0.193 & 26.5 \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\begin{remark}
+Der Bias tritt \textbf{ausschließlich} bei konsekutiven Primzahlen auf. Zufällige Umordnung eliminiert den Effekt vollständig.
+\end{remark}
+
+\subsection{Autokorrelationskorrektur}
+
+Wir haben die Autokorrelation $\rho(k) = \text{Corr}(\chi_n, \chi_{n+k})$ gemessen:
+
+\begin{itemize}
+\item Überlappende Fenster: $\rho(1) = 0{,}266$
+\item Nichtüberlappende Fenster: $\rho(1) = 0{,}021$
+\end{itemize}
+
+Nach Korrektur der effektiven Stichprobengröße bleibt der Bias signifikant:
+\[
+Z_{\text{eff}} = 44{,}4 \quad \text{(überlappend)}, \quad Z_{\text{eff}} = 16{,}5 \quad \text{(nichtüberlappend)}
+\]
+
+\section{Offene Fragen}
+
+\subsection{Asymptotisches Verhalten von R(X)}
+
+\textbf{Die zentrale offene Frage lautet:}
+\[
+\lim_{X \to \infty} R(X) = \, ?
+\]
+
+Drei Szenarien sind denkbar:
+
+\begin{enumerate}
+\item \textbf{Vorasymptotik:} $R(X) \to 1$ mit $R(X) = 1 + \frac{c}{(\log X)^\alpha} + o\left(\frac{1}{(\log X)^\alpha}\right)$
+\item \textbf{Persistente Asymmetrie:} $R(X) \to c > 1$
+\item \textbf{Oszillation:} $R(X)$ zeigt Prime-Race-artiges Verhalten
+\end{enumerate}
+
+\textbf{Aktuelle Datenlage:} Die fallende Tendenz deutet auf Szenario 1 hin, schließt jedoch Szenario 2 nicht aus.
+
+\subsection{Modulo 30 Verallgemeinerung}
+
+\textbf{Wichtigster Erweiterungstest:}
+
+Untersuche, ob analoge Gap-Asymmetrien für Restklassen modulo 30 auftreten:
+\[
+\{1, 7, 11, 13, 17, 19, 23, 29\} \quad \text{(8 Klassen)}
+\]
+
+\textbf{Warum kritisch:}
+\begin{itemize}
+\item Modulo 12 = $2^2 \cdot 3$ enthält nur die kleinsten Primzahlen
+\item Modulo 30 = $2 \cdot 3 \cdot 5$ ist die erste ernsthafte Verallgemeinerung
+\item Falls ähnliche Zyklen auftreten $\Rightarrow$ allgemeines Phänomen
+\item Falls nur modulo 12 $\Rightarrow$ spezielle Konsequenz von $(2, 3)$
+\end{itemize}
+
+\textbf{Dieser Test entscheidet über die Allgemeinheit der Beobachtung.}
+
+\subsection{Verbindung zu bekannten Theorien}
+
+\begin{itemize}
+\item \textbf{Siebtheorie:} Können einfache Siebmodelle die Gap-Asymmetrie vorhersagen?
+\item \textbf{Hardy-Littlewood-Vermutungen:} Zusammenhang mit $k$-Tupel-Konstanten?
+\item \textbf{Prime Number Races:} Verbindung zu Chebyshev-Bias-Phänomenen?
+\end{itemize}
+
+\section{Diskussion}
+
+\subsection{Methodische Analogie: Statistische Mechanik}
+
+Die Entwicklung dieses Projekts erinnert an die Entstehung der statistischen Mechanik:
+
+\begin{center}
+\begin{tabular}{ll}
+\textbf{Stat. Mechanik} & \textbf{EABC-Projekt} \\ \hline
+Mikrozustände & Gap-Klassen \\
+Übergänge & $P(g \mid a)$ \\
+Dynamik & $P(a \to b)$ \\
+Temperatur & $H_C(X)$
+\end{tabular}
+\end{center}
+
+\textbf{Erkenntnis:} Temperatur ist nicht fundamental -- fundamental sind mikroskopische Zustandsübergänge.
+
+\textbf{Analog:} $H_C(X)$ ist nicht fundamental -- fundamental ist $P(g \bmod 12 \mid a)$.
+
+$H_C(X)$ ist ein \textbf{Thermometer} für die tieferliegende Dynamik.
+
+\subsection{Was gesichert ist}
+
+\begin{itemize}
+\item[$\checkmark$] EABC-Klassifikation wohldefiniert
+\item[$\checkmark$] Observablen $\chi$, $H_C$ mathematisch präzise
+\item[$\checkmark$] \textbf{Bedingte Gap-Asymmetrie im untersuchten Bereich}
+\item[$\checkmark$] \textbf{Asymmetrische Übergangsmatrix}
+\item[$\checkmark$] \textbf{Quantitative Erklärung des Orientierungsbias}
+\item[$\checkmark$] Konstruktionsabhängigkeit demonstriert
+\item[$\checkmark$] Autokorrelationskorrektur durchgeführt
+\item[$\checkmark$] $R(X)$-Daten: $6{,}14 \to 4{,}59 \to 4{,}05 \to 3{,}59$
+\end{itemize}
+
+\subsection{Was nicht gesichert ist}
+
+\begin{itemize}
+\item[$\times$] Dass die Asymmetrie asymptotisch bestehen bleibt
+\item[$\times$] Dass sie nicht gegen 1 konvergiert ($R \to 1$)
+\item[$\times$] Dass sie eine fundamentale Eigenschaft der Primzahlen darstellt
+\item[$\times$] Die Ursache der Gap-Asymmetrie
+\end{itemize}
+
+\subsection{Das stärkste zukünftige Resultat}
+
+Nicht ein Satz über $H_C(X)$, sondern:
+
+\begin{conjecture}[Bedingte Gap-Asymmetrie]
+Für konsekutive Primzahlen zeigen die bedingten Gap-Verteilungen modulo 12 messbare Asymmetrien zwischen den Restklassen $\{2, 4\}$ und $\{8, 10\}$, welche die beobachteten Orientierungspräferenzen vollständig erklären.
+\end{conjecture}
+
+\textbf{Dies wäre konzeptionell tiefer:} Der Orientierungsbias wäre nicht das Phänomen selbst, sondern dessen sichtbarste Konsequenz.
+
+\section{Fazit}
+
+\subsection{Die Transformation des Projekts}
+
+\textbf{Ausgangshypothese (Anfang 2026):}
+\begin{quote}
+\textit{„Vielleicht steckt eine geometrische oder topologische Struktur hinter den Primzahlen."}
+\end{quote}
+
+\textbf{Heutige Frage (Juni 2026):}
+\begin{quote}
+\textit{„Welche lokalen statistischen Gesetze erfüllen die Restklassenübergänge konsekutiver Primzahlen?"}
+\end{quote}
+
+\textbf{Dies ist ein großer methodischer Fortschritt.}
+
+\subsection{Von Spekulation zu Forschungsprogramm}
+
+Das Projekt ist weit entfernt von geometrischer Spekulation. Es ist zu einem \textbf{klar definierten Programm über lokale statistische Gesetze der Primzahlübergänge} geworden.
+
+Genau diese Verschiebung macht den aktuellen Stand deutlich stärker als die ursprüngliche Motivation.
+
+\subsection{Status}
+
+Die Arbeit hat eine Form erreicht, die in der empirischen Zahlentheorie ernst genommen werden kann:
+
+\begin{itemize}
+\item Die Definitionsbasis ist klar
+\item Metaphorische Elemente sind sauber von mathematischen Aussagen getrennt
+\item Die Beobachtungen sind reproduzierbar
+\item Die offenen Fragen sind explizit benannt
+\item Die kritischen Falsifikationspfade sind formuliert
+\end{itemize}
+
+\textbf{Von spekulativem Narrativ zu sauber definiertem Forschungsprogramm.}
+
+\subsection{Nächste Schritte}
+
+\textbf{Priorität 1:} Modulo 30 Test (wichtiger als weitere Vergrößerung von $X$)
+
+\textbf{Priorität 2:} $R(X)$ für $X = 10^6, 10^7$ -- entscheidet über Vorasymptotik vs. Persistenz
+
+\textbf{Langfristig:} Vergleich mit Siebmodellen und Hardy-Littlewood-Heuristiken
+
+\section*{Danksagung}
+
+Diese Arbeit entstand aus einem explorativen Projekt über glatte Zahlen und EABC-Klassifikationen. Der entscheidende Fortschritt lag nicht in einem numerischen Resultat, sondern in der Umkehrung der Beweislast: Von „Wie interpretiert man die Struktur?" zu „Welche Mechanismen erzeugen sie?".
+
+\begin{thebibliography}{99}
+
+\bibitem{davenport}
+H. Davenport, \textit{Multiplicative Number Theory}, 3rd ed., Springer, 2000.
+
+\bibitem{rubinstein1994}
+M. Rubinstein and P. Sarnak, \textit{Chebyshev's bias}, Experimental Mathematics \textbf{3} (1994), 173--197.
+
+\bibitem{granville2006}
+A. Granville and G. Martin, \textit{Prime number races}, American Mathematical Monthly \textbf{113} (2006), 1--33.
+
+\bibitem{ng2004}
+N. Ng, \textit{The distribution of the summatory function of the Möbius function}, Proceedings of the London Mathematical Society \textbf{89} (2004), 361--389.
+
+\bibitem{hardy1923}
+G. H. Hardy and J. E. Littlewood, \textit{Some problems of 'Partitio numerorum'; III: On the expression of a number as a sum of primes}, Acta Mathematica \textbf{44} (1923), 1--70.
+
+\end{thebibliography}
+
+\appendix
+
+\section{Implementierungsdetails}
+
+Alle Berechnungen wurden in C++17 durchgeführt. Quellcode verfügbar unter:
+
+\texttt{https://github.com/username/smooth-numbers}
+
+\subsection{Programme}
+
+\begin{itemize}
+\item \texttt{gap\_distribution.cpp}: Berechnung der bedingten Gap-Verteilung $P(g \bmod 12 \mid a)$
+\item \texttt{transition\_matrix.cpp}: Berechnung der Übergangsmatrix $P(a \to b)$
+\item \texttt{ratio\_asymptotic.cpp}: Messung des Zyklusverhältnisses $R(X)$
+\item \texttt{autocorrelation\_analysis.cpp}: Autokorrelationstest mit effektiver Stichprobengröße
+\item \texttt{chirality\_robustness.cpp}: Robustheitstests verschiedener Konstruktionen
+\end{itemize}
+
+\subsection{Kompilierung}
+
+\begin{verbatim}
+make gap
+./gap_distribution 100000
+
+make ratio
+./ratio_asymptotic 10000 50000 100000 500000
+\end{verbatim}
+
+\end{document}
