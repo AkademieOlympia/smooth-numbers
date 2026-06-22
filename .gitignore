@@ -2,6 +2,7 @@
 *.o
 *.out
 smooth_numbers
+smooth_numbers_extended
 
 # Temporäre Dateien
 *.swp
@@ -10,6 +11,15 @@ smooth_numbers
 
 # Test-Dateien
 test_input.txt
+
+# Export-Dateien (generiert vom Programm)
+*.json
+*.csv
+*.html
+
+# Benchmark-Ergebnisse
+benchmark_*.json
+benchmark_*.csv
 
 # macOS
 .DS_Store

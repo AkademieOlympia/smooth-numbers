@@ -2,7 +2,31 @@
 
 Dieses Projekt implementiert die Berechnung von s-glatten Zahlen und deren Darstellung in einer dreieckigen Anordnung ähnlich dem Pascal-Dreieck.
 
-## Mathematische Grundlagen
+## 🌟 Features
+
+### Basis-Features
+- ✓ Rekursive Berechnung der n-ten s-glatten Zahl S(s,n)
+- ✓ Verallgemeinerter Hamming-Algorithmus mit dynamischer Programmierung
+- ✓ Dreieck-Darstellung T(n,k) analog zu Pascal's Dreieck
+- ✓ Vollständige mathematische Dokumentation
+
+### 🆕 Erweiterte Features (NEU!)
+- ✓ **Grafische Visualisierung** (HTML/SVG mit interaktiver Heatmap)
+- ✓ **Export-Funktionen** (CSV, JSON, HTML)
+- ✓ **Parallele Berechnung** (OpenMP-fähig)
+- ✓ **Benchmark-Tests** (Performance-Analyse)
+
+## 📁 Dateien
+
+- `smooth_numbers.cpp` - Basis-Version (200+ Zeilen)
+- `smooth_numbers_extended.cpp` - Erweiterte Version mit allen Features
+- `export.h` - Export-Funktionen (JSON, CSV, HTML)
+- `parallel.h` - Parallele Berechnungen (OpenMP-fähig)
+- `benchmark.h` - Benchmark-System
+- `README.md` - Diese Datei
+- `MATHEMATICAL_DETAILS.md` - Mathematische Dokumentation
+- `EXAMPLES.md` - Konkrete Beispiele
+- `EXTENDED_FEATURES.md` - Dokumentation der erweiterten Features
 
 ### Definition
 
@@ -53,7 +77,33 @@ wobei P(m) der größte Primfaktor von m ist.
 Ψ(x, y) = Ψ(x, 2) + Σ(2<p≤y) Ψ(x/p, p)
 ```
 
-## Kompilierung und Ausführung
+## 🚀 Schnellstart
+
+### Basis-Version
+
+```bash
+# Kompilieren
+make basic
+
+# Ausführen
+./smooth_numbers
+```
+
+### Erweiterte Version
+
+```bash
+# Kompilieren
+make extended
+
+# Vollständige Demo ausführen
+make demo
+
+# Oder manuell
+./smooth_numbers_extended
+# Wählen Sie Option 6 für alle Demos
+```
+
+### Kompilierung und Ausführung
 
 ### Voraussetzungen
 - C++11 oder höher
