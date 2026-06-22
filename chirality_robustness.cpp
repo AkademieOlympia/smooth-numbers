@@ -158,11 +158,22 @@ struct ChiralitaetsStatistik {
              << (100.0 * p_plus()) << "%)\n";
         cout << "  ECBA (-1): " << n_minus << " (" << (100.0 * p_minus()) << "%)\n";
         cout << "  Andere:    " << n_andere << " (" << (100.0 * p_andere()) << "%)\n";
-        cout << "  Holonomie H = N₊ - N₋ = " << holonomie() << "\n";
+        
+        int H = holonomie();
+        cout << "  Holonomie H = N₊ - N₋ = " << H << "\n";
         
         if (n_total > 0) {
             double asymmetrie = (p_plus() - p_minus()) / (p_plus() + p_minus() + 1e-10);
             cout << "  Asymmetrie: " << setprecision(3) << asymmetrie << "\n";
+            
+            // Bias-Funktionen
+            double h = (double)H / n_total;
+            double Z = (double)H / sqrt((double)n_total);
+            double Z_star = sqrt(3.0) * Z;  // Standardisierter Nullhypothesen-Score
+            
+            cout << "  Normalisierter Bias h = H/N = " << setprecision(4) << h << "\n";
+            cout << "  Skalierter Bias Z = H/√N = " << setprecision(3) << Z << "\n";
+            cout << "  Standardisierter Bias Z* = √3·H/√N = " << setprecision(3) << Z_star << "\n";
         }
     }
 };
