@@ -24,19 +24,47 @@ Dieses Projekt implementiert die Berechnung von s-glatten Zahlen und deren Darst
 - ✓ **Recamán-Folgen-Analyse** - Hypothesentest für Gitterstruktur
 - ✓ **Quaternionen-artige Struktur** - Multiplikation = Vektoraddition
 
+### 🍾 Klein-Flaschen-Topologie - BRANDNEU!
+- ✓ **Primzahl-Quadrupel** - (p, q, r, s) mit vollständiger EABC-Abdeckung
+- ✓ **Klein-Flasche im ℝ⁴** - Nicht-orientierbare Topologie
+- ✓ **∞-Struktur (Lemniskate)** - Projektion auf E-Achse
+- ✓ **Gesamtumlauf** - Numerische topologische Invariante
+- ✓ **E-Achsen-Verkettung** - Misst Windung um E-Achse
+- ✓ **Lean-Formalisierung** - Topologische Eigenschaften formal bewiesen
+
 ## 📁 Dateien
 
+### C++ Implementierungen
 - `smooth_numbers.cpp` - Basis-Version (200+ Zeilen)
 - `smooth_numbers_extended.cpp` - Erweiterte Version mit allen Features
+- `eabc_analysis.cpp` - EABC/Bamberg-Modell Analyse
+- `dickman_bridge.cpp` - Dickman-Funktion (Lean-verifiziert)
+- `klein_bottle.cpp` - Klein-Flaschen-Topologie ⭐ BRANDNEU
+
+### Header-Dateien
 - `export.h` - Export-Funktionen (JSON, CSV, HTML)
 - `parallel.h` - Parallele Berechnungen (OpenMP-fähig)
 - `benchmark.h` - Benchmark-System
+- `eabc_model.h` - EABC/ABCE-Modell Strukturen
+
+### Dokumentation
 - `README.md` - Diese Datei
 - `MATHEMATICAL_DETAILS.md` - Mathematische Dokumentation
 - `EXAMPLES.md` - Konkrete Beispiele
 - `EXTENDED_FEATURES.md` - Dokumentation der erweiterten Features
-- `EABC_MODEL.md` - EABC/ABCE-Bamberg-Modell ⭐ NEU
-- `LEAN_INTEGRATION.md` - Lean 4 formale Verifikation ⭐ NEU
+- `EABC_MODEL.md` - EABC/ABCE-Bamberg-Modell
+- `LEAN_INTEGRATION.md` - Lean 4 formale Verifikation
+- `KLEIN_BOTTLE.md` - Klein-Flaschen-Topologie ⭐ BRANDNEU
+
+### Lean 4 Formalisierung
+- `DickmanFunction.lean` - Dickman-de Bruijn Funktion
+- `KleinBottleTopology.lean` - Topologische Eigenschaften ⭐ BRANDNEU
+- `lakefile.lean` - Lean Projekt-Konfiguration
+- `lean-toolchain` - Lean Version
+
+### Build-System
+- `Makefile` - Automatisches Build-System
+- `test.sh` - Automatische Tests
 
 ## 🔬 Lean 4 Formale Verifikation
 
@@ -78,6 +106,111 @@ make demo-dickman
 ```
 
 Siehe `LEAN_INTEGRATION.md` für Details zur formalen Verifikation.
+
+## 🍾 Klein-Flaschen-Topologie (BRANDNEU!)
+
+### Das Konzept: Von glatten Schalen zu nicht-orientierbarer Topologie
+
+Ihre brillante Idee verbindet drei Strukturen:
+
+#### 1. Glatte Schalen und EABC-Primzahlen
+
+**Beobachtung:** Jede glatte Schale endet mit Primzahlen in den vier EABC-Klassen:
+- **E**: p ≡ 1 (mod 12) - "Einheits"-Klasse
+- **A**: p ≡ 5 (mod 12) - "Auf"-Klasse
+- **B**: p ≡ 7 (mod 12) - "Besondere"-Klasse
+- **C**: p ≡ 11 (mod 12) - "Contra"-Klasse
+
+#### 2. Primzahl-Quadrupel außerhalb der Schale
+
+```
+Algorithmus:
+1. Starte mit Primzahl p in der glatten Schale
+2. Finde die nächsten 3 Primzahlen q, r, s NICHT in der Schale
+3. Bilde Quadrupel (p, q, r, s)
+
+Beispiel:
+Schale bis 7: {1,2,3,4,5,6,7}
+Start p = 7 [B-Klasse]
+→ Nächste außerhalb: 11[C], 13[E], 17[A]
+→ Quadrupel: (7[B], 11[C], 13[E], 17[A])
+```
+
+Ein Quadrupel ist **vollständig**, wenn alle vier EABC-Klassen vertreten sind!
+
+#### 3. Klein-Flasche: Die "8"-Struktur
+
+Eine **Klein-Flasche** ist eine nicht-orientierbare Fläche:
+- Keine Innenseite/Außenseite
+- Euler-Charakteristik χ = 0
+- Selbst-durchdringend in 3D
+- Glatt einbettbar in 4D
+
+**Die "∞"-Projektion:**
+```
+      ∞
+     / \
+    /   \
+   E     E'  ← Verbindung via E-Achse
+    \   /
+     \ /
+      ∞
+```
+
+### Numerische Invarianten
+
+| Quadrupel | Klassen | Gesamtumlauf | Σp |
+|-----------|---------|--------------|-----|
+| (7,11,13,17) | (B,C,E,A) | 9.048 | 48 |
+| (11,13,17,19) | (C,E,A,B) | 11.317 | 60 |
+| (13,17,19,23) | (E,A,B,C) | 13.572 | 72 |
+| (23,29,31,37) | (C,A,B,E) | 22.619 | 120 |
+| (37,41,43,47) | (E,A,B,C) | 31.667 | 168 |
+
+**Beobachtung:** U ≈ 0.188 × Σp (empirische Formel!)
+
+### Kompilieren und Ausführen
+
+```bash
+# Kompilieren
+make klein
+
+# Demo ausführen
+make demo-klein
+```
+
+**Ausgabe:**
+```
+╔═══════════════════════════════════════════════════════╗
+║  KLEIN-FLASCHEN über EABC-Primzahl-Quadrupeln       ║
+║  Topologische Erweiterung des Bamberg-Modells       ║
+╚═══════════════════════════════════════════════════════╝
+
+=== KLEIN-FLASCHE ÜBER PRIMZAHL-QUADRUPEL ===
+Quadrupel: (7[B], 11[C], 13[E], 17[A])
+Vollständig (E,A,B,C): Ja
+Gesamtumlauf: 9.048
+Windungszahl: 2
+E-Achsen-Verkettung: 0.250
+```
+
+### Lean 4 Formalisierung
+
+```lean
+-- Vollständiges Quadrupel
+def PrimeQuadruple.is_complete (q : PrimeQuadruple) : Prop :=
+  ∃ (cp cq cr cs : PrimeClass),
+    classify_prime q.p = some cp ∧
+    -- alle vier Klassen unterschiedlich
+    cp ≠ cq ∧ cp ≠ cr ∧ ...
+
+-- Topologische Invarianten
+theorem klein_bottle_euler_characteristic : χ = 0
+theorem complete_quadruple_e_linking : e_axis_linking q = 1/4
+theorem circulation_positive : 0 < total_circulation q
+```
+
+**Siehe `KLEIN_BOTTLE.md` für vollständige mathematische Details!**
 
 ### Installation (optional)
 

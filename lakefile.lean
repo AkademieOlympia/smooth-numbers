@@ -1,14 +1,7 @@
 import Lake
 open Lake DSL
 
-package «smooth-numbers» where
-  -- Einstellungen für das Paket
-  version := v!"0.1.0"
-  keywords := #["number-theory", "smooth-numbers", "dickman-function"]
-  leanOptions := #[
-    ⟨`pp.unicode.fun, true⟩,
-    ⟨`pp.proofs.withType, false⟩
-  ]
+package «smooth-numbers»
 
 require mathlib from git
   "https://github.com/leanprover-community/mathlib4.git"
@@ -22,4 +15,9 @@ lean_lib «SmoothNumbers» where
 /-- Ziel für die Dickman-Funktion -/
 lean_lib «DickmanFunction» where
   roots := #[`DickmanFunction]
+  srcDir := "."
+
+/-- Ziel für Klein-Flaschen-Topologie -/
+lean_lib «KleinBottleTopology» where
+  roots := #[`KleinBottleTopology]
   srcDir := "."

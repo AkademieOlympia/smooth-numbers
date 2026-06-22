@@ -11,18 +11,20 @@ TARGET_BASIC = smooth_numbers
 TARGET_EXTENDED = smooth_numbers_extended
 TARGET_EABC = eabc_analysis
 TARGET_DICKMAN = dickman_bridge
+TARGET_KLEIN = klein_bottle
 
 SOURCE_BASIC = smooth_numbers.cpp
 SOURCE_EXTENDED = smooth_numbers_extended.cpp
 SOURCE_EABC = eabc_analysis.cpp
 SOURCE_DICKMAN = dickman_bridge.cpp
+SOURCE_KLEIN = klein_bottle.cpp
 
 HEADERS = export.h parallel.h benchmark.h eabc_model.h
 
-.PHONY: all basic extended eabc dickman lean clean run run-extended run-eabc run-dickman demo help
+.PHONY: all basic extended eabc dickman klein lean clean run run-extended run-eabc run-dickman run-klein demo help
 
 # Standardziel: Alle Versionen
-all: basic extended eabc dickman
+all: basic extended eabc dickman klein
 
 # Basis-Version
 basic: $(TARGET_BASIC)
@@ -50,6 +52,13 @@ dickman: $(TARGET_DICKMAN)
 $(TARGET_DICKMAN): $(SOURCE_DICKMAN)
 	@echo "Kompiliere Dickman-de Bruijn Bridge (Lean-verifiziert)..."
 	$(CXX) $(CXXFLAGS) -o $(TARGET_DICKMAN) $(SOURCE_DICKMAN)
+
+# Klein-Flaschen-Topologie über EABC-Quadrupeln
+klein: $(TARGET_KLEIN)
+
+$(TARGET_KLEIN): $(SOURCE_KLEIN)
+	@echo "Kompiliere Klein-Flaschen-Topologie..."
+	$(CXX) $(CXXFLAGS) -o $(TARGET_KLEIN) $(SOURCE_KLEIN)
 
 # Lean 4 Build
 lean:
@@ -80,6 +89,9 @@ run-eabc: eabc
 run-dickman: dickman
 	./$(TARGET_DICKMAN)
 
+run-klein: klein
+	./$(TARGET_KLEIN)
+
 # Demo ausführen
 demo: extended
 	@echo "6" | ./$(TARGET_EXTENDED)
@@ -92,6 +104,10 @@ demo-eabc: eabc
 demo-dickman: dickman
 	./$(TARGET_DICKMAN)
 
+# Klein-Flaschen-Demo
+demo-klein: klein
+	./$(TARGET_KLEIN)
+
 # Test mit vordefinierter Eingabe
 test: extended
 	@echo "Führe automatische Demo aus..."
@@ -99,13 +115,13 @@ test: extended
 
 # Aufräumen
 clean:
-	rm -f $(TARGET_BASIC) $(TARGET_EXTENDED) $(TARGET_EABC) $(TARGET_DICKMAN)
+	rm -f $(TARGET_BASIC) $(TARGET_EXTENDED) $(TARGET_EABC) $(TARGET_DICKMAN) $(TARGET_KLEIN)
 	rm -f *.json *.csv *.html
 	rm -f test_input.txt
 
 # Nur kompilierte Programme entfernen
 clean-bin:
-	rm -f $(TARGET_BASIC) $(TARGET_EXTENDED) $(TARGET_EABC) $(TARGET_DICKMAN)
+	rm -f $(TARGET_BASIC) $(TARGET_EXTENDED) $(TARGET_EABC) $(TARGET_DICKMAN) $(TARGET_KLEIN)
 
 # Nur Export-Dateien entfernen
 clean-exports:
@@ -122,14 +138,17 @@ help:
 	@echo "  make extended     - Kompiliert die erweiterte Version"
 	@echo "  make eabc         - Kompiliert EABC/Bamberg-Modell"
 	@echo "  make dickman      - Kompiliert Dickman-Bridge (Lean-verifiziert)"
+	@echo "  make klein        - Kompiliert Klein-Flaschen-Topologie"
 	@echo "  make lean         - Baut Lean 4 Formalisierung"
 	@echo "  make run          - Kompiliert und führt Basis-Version aus"
 	@echo "  make run-extended - Kompiliert und führt erweiterte Version aus"
 	@echo "  make run-eabc     - Kompiliert und führt EABC-Analyse aus"
 	@echo "  make run-dickman  - Kompiliert und führt Dickman-Demo aus"
+	@echo "  make run-klein    - Kompiliert und führt Klein-Flaschen-Demo aus"
 	@echo "  make demo         - Führt vollständige Demo aus"
 	@echo "  make demo-eabc    - Führt EABC/Bamberg-Demo aus"
 	@echo "  make demo-dickman - Führt Dickman/Lean-Demo aus"
+	@echo "  make demo-klein   - Führt Klein-Flaschen-Demo aus"
 	@echo "  make test         - Führt automatische Tests aus"
 	@echo "  make clean        - Entfernt alle generierten Dateien"
 	@echo "  make clean-bin    - Entfernt nur kompilierte Programme"
@@ -139,6 +158,9 @@ help:
 	@echo ""
 	@echo "Lean 4:"
 	@echo "  Siehe LEAN_INTEGRATION.md für Details zur formalen Verifikation"
+	@echo ""
+	@echo "Klein-Flaschen:"
+	@echo "  Siehe KLEIN_BOTTLE.md für topologische Erweiterung"
 	@echo ""
 	@echo "OpenMP-Hinweis:"
 	@echo "  Für Parallelisierung installieren Sie libomp:"

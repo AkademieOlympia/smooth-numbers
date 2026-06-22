@@ -28,3 +28,4 @@ benchmark_*.csv
 .vscode/
 .idea/
 *.sublime-*
+.lake/
