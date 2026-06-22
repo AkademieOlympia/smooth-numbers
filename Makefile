@@ -12,19 +12,21 @@ TARGET_EXTENDED = smooth_numbers_extended
 TARGET_EABC = eabc_analysis
 TARGET_DICKMAN = dickman_bridge
 TARGET_KLEIN = klein_bottle
+TARGET_CHIRALITY = eabc_chirality
 
 SOURCE_BASIC = smooth_numbers.cpp
 SOURCE_EXTENDED = smooth_numbers_extended.cpp
 SOURCE_EABC = eabc_analysis.cpp
 SOURCE_DICKMAN = dickman_bridge.cpp
 SOURCE_KLEIN = klein_bottle.cpp
+SOURCE_CHIRALITY = eabc_chirality.cpp
 
 HEADERS = export.h parallel.h benchmark.h eabc_model.h
 
-.PHONY: all basic extended eabc dickman klein lean clean run run-extended run-eabc run-dickman run-klein demo help
+.PHONY: all basic extended eabc dickman klein chirality lean clean run run-extended run-eabc run-dickman run-klein run-chirality demo help
 
 # Standardziel: Alle Versionen
-all: basic extended eabc dickman klein
+all: basic extended eabc dickman klein chirality
 
 # Basis-Version
 basic: $(TARGET_BASIC)
@@ -60,6 +62,13 @@ $(TARGET_KLEIN): $(SOURCE_KLEIN)
 	@echo "Kompiliere Klein-Flaschen-Topologie..."
 	$(CXX) $(CXXFLAGS) -o $(TARGET_KLEIN) $(SOURCE_KLEIN)
 
+# EABC-Chiralitäts-Analyse (diskrete Topologie)
+chirality: $(TARGET_CHIRALITY)
+
+$(TARGET_CHIRALITY): $(SOURCE_CHIRALITY)
+	@echo "Kompiliere EABC-Chiralitäts-Analyse (emergente Topologie)..."
+	$(CXX) $(CXXFLAGS) -o $(TARGET_CHIRALITY) $(SOURCE_CHIRALITY)
+
 # Lean 4 Build
 lean:
 	@echo "Baue Lean 4 Formalisierung..."
@@ -92,6 +101,9 @@ run-dickman: dickman
 run-klein: klein
 	./$(TARGET_KLEIN)
 
+run-chirality: chirality
+	./$(TARGET_CHIRALITY)
+
 # Demo ausführen
 demo: extended
 	@echo "6" | ./$(TARGET_EXTENDED)
@@ -104,9 +116,13 @@ demo-eabc: eabc
 demo-dickman: dickman
 	./$(TARGET_DICKMAN)
 
-# Klein-Flaschen-Demo
+# Klein-Flaschen-Demo (geometrische Visualisierung)
 demo-klein: klein
 	./$(TARGET_KLEIN)
+
+# Chiralitäts-Demo (emergente diskrete Topologie) - EMPFOHLEN
+demo-chirality: chirality
+	./$(TARGET_CHIRALITY)
 
 # Test mit vordefinierter Eingabe
 test: extended
@@ -115,13 +131,13 @@ test: extended
 
 # Aufräumen
 clean:
-	rm -f $(TARGET_BASIC) $(TARGET_EXTENDED) $(TARGET_EABC) $(TARGET_DICKMAN) $(TARGET_KLEIN)
+	rm -f $(TARGET_BASIC) $(TARGET_EXTENDED) $(TARGET_EABC) $(TARGET_DICKMAN) $(TARGET_KLEIN) $(TARGET_CHIRALITY)
 	rm -f *.json *.csv *.html
 	rm -f test_input.txt
 
 # Nur kompilierte Programme entfernen
 clean-bin:
-	rm -f $(TARGET_BASIC) $(TARGET_EXTENDED) $(TARGET_EABC) $(TARGET_DICKMAN) $(TARGET_KLEIN)
+	rm -f $(TARGET_BASIC) $(TARGET_EXTENDED) $(TARGET_EABC) $(TARGET_DICKMAN) $(TARGET_KLEIN) $(TARGET_CHIRALITY)
 
 # Nur Export-Dateien entfernen
 clean-exports:
@@ -138,17 +154,20 @@ help:
 	@echo "  make extended     - Kompiliert die erweiterte Version"
 	@echo "  make eabc         - Kompiliert EABC/Bamberg-Modell"
 	@echo "  make dickman      - Kompiliert Dickman-Bridge (Lean-verifiziert)"
-	@echo "  make klein        - Kompiliert Klein-Flaschen-Topologie"
+	@echo "  make klein        - Kompiliert Klein-Flaschen (geometrisch)"
+	@echo "  make chirality    - Kompiliert Chiralitäts-Analyse (diskret) ⭐"
 	@echo "  make lean         - Baut Lean 4 Formalisierung"
 	@echo "  make run          - Kompiliert und führt Basis-Version aus"
 	@echo "  make run-extended - Kompiliert und führt erweiterte Version aus"
 	@echo "  make run-eabc     - Kompiliert und führt EABC-Analyse aus"
 	@echo "  make run-dickman  - Kompiliert und führt Dickman-Demo aus"
 	@echo "  make run-klein    - Kompiliert und führt Klein-Flaschen-Demo aus"
+	@echo "  make run-chirality- Kompiliert und führt Chiralitäts-Demo aus ⭐"
 	@echo "  make demo         - Führt vollständige Demo aus"
 	@echo "  make demo-eabc    - Führt EABC/Bamberg-Demo aus"
 	@echo "  make demo-dickman - Führt Dickman/Lean-Demo aus"
-	@echo "  make demo-klein   - Führt Klein-Flaschen-Demo aus"
+	@echo "  make demo-klein   - Führt Klein-Flaschen-Demo aus (geometrisch)"
+	@echo "  make demo-chirality - Führt Chiralitäts-Demo aus (EMPFOHLEN) ⭐"
 	@echo "  make test         - Führt automatische Tests aus"
 	@echo "  make clean        - Entfernt alle generierten Dateien"
 	@echo "  make clean-bin    - Entfernt nur kompilierte Programme"
@@ -156,11 +175,17 @@ help:
 	@echo "  make clean-all    - Vollständiges Clean (inkl. Lean)"
 	@echo "  make help         - Zeigt diese Hilfe an"
 	@echo ""
+	@echo "⭐ EMPFOHLEN: make demo-chirality"
+	@echo "  Emergente diskrete Topologie aus EABC-Chiralitäten"
+	@echo "  Mathematisch sauber, keine aufgeprägte Geometrie"
+	@echo ""
+	@echo "Dokumentation:"
+	@echo "  DISCRETE_TOPOLOGY.md - Mathematisch saubere Konstruktion ⭐"
+	@echo "  KLEIN_BOTTLE.md      - Geometrische Visualisierung"
+	@echo "  EABC_MODEL.md        - EABC/Bamberg-Modell"
+	@echo ""
 	@echo "Lean 4:"
 	@echo "  Siehe LEAN_INTEGRATION.md für Details zur formalen Verifikation"
-	@echo ""
-	@echo "Klein-Flaschen:"
-	@echo "  Siehe KLEIN_BOTTLE.md für topologische Erweiterung"
 	@echo ""
 	@echo "OpenMP-Hinweis:"
 	@echo "  Für Parallelisierung installieren Sie libomp:"
