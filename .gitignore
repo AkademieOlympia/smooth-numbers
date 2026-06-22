@@ -1,0 +1,20 @@
+# Kompilierte Dateien
+*.o
+*.out
+smooth_numbers
+
+# Temporäre Dateien
+*.swp
+*.swo
+*~
+
+# Test-Dateien
+test_input.txt
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
