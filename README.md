@@ -29,26 +29,41 @@ Dieses Projekt implementiert die Berechnung von s-glatten Zahlen und deren Darst
 - ⚠️ **Geometrische Visualisierung** - Aufgeprägte ℝ⁴-Parametrisierung
 - ⚠️ **Hübsch, aber nicht emergent** - Siehe Kritik unten
 
-### 🔬 EABC-Chiralität und arithmetische Holonomie - MATHEMATISCH SAUBER! ⭐
+### 🔬 Chirality Observables on Complete EABC Prime Quadruples ⭐ MATHEMATISCH SAUBER
 
-Die **Holonomie-Observable** H(X) = Σ χ(Q) ist der mathematisch saubere Kern:
+Der **mathematisch rigorose Kern** dieser Arbeit:
 
-#### Wohldefinierte Objekte:
+#### Exakt definierte Objekte:
+- ✅ **EABC-Klassifikation** - E≡1, A≡5, B≡7, C≡11 (mod 12)
+- ✅ **Vollständige Quadrupel** - {E,A,B,C} jeweils einmal
 - ✅ **Chiralitäts-Observable χ(Q)** - +1 für EABC, -1 für ECBA, 0 sonst
-- ✅ **Holonomie Hᴄ(X)** - Summe über Quadrupel nach Konstruktion C
+- ✅ **Holonomie-Funktion Hᴄ(X)** - Σ χ(Q) über Konstruktion C
 - ✅ **Normalisierte Holonomie hᴄ(X)** - H(X) / N(X)
 
-#### Empirische Ergebnisse:
-- ✅ **h_random(X) ≈ 0** - Symmetrie bei zufälliger Ordnung (bestätigt!)
+#### Empirische Beobachtungen:
+- ✅ **h_random(X) ≈ 0** - Symmetrie bei zufälliger Ordnung
 - ✅ **h_consec(10⁵) ≈ 0.19** - Bias bei konsekutiver Ordnung
-- ⚠️ **Asymptotik offen** - Konvergiert h(X) → 0 oder bleibt Bias?
+- ⚠️ **Konstruktionsabhängig** - Kein intrinsischer Primzahl-Bias
 
 #### Zentrale Forschungsfrage:
 ```
-limsup |hᴄ(X)| > 0  für kanonische Konstruktion C?
+lim_{X→∞} hᴄ(X) = 0  oder  limsup |hᴄ(X)| > 0?
 ```
 
-**Klein-Flaschen-Metapher:** Nützlich für Intuition (EABC ↔ pos. Umlauf, ECBA ↔ neg. Umlauf), aber die harte Mathematik liegt in H(X), nicht in χ = -1.
+#### Verbindung zu Prime Number Races:
+```
+Chebyshev-Bias: π(x;4,3) - π(x;4,1) > 0
+Holonomie-Bias: N_{EABC}(X) - N_{ECBA}(X) ≈ 0.19·N(X)
+```
+
+Beide messen **Imbalanz zwischen symmetrischen Klassen**.
+
+#### Was NICHT behauptet wird:
+- ✗ "Intrinsische Chiralität der Primzahlen" (widerlegt)
+- ✗ χ = -1 als topologische Invariante (heuristisch)
+- ✗ Klein-Flaschen-Struktur (Metapher, nicht rigorös)
+
+**Siehe `CHIRALITY_OBSERVABLES.md` für vollständige rigorose Formulierung!** ⭐
 
 ### 🧪 Chiralitäts-Robustheitstests - KRITISCHE ÜBERPRÜFUNG! ⭐
 - ✅ **Test A: Zufällige Umordnung** - Symmetrie bewiesen
@@ -76,15 +91,16 @@ limsup |hᴄ(X)| > 0  für kanonische Konstruktion C?
 
 ### Dokumentation
 - `README.md` - Diese Datei
-- `MATHEMATICAL_DETAILS.md` - Mathematische Dokumentation
-- `EXAMPLES.md` - Konkrete Beispiele
-- `EXTENDED_FEATURES.md` - Dokumentation der erweiterten Features
-- `EABC_MODEL.md` - EABC/ABCE-Bamberg-Modell
-- `LEAN_INTEGRATION.md` - Lean 4 formale Verifikation
-- `EABC_HOLONOMY.md` - Arithmetische Holonomie-Observable ⭐ KERN
+- `CHIRALITY_OBSERVABLES.md` - Rigorose mathematische Formulierung ⭐ KERN
 - `ROBUSTNESS_TESTS.md` - Kritische Überprüfung ⭐ WICHTIG
-- `KLEIN_BOTTLE.md` - Klein-Flaschen-Geometrie (Metapher, historisch)
-- `DISCRETE_TOPOLOGY.md` - Diskrete emergente Topologie (revidiert)
+- `EABC_MODEL.md` - EABC/ABCE-Bamberg-Modell
+- `MATHEMATICAL_DETAILS.md` - Smooth Numbers Mathematik
+- `EXAMPLES.md` - Konkrete Beispiele
+- `EXTENDED_FEATURES.md` - Erweiterte Features
+- `LEAN_INTEGRATION.md` - Lean 4 formale Verifikation
+- `EABC_HOLONOMY.md` - Holonomie-Observable (historisch)
+- `KLEIN_BOTTLE.md` - Klein-Flaschen-Metapher (historisch)
+- `DISCRETE_TOPOLOGY.md` - Diskrete Topologie (revidiert)
 
 ### Lean 4 Formalisierung
 - `DickmanFunction.lean` - Dickman-de Bruijn Funktion
@@ -137,70 +153,78 @@ make demo-dickman
 
 Siehe `LEAN_INTEGRATION.md` für Details zur formalen Verifikation.
 
-## ⭐ EABC-Chiralität und arithmetische Holonomie (DER KERN)
+## ⭐ Chirality Observables on Complete EABC Prime Quadruples (DER KERN)
 
-### Die Holonomie-Observable H(X)
+### Rigorose Definition
 
-Der **mathematisch saubere Kern** dieser Arbeit ist die arithmetische Holonomie:
-
-```
-Hᴄ(X) = Σ_{Q≤X} χ(Q)
-```
-
-mit der Chiralitäts-Observable:
+Wir definieren die **Chiralitäts-Observable χ** auf vollständigen EABC-Primzahl-Quadrupeln und untersuchen die **Holonomie-Funktion** Hᴄ(X):
 
 ```
-χ(Q) = ⎧ +1,  norm(sig(Q)) = EABC  (positiver Umlauf)
-       ⎨ -1,  norm(sig(Q)) = ECBA  (negativer Umlauf)
+χ(Q) = ⎧ +1,  norm(sig(Q)) = EABC
+       ⎨ -1,  norm(sig(Q)) = ECBA
        ⎩  0,  sonst
+
+Hᴄ(X) = Σ_{Q≤X} χ(Q) = N_{EABC}(X) - N_{ECBA}(X)
 ```
 
-### Normalisierte Holonomie
+### Interpretation
 
-```
-hᴄ(X) = Hᴄ(X) / Nᴄ(X)
-```
+Hᴄ(X) misst die **Imbalanz zwischen zwei Orientierungen**:
+- EABC: Positiver Umlauf E → A → B → C → E
+- ECBA: Negativer Umlauf E → C → B → A → E
 
-misst den "Chiralitäts-Bias" einer Konstruktionsmethode C.
+Analog zu **Prime Number Races** (Chebyshev-Bias):
+```
+Chebyshev: π(x;4,3) - π(x;4,1) > 0
+Holonomie: N_{EABC}(X) - N_{ECBA}(X)
+```
 
 ### Empirische Ergebnisse
 
-| Konstruktion C | h(X)  | Interpretation |
-|----------------|-------|----------------|
-| C_random (zufällig) | ≈ 0 | Symmetrisch ✓ |
-| C_consec (konsekutiv) | ≈ 0.19 | Bias vorhanden |
+| Konstruktion C | hᴄ(X) = Hᴄ(X)/Nᴄ(X) | Status |
+|----------------|----------------------|--------|
+| C_random | ≈ 0.000 | Symmetrisch ✓ |
+| C_consec | ≈ 0.194 | Bias vorhanden |
+
+**Schlüsselerkenntnis:** Der Bias ist **konstruktionsabhängig**, nicht intrinsisch.
 
 ### Zentrale Forschungsfrage
 
-**Asymptotisches Verhalten:**
 ```
-lim_{X→∞} hᴄ(X) = 0  oder  limsup_{X→∞} |hᴄ(X)| > 0?
+lim_{X→∞} hᴄ(X) = 0?  oder  limsup |hᴄ(X)| > 0?
 ```
 
-**Falls Bias bleibt:** Neue zahlentheoretische Observable mit Verbindung zu:
-- Primzahl-Lücken
+**Falls Bias bleibt:** Mögliche Verbindung zu:
+- Primzahl-Lücken gₙ = pₙ₊₁ - pₙ
 - Chebyshev-Bias (Primzahl-Rennen)
-- Quadratische Reste mod 12
+- Residuen-Korrelationen mod 12
 
 **Falls Bias verschwindet:** Stützt Zufallshypothese für Primzahlen mod 12.
 
-### Die Klein-Flaschen-Metapher
+### Was ist rigoros definiert:
 
-Die Klein-Flasche ist **keine rigoros emergente Topologie**, sondern ein **heuristisches Bild**:
+1. ✅ EABC-Klassifikation (exakte Arithmetik)
+2. ✅ Vollständige Quadrupel (präzise Teilmenge von ℕ⁴)
+3. ✅ Chiralitäts-Observable χ(Q) (exakte Funktion)
+4. ✅ Holonomie Hᴄ(X) (wohldefiniert für jedes C)
 
-```
-EABC ↔ positiver Umlauf (rechtshändig)
-ECBA ↔ negativer Umlauf (linkshändig)
-E-Klasse ↔ Kreuzungspunkt (Lemniskate ∞)
-```
+### Was NICHT behauptet wird:
 
-**Die harte Mathematik liegt in H(X), nicht in χ = -1.**
+1. ✗ "Primzahlen bevorzugen ABCEA" → Widerlegt durch h_random ≈ 0
+2. ✗ χ = -1 als topologische Invariante → Heuristisch, nicht rigorös
+3. ✗ Klein-Flasche als emergente Struktur → Metapher, nicht Mathematik
 
-**Siehe `EABC_HOLONOMY.md` für vollständige mathematische Details!** ⭐
+### Verbindung zu etablierter Zahlentheorie:
+
+**Rubinstein-Sarnak (1994):** Prime Races zeigen systematische Biases zwischen Restklassen trotz gleicher asymptotischer Dichte.
+
+**Unsere Frage:** Existiert analoger Bias für **Tupel-Orientierungen** statt einzelner Restklassen?
+
+**Siehe `CHIRALITY_OBSERVABLES.md` für vollständige rigorose Formulierung!** ⭐
 
 ---
 
-## 🧪 Chiralitäts-Robustheitstests (KRITISCHE ÜBERPRÜFUNG)
+## 🧪 Robustheitstests
 
 ### ⚠️ Wichtige Erkenntnis: Die Asymmetrie war ein Definitionsartefakt!
 
@@ -268,19 +292,33 @@ TEST D (bis 10⁵): H/N ≈ 0.19 (persistenter Bias)
 
 ---
 
-## 🔬 Diskrete Topologie (Historisch, revidiert)
+## 🔬 Historische Entwicklung (Klein-Flasche als Metapher)
 
-Die ursprüngliche "emergente Topologie" basierte auf der fehlerhaften Annahme einer fundamentalen Chiralitätsasymmetrie. Die Konstruktion selbst (Übergangsgraph, Holonomie H(X)) bleibt wohldefiniert, aber die Interpretation als "neue Primzahl-Eigenschaft" war voreilig.
+Die ursprünglichen Konstruktionen verwendeten topologische Metaphern:
+- Klein-Flasche für nicht-orientierbare Struktur
+- χ = -1 als "Euler-Charakteristik"  
+- Lemniskate (∞) für E-Kreuzungspunkt
+
+**Status:** Nützliche heuristische Bilder, aber keine rigorose Mathematik.
 
 **Was gesichert ist:**
 - EABC-Klassifikation ✓
 - Vollständige Quadrupel ✓
-- Holonomie-Observable H(X) ✓ (konstruktionsabhängig)
+- Holonomie-Observable Hᴄ(X) ✓ (konstruktionsabhängig)
 
 **Was revidiert wurde:**
-- "Primzahlen bevorzugen ABCEA" ✗ (Definitionsartefakt)
+- "Primzahlen bevorzugen ABCEA" ✗ (Konstruktionsartefakt)
 - χ = -1 als topologische Invariante ✗ (heuristisch)
-- "Emergente Klein-Flaschen-Struktur" ✗ (zu früh behauptet)
+- "Emergente Klein-Flaschen-Struktur" ✗ (Metapher, nicht rigoros)
+
+Der mathematisch saubere Kern ist die **Holonomie-Funktion Hᴄ(X)**, nicht die Topologie.
+
+**Historische Dateien:**
+- `klein_bottle.cpp`, `KLEIN_BOTTLE.md` - Geometrische Visualisierung
+- `eabc_chirality.cpp`, `DISCRETE_TOPOLOGY.md` - Diskrete Topologie-Ansatz
+- `EABC_HOLONOMY.md` - Frühere Holonomie-Formulierung
+
+**Aktuelle rigorose Formulierung:** `CHIRALITY_OBSERVABLES.md` ⭐
 
 ---
 
