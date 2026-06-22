@@ -13,6 +13,7 @@ TARGET_EABC = eabc_analysis
 TARGET_DICKMAN = dickman_bridge
 TARGET_KLEIN = klein_bottle
 TARGET_CHIRALITY = eabc_chirality
+TARGET_ROBUSTNESS = chirality_robustness
 
 SOURCE_BASIC = smooth_numbers.cpp
 SOURCE_EXTENDED = smooth_numbers_extended.cpp
@@ -20,13 +21,14 @@ SOURCE_EABC = eabc_analysis.cpp
 SOURCE_DICKMAN = dickman_bridge.cpp
 SOURCE_KLEIN = klein_bottle.cpp
 SOURCE_CHIRALITY = eabc_chirality.cpp
+SOURCE_ROBUSTNESS = chirality_robustness.cpp
 
 HEADERS = export.h parallel.h benchmark.h eabc_model.h
 
-.PHONY: all basic extended eabc dickman klein chirality lean clean run run-extended run-eabc run-dickman run-klein run-chirality demo help
+.PHONY: all basic extended eabc dickman klein chirality robustness lean clean run run-extended run-eabc run-dickman run-klein run-chirality run-robustness demo help
 
 # Standardziel: Alle Versionen
-all: basic extended eabc dickman klein chirality
+all: basic extended eabc dickman klein chirality robustness
 
 # Basis-Version
 basic: $(TARGET_BASIC)
@@ -69,6 +71,13 @@ $(TARGET_CHIRALITY): $(SOURCE_CHIRALITY)
 	@echo "Kompiliere EABC-Chiralitäts-Analyse (emergente Topologie)..."
 	$(CXX) $(CXXFLAGS) -o $(TARGET_CHIRALITY) $(SOURCE_CHIRALITY)
 
+# Chiralitäts-Robustheitstests
+robustness: $(TARGET_ROBUSTNESS)
+
+$(TARGET_ROBUSTNESS): $(SOURCE_ROBUSTNESS)
+	@echo "Kompiliere Chiralitäts-Robustheitstests..."
+	$(CXX) $(CXXFLAGS) -o $(TARGET_ROBUSTNESS) $(SOURCE_ROBUSTNESS)
+
 # Lean 4 Build
 lean:
 	@echo "Baue Lean 4 Formalisierung..."
@@ -104,6 +113,9 @@ run-klein: klein
 run-chirality: chirality
 	./$(TARGET_CHIRALITY)
 
+run-robustness: robustness
+	./$(TARGET_ROBUSTNESS)
+
 # Demo ausführen
 demo: extended
 	@echo "6" | ./$(TARGET_EXTENDED)
@@ -120,9 +132,13 @@ demo-dickman: dickman
 demo-klein: klein
 	./$(TARGET_KLEIN)
 
-# Chiralitäts-Demo (emergente diskrete Topologie) - EMPFOHLEN
+# Chiralitäts-Demo (emergente diskrete Topologie) - HISTORISCH
 demo-chirality: chirality
 	./$(TARGET_CHIRALITY)
+
+# Robustheitstests (KRITISCHE ÜBERPRÜFUNG) - EMPFOHLEN ⭐
+demo-robustness: robustness
+	./$(TARGET_ROBUSTNESS)
 
 # Test mit vordefinierter Eingabe
 test: extended
@@ -131,13 +147,13 @@ test: extended
 
 # Aufräumen
 clean:
-	rm -f $(TARGET_BASIC) $(TARGET_EXTENDED) $(TARGET_EABC) $(TARGET_DICKMAN) $(TARGET_KLEIN) $(TARGET_CHIRALITY)
+	rm -f $(TARGET_BASIC) $(TARGET_EXTENDED) $(TARGET_EABC) $(TARGET_DICKMAN) $(TARGET_KLEIN) $(TARGET_CHIRALITY) $(TARGET_ROBUSTNESS)
 	rm -f *.json *.csv *.html
 	rm -f test_input.txt
 
 # Nur kompilierte Programme entfernen
 clean-bin:
-	rm -f $(TARGET_BASIC) $(TARGET_EXTENDED) $(TARGET_EABC) $(TARGET_DICKMAN) $(TARGET_KLEIN) $(TARGET_CHIRALITY)
+	rm -f $(TARGET_BASIC) $(TARGET_EXTENDED) $(TARGET_EABC) $(TARGET_DICKMAN) $(TARGET_KLEIN) $(TARGET_CHIRALITY) $(TARGET_ROBUSTNESS)
 
 # Nur Export-Dateien entfernen
 clean-exports:
@@ -155,37 +171,28 @@ help:
 	@echo "  make eabc         - Kompiliert EABC/Bamberg-Modell"
 	@echo "  make dickman      - Kompiliert Dickman-Bridge (Lean-verifiziert)"
 	@echo "  make klein        - Kompiliert Klein-Flaschen (geometrisch)"
-	@echo "  make chirality    - Kompiliert Chiralitäts-Analyse (diskret) ⭐"
+	@echo "  make chirality    - Kompiliert Chiralitäts-Analyse (historisch)"
+	@echo "  make robustness   - Kompiliert Robustheitstests ⭐ EMPFOHLEN"
 	@echo "  make lean         - Baut Lean 4 Formalisierung"
-	@echo "  make run          - Kompiliert und führt Basis-Version aus"
-	@echo "  make run-extended - Kompiliert und führt erweiterte Version aus"
-	@echo "  make run-eabc     - Kompiliert und führt EABC-Analyse aus"
-	@echo "  make run-dickman  - Kompiliert und führt Dickman-Demo aus"
-	@echo "  make run-klein    - Kompiliert und führt Klein-Flaschen-Demo aus"
-	@echo "  make run-chirality- Kompiliert und führt Chiralitäts-Demo aus ⭐"
-	@echo "  make demo         - Führt vollständige Demo aus"
-	@echo "  make demo-eabc    - Führt EABC/Bamberg-Demo aus"
-	@echo "  make demo-dickman - Führt Dickman/Lean-Demo aus"
-	@echo "  make demo-klein   - Führt Klein-Flaschen-Demo aus (geometrisch)"
-	@echo "  make demo-chirality - Führt Chiralitäts-Demo aus (EMPFOHLEN) ⭐"
+	@echo "  make run-robustness - Führt Robustheitstests aus ⭐ EMPFOHLEN"
+	@echo "  make demo-robustness- Führt kritische Überprüfung aus ⭐"
 	@echo "  make test         - Führt automatische Tests aus"
 	@echo "  make clean        - Entfernt alle generierten Dateien"
-	@echo "  make clean-bin    - Entfernt nur kompilierte Programme"
-	@echo "  make clean-exports- Entfernt nur Export-Dateien"
-	@echo "  make clean-all    - Vollständiges Clean (inkl. Lean)"
 	@echo "  make help         - Zeigt diese Hilfe an"
 	@echo ""
-	@echo "⭐ EMPFOHLEN: make demo-chirality"
-	@echo "  Emergente diskrete Topologie aus EABC-Chiralitäten"
-	@echo "  Mathematisch sauber, keine aufgeprägte Geometrie"
+	@echo "⭐ EMPFOHLEN: make demo-robustness"
+	@echo "  Kritische Überprüfung der Chiralitäts-Hypothese"
+	@echo "  Tests zeigen: Asymmetrie ist Definitionsartefakt!"
+	@echo ""
+	@echo "Wichtige Erkenntnisse:"
+	@echo "  • TEST A (zufällige Ordnung): P(EABC) ≈ P(ECBA) ≈ 16.6%"
+	@echo "  • TEST B-D (gerichtete Ordnung): P(EABC) ≈ 30-50%, P(ECBA) ≈ 4-8%"
+	@echo "  • Schlussfolgerung: Chiralität ist konstruktionsabhängig"
 	@echo ""
 	@echo "Dokumentation:"
-	@echo "  DISCRETE_TOPOLOGY.md - Mathematisch saubere Konstruktion ⭐"
-	@echo "  KLEIN_BOTTLE.md      - Geometrische Visualisierung"
+	@echo "  ROBUSTNESS_TESTS.md  - Kritische Analyse ⭐"
+	@echo "  DISCRETE_TOPOLOGY.md - Ursprüngliche Konstruktion (revidiert)"
 	@echo "  EABC_MODEL.md        - EABC/Bamberg-Modell"
-	@echo ""
-	@echo "Lean 4:"
-	@echo "  Siehe LEAN_INTEGRATION.md für Details zur formalen Verifikation"
 	@echo ""
 	@echo "OpenMP-Hinweis:"
 	@echo "  Für Parallelisierung installieren Sie libomp:"

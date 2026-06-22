@@ -29,14 +29,19 @@ Dieses Projekt implementiert die Berechnung von s-glatten Zahlen und deren Darst
 - ⚠️ **Geometrische Visualisierung** - Aufgeprägte ℝ⁴-Parametrisierung
 - ⚠️ **Hübsch, aber nicht emergent** - Siehe Kritik unten
 
-### 🔬 Diskrete Topologie aus EABC-Chiralitäten - MATHEMATISCH SAUBER! ⭐
-- ✅ **Emergente Struktur** - Aus Primzahlen hergeleitete Topologie
-- ✅ **Euler-Charakteristik χ = -1** - Konsistent über verschiedene Größenordnungen
-- ✅ **ABCEA-Chiralitäts-Dominanz** - ~60% bevorzugen E→A→B→C→E
-- ✅ **Lemniskaten-Struktur ∞** - E als natürlicher Kreuzungspunkt
-- ✅ **Übergangsgraph** - Wohldefinierten diskreter Komplex
-- ✅ **Quaternionen-Entsprechung** - (E,A,B,C) ↔ (1,i,j,k)
-- ✅ **Testbare Hypothesen** - χ-Stabilität, Chiralitäts-Asymmetrie
+### 🔬 Diskrete Topologie aus EABC-Chiralitäten - REVIDIERT! ⚠️
+- ⚠️ **Chiralitätsasymmetrie war Definitionsartefakt** - Siehe Robustheitstests
+- ✅ **TEST A (zufällige Ordnung)** - P(EABC) ≈ P(ECBA) ≈ 16.6% (symmetrisch!)
+- ✅ **TEST B-D (gerichtete Ordnung)** - Asymmetrie durch aufsteigende Konstruktion
+- ✅ **Holonomie-Observable H(X)** - Wohldefiniert, konstruktionsabhängig
+- ✅ **Mathematisch sauber** - Aber nicht "fundamentale Primzahl-Eigenschaft"
+
+### 🧪 Chiralitäts-Robustheitstests - KRITISCHE ÜBERPRÜFUNG! ⭐
+- ✅ **Test A: Zufällige Umordnung** - Symmetrie bewiesen
+- ✅ **Test B: Konsekutive Primzahlen** - Alternative Konstruktion
+- ✅ **Test C: Andere Moduli** - Mod 30, Mod 60
+- ✅ **Test D: Große Datensätze** - Bis 10⁵ Primzahlen
+- ✅ **Schlussfolgerung** - Asymmetrie ist konstruktionsabhängig, nicht fundamental
 
 ## 📁 Dateien
 
@@ -45,8 +50,9 @@ Dieses Projekt implementiert die Berechnung von s-glatten Zahlen und deren Darst
 - `smooth_numbers_extended.cpp` - Erweiterte Version mit allen Features
 - `eabc_analysis.cpp` - EABC/Bamberg-Modell Analyse
 - `dickman_bridge.cpp` - Dickman-Funktion (Lean-verifiziert)
-- `klein_bottle.cpp` - Klein-Flaschen-Geometrie (aufgeprägt)
-- `eabc_chirality.cpp` - Diskrete Topologie aus Chiralitäten ⭐ EMPFOHLEN
+- `klein_bottle.cpp` - Klein-Flaschen-Geometrie (aufgeprägt, historisch)
+- `eabc_chirality.cpp` - Diskrete Topologie aus Chiralitäten (historisch)
+- `chirality_robustness.cpp` - Robustheitstests ⭐ KRITISCH
 
 ### Header-Dateien
 - `export.h` - Export-Funktionen (JSON, CSV, HTML)
@@ -61,8 +67,9 @@ Dieses Projekt implementiert die Berechnung von s-glatten Zahlen und deren Darst
 - `EXTENDED_FEATURES.md` - Dokumentation der erweiterten Features
 - `EABC_MODEL.md` - EABC/ABCE-Bamberg-Modell
 - `LEAN_INTEGRATION.md` - Lean 4 formale Verifikation
-- `KLEIN_BOTTLE.md` - Klein-Flaschen-Geometrie (aufgeprägt)
-- `DISCRETE_TOPOLOGY.md` - Diskrete emergente Topologie ⭐ EMPFOHLEN
+- `KLEIN_BOTTLE.md` - Klein-Flaschen-Geometrie (aufgeprägt, historisch)
+- `DISCRETE_TOPOLOGY.md` - Diskrete emergente Topologie (revidiert)
+- `ROBUSTNESS_TESTS.md` - Kritische Überprüfung ⭐ WICHTIG
 
 ### Lean 4 Formalisierung
 - `DickmanFunction.lean` - Dickman-de Bruijn Funktion
@@ -115,113 +122,93 @@ make demo-dickman
 
 Siehe `LEAN_INTEGRATION.md` für Details zur formalen Verifikation.
 
-## 🔬 Diskrete Topologie aus EABC-Chiralitäten (MATHEMATISCH SAUBER!)
+## 🧪 Chiralitäts-Robustheitstests (KRITISCHE ÜBERPRÜFUNG)
 
-### ⚠️ Kritische Analyse der geometrischen Klein-Flasche
+### ⚠️ Wichtige Erkenntnis: Die Asymmetrie war ein Definitionsartefakt!
 
-Die ursprüngliche Klein-Flaschen-Konstruktion (`klein_bottle.cpp`) war eine **aufgeprägte Geometrie**:
-- Primzahl-Quadrupel wurden direkt in ℝ⁴ eingebettet
-- Standard-Klein-Flaschen-Parametrisierung wurde angewendet
-- **Problem:** Die Topologie kam von der Parametrisierung, nicht von den Primzahlen!
+Die ursprünglich beobachtete **ABCEA-Dominanz (60%) vs. CEABC (0%)** stellte sich als **Konstruktionsartefakt** heraus, nicht als fundamentales Primzahl-Phänomen.
 
-### Die korrekte Konstruktion: Emergente Topologie
+#### TEST A: Zufällige Umordnung - DER ENTSCHEIDENDE TEST
 
-Stattdessen konstruieren wir einen **diskreten topologischen Komplex**, der **aus den Primzahlen emergiert**:
+**Methode:** Nehme dieselben vier Primzahlen und ordne sie zufällig um.
 
-#### 1. EABC-Chiralitäten
-
-Zwei fundamentale zyklische Ordnungen:
-
+**Ergebnis:**
 ```
-ABCEA: E → A → B → C → E (positive Chiralität)
-CEABC: E → C → B → A → E (negative Chiralität)
+P(EABC) = 16.6%
+P(ECBA) = 16.7%
+Asymmetrie ≈ 0
 ```
 
-#### 2. Experimentelle Entdeckung
+**Schlussfolgerung:**
+> ✓ **Bei zufälliger Ordnung verschwindet die Asymmetrie vollständig!**  
+> ✓ **Die Chiralitätspräferenz war ein Definitionsartefakt!**
 
-**Revolutionäre Beobachtung:**
+#### TEST B-D: Gerichtete Ordnung - Der Bias bleibt
 
-| Bereich | Vollständige Quadrupel | ABCEA | CEABC | Andere |
-|---------|------------------------|-------|-------|--------|
-| bis 100 | 10 | 6 (60%) | 0 (0%) | 4 (40%) |
-| bis 500 | 29 | 16 (55%) | 0 (0%) | 13 (45%) |
-
-**Die Primzahlen bevorzugen eine Chiralität!** CEABC tritt überhaupt nicht auf!
-
-#### 3. Euler-Charakteristik χ = -1
-
-Über verschiedene Größenordnungen konsistent:
-
+Bei **aufsteigender** Primzahl-Ordnung:
 ```
-V (Knoten) - E (Kanten) + F (Flächen) = χ
-
-10 - 16 + 5 = -1
-29 - 42 + 12 = -1
+Konsekutiv (bis 10⁵): P(EABC) ≈ 27%, P(ECBA) ≈ 8%
+H/N ≈ 0.19 (persistenter Bias)
 ```
 
-**χ = -1** entspricht einer **projektiven Ebene mit Henkel** oder ähnlicher nicht-orientierbarer Struktur.
+**Interpretation:** Die gerichtete Konstruktion erzeugt systematischen Bias.
 
-**Das ist KEINE Klein-Flasche** (χ = 0), **aber eine echte emergente Topologie!**
+### Was bleibt mathematisch interessant?
 
-#### 4. Lemniskaten-Struktur (∞)
+#### Die Holonomie-Observable H(X) = Σ χ(Q)
 
-Die **E-Klasse** ist der natürliche Kreuzungspunkt beider Chiralitäten:
+Auch wenn die Chiralität konstruktionsabhängig ist, ist die Observable **wohldefiniert**:
 
 ```
-      B
-     / \
-    C   A
-     \ /
-      E  ← Kreuzungspunkt
-     / \
-    A   C
-     \ /
-      B
+χ(Q) = +1  für EABC-Quadrupel
+χ(Q) = -1  für ECBA-Quadrupel
+χ(Q) =  0  sonst
+
+H(X) = Σ_{Q≤X} χ(Q)
 ```
 
-**E-Kreuzungen** wachsen stark: 10 Quadrupel → 10 Kreuzungen, 29 Quadrupel → 102 Kreuzungen!
-
-#### 5. Verbindung zu Quaternionen
-
-Natürliche Zuordnung:
-```
-E ↔ 1  (Einheitselement)
-A ↔ i
-B ↔ j
-C ↔ k
-```
-
-Die beiden Chiralitäten entsprechen **Orientierungen auf der Quaternionen-Sphäre S³**!
+**Offene Fragen:**
+1. Wie verhält sich H(X)/N(X) asymptotisch für verschiedene Konstruktionen?
+2. Welche Ordnung maximiert/minimiert H(X)?
+3. Korreliert H(X) mit Primzahl-Lücken oder Chebyshev-Bias?
 
 ### Kompilieren und Ausführen
 
 ```bash
-# Emergente diskrete Topologie (EMPFOHLEN)
-make demo-chirality
-
-# Geometrische Visualisierung (aufgeprägt)
-make demo-klein
+# Robustheitstests (EMPFOHLEN)
+make demo-robustness
 ```
 
-**Ausgabe (Chiralität):**
+**Ausgabe:**
 ```
-Vollständige Quadrupel: 29
-  ABCEA-Chiralität: 16 (55.2%)
-  CEABC-Chiralität: 0 (0.0%)
-  
-E-Kreuzungen: 102
-Euler-Charakteristik χ = -1
-
-→ Emergente diskrete Topologie aus Primzahlen!
+TEST A (zufällig): P(EABC) ≈ P(ECBA) ≈ 16.6% ✓ Symmetrisch!
+TEST B (konsekutiv): P(EABC) ≈ 48%, P(ECBA) ≈ 8% (Bias)
+TEST D (bis 10⁵): H/N ≈ 0.19 (persistenter Bias)
 ```
 
-**Siehe `DISCRETE_TOPOLOGY.md` für vollständige mathematische Details!**
+**Siehe `ROBUSTNESS_TESTS.md` für vollständige Analyse!**
+
+---
+
+## 🔬 Diskrete Topologie (Historisch, revidiert)
+
+Die ursprüngliche "emergente Topologie" basierte auf der fehlerhaften Annahme einer fundamentalen Chiralitätsasymmetrie. Die Konstruktion selbst (Übergangsgraph, Holonomie H(X)) bleibt wohldefiniert, aber die Interpretation als "neue Primzahl-Eigenschaft" war voreilig.
+
+**Was gesichert ist:**
+- EABC-Klassifikation ✓
+- Vollständige Quadrupel ✓
+- Holonomie-Observable H(X) ✓ (konstruktionsabhängig)
+
+**Was revidiert wurde:**
+- "Primzahlen bevorzugen ABCEA" ✗ (Definitionsartefakt)
+- χ = -1 als topologische Invariante ✗ (heuristisch)
+- "Emergente Klein-Flaschen-Struktur" ✗ (zu früh behauptet)
 
 ---
 
 ## 🍾 Klein-Flaschen-Geometrie (Historisch)
 
-Die ursprüngliche geometrische Konstruktion (`klein_bottle.cpp`) ist weiterhin verfügbar als **Visualisierung**, aber mathematisch ist die emergente Struktur oben die sauberere Konstruktion.
+Die ursprüngliche geometrische Konstruktion (`klein_bottle.cpp`) ist weiterhin verfügbar als **Visualisierung**, aber mathematisch war dies eine aufgeprägte Geometrie, keine aus Primzahlen emergente Struktur.
 
 ### Installation (optional)
 
