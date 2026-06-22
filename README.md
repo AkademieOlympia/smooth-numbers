@@ -10,11 +10,19 @@ Dieses Projekt implementiert die Berechnung von s-glatten Zahlen und deren Darst
 - ✓ Dreieck-Darstellung T(n,k) analog zu Pascal's Dreieck
 - ✓ Vollständige mathematische Dokumentation
 
-### 🆕 Erweiterte Features (NEU!)
+### 🆕 Erweiterte Features
 - ✓ **Grafische Visualisierung** (HTML/SVG mit interaktiver Heatmap)
 - ✓ **Export-Funktionen** (CSV, JSON, HTML)
 - ✓ **Parallele Berechnung** (OpenMP-fähig)
 - ✓ **Benchmark-Tests** (Performance-Analyse)
+
+### 🎯 EABC/ABCE-Modell (Bamberg-Interpretation) - NEU!
+- ✓ **Schichtzahlen σ(n)** - Exponentensumme als Abstand vom Ursprung
+- ✓ **Vektorzahlen v(n)** - EABC-Signatur (n_E, n_A, n_B, n_C)
+- ✓ **Periodensystem der Zahlen** - 4D-Gitter-Darstellung
+- ✓ **Primzahlen vs. Glatte Zahlen** - "Hart" vs. "Weich"
+- ✓ **Recamán-Folgen-Analyse** - Hypothesentest für Gitterstruktur
+- ✓ **Quaternionen-artige Struktur** - Multiplikation = Vektoraddition
 
 ## 📁 Dateien
 
@@ -27,6 +35,73 @@ Dieses Projekt implementiert die Berechnung von s-glatten Zahlen und deren Darst
 - `MATHEMATICAL_DETAILS.md` - Mathematische Dokumentation
 - `EXAMPLES.md` - Konkrete Beispiele
 - `EXTENDED_FEATURES.md` - Dokumentation der erweiterten Features
+- `EABC_MODEL.md` - EABC/ABCE-Bamberg-Modell ⭐ NEU
+
+## 🎯 EABC/ABCE-Modell (Bamberg)
+
+### Philosophie: Hart vs. Weich
+
+Glatte Zahlen sind das **Gegenteil von Primzahlen**:
+
+| Primzahlen | Glatte Zahlen |
+|------------|---------------|
+| "Harte" Faktorisierung | "Weiche" Faktorisierung |
+| Maximale Komplexität | Minimale Komplexität |
+| Achsenpunkte | Innenpunkte |
+| Eckpunkte des Gitters | Volumenfüllung |
+
+### 4D-Gitterstruktur
+
+Jede Zahl n wird durch zwei Koordinaten beschrieben:
+
+```
+n ↦ (σ(n), v(n))
+```
+
+- **Schichtzahl σ(n)**: Summe aller Exponenten
+- **Vektorzahl v(n)**: EABC-Signatur (n_E, n_A, n_B, n_C)
+
+### Beispiele
+
+```bash
+# Analysiere einzelne Zahl
+./eabc_analysis
+# Wähle Option 1, dann z.B. 385
+
+=== ANALYSE VON 385 ===
+Faktorisierung: 5 × 7 × 11
+EABC-Signatur: (2^0 3^0 | E^0 A^1 B^1 C^1)
+Schichtzahl σ(n): 3
+Vektorzahl v(n): (0,1,1,1)
+→ GITTERPUNKT (Innenpunkt, Schicht 3)
+```
+
+### Recamán-Hypothese
+
+Das Modell ermöglicht experimentelle Tests:
+
+**Hypothese:** Die Recamán-Folge bevorzugt Randpunkte (Primzahlen, niedrige Schichten) und meidet hochglatte Innenpunkte.
+
+**Ergebnis (n=500):**
+```
+Durchschnittliche Schichtzahl (besucht): 2.34
+Durchschnittliche Schichtzahl (nicht besucht): 2.74
+
+→ Tendenz bestätigt!
+```
+
+### EABC-Klassifikation
+
+Primzahlen p > 3 werden klassifiziert nach p mod 12:
+
+```
+E: p ≡ 1  (mod 12)  →  13, 37, 61...
+A: p ≡ 5  (mod 12)  →  5, 17, 29...
+B: p ≡ 7  (mod 12)  →  7, 19, 31...
+C: p ≡ 11 (mod 12)  →  11, 23, 47...
+```
+
+Siehe `EABC_MODEL.md` für vollständige Dokumentation.
 
 ### Definition
 
