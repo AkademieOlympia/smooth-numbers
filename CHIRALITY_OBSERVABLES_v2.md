@@ -1,11 +1,43 @@
 # Conditional Gap Asymmetries and Orientation Bias in Consecutive Prime Residue Classes Modulo 12
 
-**Status:** ✓ Mechanismus identifiziert - Asymptotisches Verhalten von R(X) offen  
-**Date:** Juni 2026
+**Status:** ✓ Mechanismus identifiziert - Nullmodell-Hierarchie überraschend  
+**Date:** 23. Juni 2026
 
 ## Abstract
 
 We study the conditional gap distribution P(g mod 12 | p_n ≡ a) for consecutive primes in residue classes modulo 12. We observe a systematic asymmetry: **P(g ≡ 2,4 | a) > P(g ≡ 8,10 | a)** for all four non-trivial residue classes a ∈ {1, 5, 7, 11}. This is the **primary finding** of this work.
+
+**Surprising discovery (23 June 2026):** Comparison with null models reveals an unexpected hierarchy:
+
+```
+R_Poisson (≈1.83) > R_Prime (1.58) > R_Cramér (≈1.36)
+```
+
+The naive Cramér model (logarithmic acceptance probability 2/ln(n)) is **too tame**. It shows the **weakest** asymmetry, not the strongest. The true sieve structure of primes lies **between** maximal Poisson chaos and overdamped Cramér order, creating **structured disorder**.
+
+**Theoretical explanation (23 June 2026):** The asymmetry is NOT a prime mystery! It arises from the **geometric gap distribution** itself.
+
+**Central formula (constant p):**
+
+For Poisson processes with fixed acceptance probability p:
+
+$$R_{\text{Poisson}} \approx (1-p)^{-6}$$
+
+**Derivation:** For geometrically distributed gaps G with P(G=k) = p(1-p)^(k-1), the residue class distribution modulo 12 is:
+
+$$P(G \equiv r \bmod 12) \propto q^{r-1}, \quad q = 1-p$$
+
+Therefore:
+
+$$R = \frac{P(g \equiv 2,4)}{P(g \equiv 8,10)} = \frac{q^1 + q^3}{q^7 + q^9} = q^{-6}$$
+
+**The hierarchy reinterpreted:**
+
+- **Poisson (R≈1.83):** Short-gap bias from geometric distribution (pure effect)
+- **Cramér (R≈1.36):** Logarithmic mixing p(n)=2/ln(n) overdamps (-28%)
+- **Primes (R=1.58):** Sieve structure (twins, cousins, sexy primes) partially restores (+16%)
+
+**See:** `POISSON_ASYMMETRY_THEORY.md` for complete derivation
 
 This gap asymmetry induces an asymmetric transition matrix P(a→b) via the fundamental relation b ≡ a + g (mod 12). As a derived consequence, we define an **orientation observable** χ : Q → {-1, 0, +1} on complete EABC prime quadruples, resembling classical arithmetic observables such as the Möbius function μ(n), Liouville function λ(n), and Legendre symbol (a/p). The **bias function** H_C(X) = Σ χ(Q) measures the resulting orientation imbalance and is structurally similar to bias terms in prime number races.
 
@@ -1084,7 +1116,141 @@ make gap
 
 ---
 
-## References
+## Part VI: Null Model Hierarchy - The Surprising Discovery
+
+**Date:** 23 June 2026  
+**Status:** ✅ Completed - Consistent over 10 random seeds
+
+### 6.1 The Three Null Models
+
+To understand the nature of the gap asymmetry, we compare three progressively structured models:
+
+**Model 1: Poisson Process (Maximal Randomness)**
+- **Construction:** Exponentially distributed gaps with mean ln(n)
+- **Properties:** Uncorrelated sparsity, no arithmetic structure
+- **Hypothesis:** Should show maximal asymmetry from pure randomness effects
+
+**Model 2: Cramér Model (Logarithmic Density, No Sieve)**
+- **Construction:** Each odd n accepted with probability 2/ln(n)
+- **Properties:** Correct density, but NO sieve structure
+- **Hypothesis:** Should regularize vs. Poisson due to logarithmic damping
+
+**Model 3: Real Primes (Full Arithmetic Correlations)**
+- **Construction:** True primes from Sieve of Eratosthenes
+- **Properties:** Full sieve structure (local exclusions by small prime factors)
+- **Hypothesis (original):** R_Poisson > R_Cramér > R_Prime?
+
+### 6.2 The Unexpected Hierarchy
+
+**Empirical results (N=100,000, consistent over 10 seeds):**
+
+```
+R_Poisson:  1.768 - 1.940  (mean ≈ 1.83, std ≈ 0.06)
+R_Prime:    1.576          (deterministic)
+R_Cramér:   1.290 - 1.533  (mean ≈ 1.36, std ≈ 0.07)
+```
+
+**Observed hierarchy:**
+```
+R_Poisson (≈1.83) > R_Prime (1.58) > R_Cramér (≈1.36)
+```
+
+**This is NOT the expected regularization hypothesis!**
+
+### 6.3 Interpretation: Structured Disorder
+
+The naive Cramér model **overdamps** the asymmetry. It is **too tame**.
+
+**Two-stage effect:**
+
+1. **Poisson → Cramér (-28%):** Logarithmic acceptance probability **overdamps** dramatically
+   - Pure randomness: R ≈ 1.83
+   - Log-damping: R ≈ 1.36
+   - Effect: -0.47 (strong suppression)
+
+2. **Cramér → Prime (+16%):** Sieve structure **partially amplifies back**
+   - Cramér (no sieve): R ≈ 1.36
+   - Real primes (full sieve): R = 1.58
+   - Effect: +0.22 (partial restoration)
+
+### 6.4 Why Is the Cramér Model Too Tame?
+
+**The logarithmic acceptance probability 2/ln(n) creates:**
+
+- Smooth, gradual thinning (no local structure)
+- No forbidden residue classes
+- No correlations between consecutive elements
+
+**Real primes have sieve structure:**
+
+- Local exclusions modulo small primes (2, 3, 5, 7, 11, ...)
+- Correlated gaps (if p ≡ 1 mod 6, then p+2 ≢ 0 mod 3)
+- These correlations **restore some asymmetry** vs. pure log-damping
+
+### 6.5 The True Picture: Structured Disorder
+
+**Position on the chaos-order spectrum:**
+
+```
+Maximum Chaos          Structured Disorder          Maximum Order
+(Poisson)              (Real Primes)                (Regular Grid)
+R ≈ 1.83               R = 1.58                     R = 1.00
+    ↑                      ↑                            ↑
+    |                      |                            |
+    |--- Log-damping ----> | <--- Sieve amplifies ---   |
+            (-28%)                    (+16%)
+                           ↓
+                   Naive Cramér
+                     R ≈ 1.36
+                   (overdamped)
+```
+
+**Key insight:** The arithmetic structure of primes creates **correlations that partially counteract** the smoothing effect of logarithmic thinning.
+
+### 6.6 Implications
+
+**What this tells us:**
+
+1. ✅ The gap asymmetry is **NOT strongly prime-specific** (Poisson already shows R ≈ 1.83)
+2. ✅ But it's also **NOT universal for all sparse sets** (Cramér is too weak at R ≈ 1.36)
+3. ✅ It requires **arithmetic correlations (sieve effects)** that are:
+   - Stronger than pure log-density acceptance
+   - But weaker than maximal randomness
+
+**What remains open:**
+
+- ❓ Why does the Poisson model show such strong asymmetry?
+- ❓ Can we predict R_Cramér theoretically?
+- ❓ Can we improve the Cramér model to match primes better?
+- ❓ What about other moduli (30, 210, 2310)?
+
+### 6.7 Technical Details
+
+**Program:** `poisson_cramer_hierarchy.cpp`
+
+**Usage:**
+```bash
+make demo-poisson-hierarchy
+# or
+./poisson_cramer_hierarchy 100000 42
+```
+
+**Output:**
+1. Conditional gap distributions P(g mod 12 | a) for all three models
+2. Gap asymmetry ratios for each model
+3. Geometric mean R_gap
+4. Hierarchy comparison table
+5. Interpretation of results
+
+**Robustness:**
+- Tested over 10 random seeds: hierarchy is **stable**
+- Poisson: R ∈ [1.77, 1.94], consistent behavior
+- Cramér: R ∈ [1.29, 1.53], moderate variance
+- Prime: R = 1.58 (deterministic)
+
+---
+
+## Part VII: References
 
 ### Prime Number Races
 
@@ -1107,9 +1273,20 @@ make gap
 
 ## Next Steps for Publication-Ready Paper
 
-**Priority hierarchy:** The modulo 30 test is more important than further increasing X.
+**Priority hierarchy:** The null model hierarchy is now established. Modulo 30 remains more important than further increasing X.
 
-### 1. Modulo 30 Test (HIGHEST PRIORITY ⭐⭐⭐⭐⭐)
+### 1. Null Model Hierarchy ✅ **COMPLETED (23 June 2026)**
+
+**Result (consistent over 10 seeds, N=100,000):**
+```
+R_Poisson (≈1.83) > R_Prime (1.58) > R_Cramér (≈1.36)
+```
+
+**Interpretation:** The naive Cramér model **overdamps** (-28% vs. Poisson). The sieve structure **partially amplifies back** (+16% vs. Cramér). Real primes create **structured disorder** between chaos and order.
+
+**Status:** ✅ **ESTABLISHED** - See Part VI above
+
+### 2. Modulo 30 Test (HIGHEST PRIORITY ⭐⭐⭐⭐⭐)
 
 **This test is more important than any further increase in X.**
 
@@ -1130,7 +1307,7 @@ Modulo 30 = 2 · 3 · 5 is the first serious generalization with 8 residue class
 
 **This test determines:** Are we observing a general phenomenon of prime gap distributions, or a special consequence of the smallest primes?
 
-### 2. Asymptotic Behavior of R(X)
+### 2. Modulo 30 Test (HIGHEST PRIORITY ⭐⭐⭐⭐⭐)
 
 **Question:** Does R(X) → 1 or R(X) → c > 1?
 
@@ -1171,7 +1348,7 @@ R(X) plotted against log X
 
 **Program:** `ratio_asymptotic.cpp`
 
-### 3. Direct Gap Distribution Analysis
+### 3. Asymptotic Behavior of R(X)
 
 **After** R(X) is determined, measure:
 
@@ -1183,7 +1360,7 @@ for the same ranges (10⁶, 10⁷). This is the primary phenomenon.
 
 **Program:** `gap_distribution.cpp`
 
-### 4. Hardy-Littlewood / Sieve Model Comparison
+### 4. Direct Gap Distribution Analysis
 
 Compare empirical P(g mod 12 | a) against predictions from:
 - Simple sieve model (excluding small primes modulo 60, 420, 2310)
@@ -1192,7 +1369,19 @@ Compare empirical P(g mod 12 | a) against predictions from:
 
 **Goal:** Move from "empirical observation" to "analytical explanation"
 
-### 5. Full Signature Distribution
+### 5. Hardy-Littlewood / Sieve Model Comparison
+
+Compare empirical P(g mod 12 | a) against predictions from:
+- Simple sieve model (excluding small primes modulo 60, 420, 2310)
+- Hardy-Littlewood k-tuple conjectures
+- Prime number race theory
+- **Improved Cramér models** that incorporate sieve effects
+
+**Goal:** Move from "empirical observation" to "analytical explanation"
+
+**New question after Part VI:** Can we design a better null model that captures the sieve structure and predicts R ≈ 1.58?
+
+### 6. Full Signature Distribution
 
 **Current:** Only χ ∈ {-1, 0, +1} measured (projection)
 

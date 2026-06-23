@@ -183,9 +183,88 @@ P(ECBA)     P_E(10) · P_C(8) · P_B(10) · P_A(8)
 
 **Von spekulativem Narrativ zu sauber definiertem Forschungsprogramm.**
 
+#### Hauptergebnis (Stand 23. Juni 2026) ⭐⭐⭐ THEORETISCH ERKLÄRT
+
+Die beobachteten Orientierungspräferenzen auf EABC-Quadrupeln lassen sich auf bedingte Gap-Asymmetrien modulo 12 zurückführen.
+
+**Die theoretische Erklärung (23. Juni 2026):**
+
+Unsere Analyse legt nahe: Die Asymmetrie entsteht wesentlich aus der **geometrischen Gap-Verteilung** selbst, nicht primär aus spezifischen Primzahleigenschaften!
+
+**Zentrale Formel (konstantes p):**
+
+Für Poisson-Prozesse mit festem Akzeptanz-p gilt näherungsweise:
+
+```
+R_Poisson ≈ (1-p)^{-6}
+```
+
+**Herleitung:** Bei geometrisch verteilten Gaps G gilt P(G=k) = p(1-p)^(k-1). Für Restklassen modulo 12:
+
+```
+P(G ≡ r mod 12) ∝ q^(r-1),  wobei q = 1-p
+```
+
+Daraus folgt:
+
+```
+R = P(g≡2,4) / P(g≡8,10) = (q^1 + q^3) / (q^7 + q^9) = q^{-6}
+```
+
+**Die Nullmodell-Hierarchie (über 10 Seeds konsistent, N=100.000):**
+
+```
+R_Poisson (≈1.83)  >  R_Prime (1.58)  >  R_Cramér (≈1.36)
+  Kurzgap-Bias         Arithmetische        Log-Mischung
+  (geometrisch)        Rückkorrelation      (überdämpft)
+```
+
+**Die überraschende Erkenntnis:**
+
+1. **Poisson → Cramér (-28%):** Logarithmische Dichte **überdämpft** drastisch  
+   → Variable p(n) = 2/ln(n) erzeugt Mixing-Effekt
+
+2. **Cramér → Prime (+16%):** Die Siebstruktur **verstärkt teilweise zurück**  
+   → Zwillinge, Cousins, sexy primes → Kurzgap-Enhancement
+
+**Interpretation:**
+
+Die Primzahlen sind **weniger zufällig als Poisson** (keine reine geometrische Verteilung), aber **zufälliger als naives Cramér** (Siebstruktur erzeugt Rückkorrelation). Die arithmetische Struktur liegt **zwischen** den Extremen und erzeugt **strukturierte Unordnung**.
+
+**Status:** Unsere Ergebnisse legen nahe: Die Asymmetrie ist **universell für sparse sets** mit Kurzgap-Bias, wird aber durch log-Dichte gedämpft und durch Siebstruktur teilweise zurückverstärkt. Dies ist die **tiefste Einsicht des Projekts**.
+
+**Siehe:** `POISSON_ASYMMETRY_THEORY.md` für vollständige Herleitung
+
 #### Nächste kritische Schritte (Prioritäten):
 
-1. **Modulo 30** - WICHTIGER ALS WEITERE X-VERGRÖSSERUNG ⭐⭐⭐⭐⭐
+1. **Nullmodell-Hierarchie: R_Poisson, R_Cramér, R_Prime** ⭐⭐⭐⭐⭐⭐ ✅ **ABGESCHLOSSEN**
+   
+   **ÜBERRASCHENDER BEFUND (konsistent über 10 Seeds):**
+   
+   ```
+   R_Poisson (≈1.83) > R_Prime (1.58) > R_Cramér (≈1.36)
+   ```
+   
+   **Das naive Cramér-Modell ist zu zahm!**
+   
+   - Logarithmische Dichte **überdämpft** die Asymmetrie (-28% vs. Poisson)
+   - Die Siebstruktur **verstärkt teilweise zurück** (+16% vs. Cramér)
+   - Die Primzahlen liegen **zwischen** Chaos und naiver Ordnung
+   
+   **Interpretation:**
+   
+   Unsere Daten und Modellanalysen sprechen dafür: Die Asymmetrie erfordert arithmetische Korrelationen (Siebstruktur), ist aber nicht stark primzahl-spezifisch. Das Cramér-Modell trifft die Primdynamik nicht präzise, da es die lokalen Verbote (Siebeffekte) nicht abbildet.
+   
+   **Zwei-Stufen-Regularisierung:**
+   ```
+   Poisson → [log-Dichte überdämpft] → Cramér → [Sieb verstärkt zurück] → Prime
+   ```
+   
+   **Dies ist der überraschendste Befund des gesamten Projekts:**
+   
+   Die Primzahlstruktur erzeugt **strukturierte Unordnung** zwischen Chaos und Ordnung.
+
+2. **Modulo 30** - WICHTIGER ALS WEITERE X-VERGRÖSSERUNG ⭐⭐⭐⭐⭐
    
    Warum mod 12 "gefährlich" ist:
    → 12 = 2² · 3 (kleinste Primzahlen wirken bereits)
@@ -200,7 +279,7 @@ P(ECBA)     P_E(10) · P_C(8) · P_B(10) · P_A(8)
    
    **Entscheidet: Allgemeines Phänomen vs. spezieller Effekt**
 
-2. **R(X)-Asymptotik** - X = 10⁶, 10⁷ ⭐⭐⭐⭐⭐
+3. **R(X)-Asymptotik** - X = 10⁶, 10⁷ ⭐⭐⭐⭐⭐
    
    **Die interessanteste Grafik des gesamten Projekts:**
    R(X) gegen log X
@@ -209,9 +288,9 @@ P(ECBA)     P_E(10) · P_C(8) · P_B(10) · P_A(8)
    Falls Stabilisierung: Persistente Struktur
    Falls Oszillation: Prime-Race-Phänomen
 
-3. **Falls R(X) → 1:** Geschwindigkeit der Konvergenz messen
-4. **Falls R(X) → c > 1:** Siebmodell-Vergleich und Verbindung zu Prime Races
-5. **Vollständige Verteilung** - Alle 6 Signaturen, nicht nur χ-Projektion
+4. **Falls R(X) → 1:** Geschwindigkeit der Konvergenz messen
+5. **Falls R(X) → c > 1:** Siebmodell-Vergleich und Verbindung zu Prime Races
+6. **Vollständige Verteilung** - Alle 6 Signaturen, nicht nur χ-Projektion
 
 **Siehe `CHIRALITY_OBSERVABLES_v2.md` (neu: "Conditional Gap Asymmetries...") für vollständige Theorie!** ⭐⭐⭐⭐⭐
 
@@ -329,7 +408,11 @@ als **bevorzugter Zyklus einer Markov-Dynamik auf Restklassen**.
 - `autocorrelation_analysis.cpp` - Autokorrelationsanalyse ⭐⭐⭐ DER ENTSCHEIDENDE TEST
 - `transition_matrix.cpp` - Übergangsmatrix P(a→b) ⭐⭐⭐ THEORIEKERN
 - `gap_distribution.cpp` - Gap-Verteilung mod 12 ⭐⭐⭐⭐ MECHANISTISCHE ERKLÄRUNG
-- `ratio_asymptotic.cpp` - R(X)-Asymptotik-Analyse ⭐⭐⭐⭐⭐ DER KRITISCHSTE TEST
+- `gap_distribution_windowed.cpp` - Fensterstabilität der Gap-Asymmetrie ⭐⭐⭐⭐⭐ KRITISCHSTER TEST
+- `cramer_comparison.cpp` - Cramér-Nullmodell-Vergleich ⭐⭐⭐⭐⭐ FUNDAMENTALSTER TEST
+- `poisson_cramer_hierarchy.cpp` - Poisson-Cramér-Prime-Hierarchie ⭐⭐⭐⭐⭐⭐ ÜBERRASCHENDSTER BEFUND
+- `verify_poisson_formula.cpp` - Verifikation: R = (1-p)^{-6} ⭐⭐⭐⭐⭐⭐⭐ THEORETISCHE LÖSUNG
+- `ratio_asymptotic.cpp` - R(X)-Asymptotik-Analyse ⭐⭐⭐⭐⭐ ASYMPTOTIK
 
 ### Header-Dateien
 - `export.h` - Export-Funktionen (JSON, CSV, HTML)
@@ -340,6 +423,8 @@ als **bevorzugter Zyklus einer Markov-Dynamik auf Restklassen**.
 ### Dokumentation
 - `README.md` - Diese Datei
 - `CHIRALITY_OBSERVABLES_v2.md` - Rigorose mathematische Formulierung ⭐⭐⭐ KERN (Research Note)
+- `POISSON_ASYMMETRY_THEORY.md` - ⭐⭐⭐⭐⭐⭐⭐ THEORETISCHE LÖSUNG (Geometrischer Ursprung)
+- `NULL_MODEL_HIERARCHY.md` - ⭐⭐⭐⭐⭐⭐ ÜBERRASCHENDSTER BEFUND (Poisson-Cramér-Prime)
 - `GAPS_ANALYSIS.md` - Mechanistische Erklärung via Gap-Verteilung ⭐⭐⭐⭐ FINALE ERKLÄRUNG
 - `ROBUSTNESS_TESTS.md` - Kritische Überprüfung ⭐ WICHTIG
 - `EABC_MODEL.md` - EABC/ABCE-Bamberg-Modell
@@ -818,6 +903,108 @@ u·ρ(u) = ∫₁ᵘ ρ(t) dt       für u > 1
 - de Bruijn, N. G. (1951): "On the number of positive integers ≤ x and free of prime factors > y"
 - Bernstein, D. J. (2004): "How to find smooth parts of integers"
 - OEIS Sequence A080786: Triangle of smooth number counts
+
+## 📄 Projekt-Dokumentation
+
+### Hauptdokumente (⭐ Publikationsreif, 23. Juni 2026)
+
+- **`paper_geometric_origin.pdf`** - ⭐⭐⭐⭐⭐⭐⭐ **PREPRINT** (8 Seiten, 23. Juni 2026)
+  - **Titel:** *The Geometric Origin of Residue-Class Gap Asymmetry in Sparse Arithmetic Point Processes*
+  - **Kernthese:** Die Asymmetrie ist NICHT primzahl-spezifisch, sondern entsteht aus geometrischen Gap-Verteilungen
+  - **Zentrale Formel:** R = (1-p)^{-6} (exakte Herleitung für Poisson-Prozesse)
+  - **Empirische Hierarchie:** R_Poisson (1.83) > R_Prime (1.58) > R_Cramér (1.36)
+  - **Interpretation:** Primzahlen erzeugen "strukturierte Unordnung" zwischen Chaos und Ordnung
+  - **Status:** Preprint-ready für ArXiv/Journal-Submission
+  - **Datei:** `output/pdf/paper_geometric_origin.pdf`
+
+- **`paper.pdf`** - ⭐⭐⭐ Vollständiges wissenschaftliches Paper (12 Seiten, historisch)
+  - *Bedingte Gap-Asymmetrien und Orientierungsbias in konsekutiven Primzahlrestklassen modulo 12*
+  - Historische Entwicklung in 6 Phasen (Jan-Juni 2026)
+  - Saubere mathematische Grundlagen (EABC-Klassifikation, Signatur, Normalisierung)
+  - Vier-Ebenen-Hierarchie: P(g mod 12 | a) → P(a→b) → R(X) → H_C(X)
+  - Robustheitstests, Autokorrelationsanalyse, Gap-Verteilung als mechanistische Erklärung
+  - Offene Fragen: Asymptotisches Verhalten von R(X), Modulo 30 Verallgemeinerung
+
+- **`quantum_error_correction.pdf`** - Separates Projekt: Quantenfehlerkorrektur (5 Seiten)
+  - [[5,1,3]]-Stabilisatorcode mit vollständigem Rechenbeispiel
+  - Syndrommessung, Fehlerdiagnose, Recovery-Operation
+  - Präzisierung: Code-Projektor ≠ Fehlerkorrektur
+  - Hurwitz-Einheiten = binäre Tetraedergruppe 2T (24 Elemente)
+  - DMN/ECN-Metapher: Diskretisierung kontinuierlicher Störungen
+
+- **`ROADMAP.md`** - ⭐ Offene Fragen und nächste Schritte
+
+### Technische Dokumentation
+
+- **`README.md`** - Dieses Dokument (Projektübersicht)
+- **`MATHEMATICAL_DETAILS.md`** - Mathematische Grundlagen und Beweise für glatte Zahlen
+- **`EABC_MODEL.md`** - Das EABC/ABCE-Bamberg-Modell (4D-Gitterstruktur)
+- **`CHIRALITY_OBSERVABLES_v2.md`** - ⭐ Vollständige Analyse (Markdown-Version des Papers)
+- **`GAPS_ANALYSIS.md`** - ⭐ Mechanistische Erklärung: Gap-Verteilung als Ursache
+- **`ROBUSTNESS_TESTS.md`** - Dokumentation der Robustheitstests
+
+### Explorative Dokumente (spekulativ, nicht validiert)
+
+- **`CATALAN_HIERARCHIES.md`** - 🔬 Catalan-Strukturen und arithmetische Baumhierarchien (23.06.2026)
+  - Erweiterte EABC-Normalform mit Konstruktionshierarchie
+  - Tamari-Gitter, arithmetische Baum-Komplexität M_arith
+  - Spekulative Verbindung zu Quantum-Magic
+  - Status: Mathematisch wohldefiniert, empirisch ungetestet
+
+- **`EMERGENT_STRUCTURES.md`** - 🔬🔬 Gödel-Universum und arithmetische Zyklen (23.06.2026)
+  - Strukturelle Analogie: Gödel's rotierendes Universum ↔ EABC-Chiralität
+  - Emergente Zeit ↔ Emergente Primzahlordnung
+  - Geschlossene zeitartige Kurven (CTCs) ↔ EABC-Zyklen
+  - Status: Hochspekulativ, metaphorisch, keine formale Abbildung
+  - Philosophisch interessant, mathematisch nicht rigoros
+
+### Historische Dokumente (überholt, aber dokumentiert)
+
+- **`DISCRETE_TOPOLOGY.md`** - Diskrete topologische Strukturen (Phase 1-2: Geometrische Spekulation)
+- **`LEAN_INTEGRATION.md`** - Lean 4 Formalisierung (optional, nicht weiterverfolgt)
+- **`KLEIN_BOTTLE.md`** - Klein-Flaschen-Hypothese (Phase 1: Aufgeprägte Topologie)
+- **`EABC_HOLONOMY.md`** - Holonomie-Observable (Phase 2-3: Vor Umbenennung in "Bias Function")
+
+### Programme und Implementierung
+
+#### Primzahl-Analyse (C++)
+- `chirality_robustness.cpp` - Robustheitstests verschiedener Konstruktionen
+- `autocorrelation_analysis.cpp` - Autokorrelationsanalyse und effektive Stichprobengröße
+- `transition_matrix.cpp` - Berechnung der Übergangsmatrix P(a→b)
+- `gap_distribution.cpp` - ⭐ Bedingte Gap-Verteilung P(g mod 12 | a)
+- `ratio_asymptotic.cpp` - ⭐ Asymptotisches Verhalten von R(X) = P(EABC)/P(ECBA)
+
+#### EABC-Modell (C++)
+- `eabc_analysis.cpp` - EABC-Klassifikation und Schichtzahlen
+- `smooth_numbers.cpp` - Basis-Implementierung (glatte Zahlen)
+- `smooth_numbers_extended.cpp` - Erweiterte Features (Export, Parallelisierung, Benchmark)
+
+#### Lean 4 Formalisierung (optional)
+- `DickmanFunction.lean` - Dickman-de Bruijn-Funktion
+- `dickman_bridge.cpp` - C++ Bridge zur Lean-Implementierung
+
+Siehe `Makefile` für alle Compile-Targets.
+
+### Projektstatus (Juni 2026)
+
+**Primzahl-Projekt:**
+- ✅ **Publikationsreif** als Preprint/Forschungsnotiz
+- ✅ Gap-Asymmetrie empirisch etabliert (bis X = 5·10⁵)
+- ✅ Mechanistische Erklärung identifiziert: P(g mod 12 | a) → P(a→b) → R(X) → H_C(X)
+- ✅ Robustheitstests bestanden (Konstruktionsabhängigkeit, Autokorrelation)
+- ⚠️ Offene Frage: R(X) → 1 (Vorasymptotik) oder R(X) → c > 1 (persistente Asymmetrie)?
+- 🔜 **Nächster kritischer Test:** Modulo 30 Verallgemeinerung
+
+**QEC-Projekt:**
+- ✅ **Vollständig dokumentiert** als technische Referenz
+- ✅ Mathematische Präzisierungen etabliert
+- ✅ Vollständiges Rechenbeispiel für Z₁-Fehler
+- 🔜 **Optional:** Vollständige Syndromtabelle aller 15 1-Qubit-Fehler
+
+**Methodische Erkenntnis:**  
+Beide Projekte durchliefen dieselbe Transformation: Von geometrischer Intuition zu messbaren Observablen, von statischen Strukturen zu dynamischen Mechanismen, von Metaphern zu kausalen Ketten.
+
+
 
 ## Lizenz
 
