@@ -1,0 +1,289 @@
+domain,observable,transform,family,description,I_abs,I_norm,effect_size,p_perm_invariance,n_samples,classification
+catalan,M_C,identity,identity,No transformation,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,Omega,identity,identity,No transformation,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,S,identity,identity,No transformation,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,E(n),identity,identity,No transformation,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,H(n),identity,identity,No transformation,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,L(n),identity,identity,No transformation,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,D(n),identity,identity,No transformation,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,B(n),identity,identity,No transformation,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,M_C,eabc_cycle_E_to_A_to_B_to_C,eabc_cycle,Cycle E->A->B->C->E,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,Omega,eabc_cycle_E_to_A_to_B_to_C,eabc_cycle,Cycle E->A->B->C->E,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,S,eabc_cycle_E_to_A_to_B_to_C,eabc_cycle,Cycle E->A->B->C->E,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,E(n),eabc_cycle_E_to_A_to_B_to_C,eabc_cycle,Cycle E->A->B->C->E,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,H(n),eabc_cycle_E_to_A_to_B_to_C,eabc_cycle,Cycle E->A->B->C->E,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,L(n),eabc_cycle_E_to_A_to_B_to_C,eabc_cycle,Cycle E->A->B->C->E,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,D(n),eabc_cycle_E_to_A_to_B_to_C,eabc_cycle,Cycle E->A->B->C->E,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,B(n),eabc_cycle_E_to_A_to_B_to_C,eabc_cycle,Cycle E->A->B->C->E,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,M_C,eabc_chirality_flip_A_C,chirality_flip,Swap A and C labels,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,Omega,eabc_chirality_flip_A_C,chirality_flip,Swap A and C labels,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,S,eabc_chirality_flip_A_C,chirality_flip,Swap A and C labels,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,E(n),eabc_chirality_flip_A_C,chirality_flip,Swap A and C labels,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,H(n),eabc_chirality_flip_A_C,chirality_flip,Swap A and C labels,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,L(n),eabc_chirality_flip_A_C,chirality_flip,Swap A and C labels,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,D(n),eabc_chirality_flip_A_C,chirality_flip,Swap A and C labels,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,B(n),eabc_chirality_flip_A_C,chirality_flip,Swap A and C labels,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,M_C,signature_reversal,signature_reversal,Reverse EABC signature order,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,Omega,signature_reversal,signature_reversal,Reverse EABC signature order,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,S,signature_reversal,signature_reversal,Reverse EABC signature order,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,E(n),signature_reversal,signature_reversal,Reverse EABC signature order,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,H(n),signature_reversal,signature_reversal,Reverse EABC signature order,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,L(n),signature_reversal,signature_reversal,Reverse EABC signature order,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,D(n),signature_reversal,signature_reversal,Reverse EABC signature order,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,B(n),signature_reversal,signature_reversal,Reverse EABC signature order,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,M_C,eabc_perm_EACB,eabc_permutation,Permutation EABC->EACB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,Omega,eabc_perm_EACB,eabc_permutation,Permutation EABC->EACB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,S,eabc_perm_EACB,eabc_permutation,Permutation EABC->EACB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,E(n),eabc_perm_EACB,eabc_permutation,Permutation EABC->EACB,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,H(n),eabc_perm_EACB,eabc_permutation,Permutation EABC->EACB,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,L(n),eabc_perm_EACB,eabc_permutation,Permutation EABC->EACB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,D(n),eabc_perm_EACB,eabc_permutation,Permutation EABC->EACB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,B(n),eabc_perm_EACB,eabc_permutation,Permutation EABC->EACB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,M_C,eabc_perm_EBAC,eabc_permutation,Permutation EABC->EBAC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,Omega,eabc_perm_EBAC,eabc_permutation,Permutation EABC->EBAC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,S,eabc_perm_EBAC,eabc_permutation,Permutation EABC->EBAC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,E(n),eabc_perm_EBAC,eabc_permutation,Permutation EABC->EBAC,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,H(n),eabc_perm_EBAC,eabc_permutation,Permutation EABC->EBAC,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,L(n),eabc_perm_EBAC,eabc_permutation,Permutation EABC->EBAC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,D(n),eabc_perm_EBAC,eabc_permutation,Permutation EABC->EBAC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,B(n),eabc_perm_EBAC,eabc_permutation,Permutation EABC->EBAC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,M_C,eabc_perm_EBCA,eabc_permutation,Permutation EABC->EBCA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,Omega,eabc_perm_EBCA,eabc_permutation,Permutation EABC->EBCA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,S,eabc_perm_EBCA,eabc_permutation,Permutation EABC->EBCA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,E(n),eabc_perm_EBCA,eabc_permutation,Permutation EABC->EBCA,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,H(n),eabc_perm_EBCA,eabc_permutation,Permutation EABC->EBCA,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,L(n),eabc_perm_EBCA,eabc_permutation,Permutation EABC->EBCA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,D(n),eabc_perm_EBCA,eabc_permutation,Permutation EABC->EBCA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,B(n),eabc_perm_EBCA,eabc_permutation,Permutation EABC->EBCA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,M_C,eabc_perm_ECAB,eabc_permutation,Permutation EABC->ECAB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,Omega,eabc_perm_ECAB,eabc_permutation,Permutation EABC->ECAB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,S,eabc_perm_ECAB,eabc_permutation,Permutation EABC->ECAB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,E(n),eabc_perm_ECAB,eabc_permutation,Permutation EABC->ECAB,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,H(n),eabc_perm_ECAB,eabc_permutation,Permutation EABC->ECAB,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,L(n),eabc_perm_ECAB,eabc_permutation,Permutation EABC->ECAB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,D(n),eabc_perm_ECAB,eabc_permutation,Permutation EABC->ECAB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,B(n),eabc_perm_ECAB,eabc_permutation,Permutation EABC->ECAB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,M_C,eabc_perm_ECBA,eabc_permutation,Permutation EABC->ECBA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,Omega,eabc_perm_ECBA,eabc_permutation,Permutation EABC->ECBA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,S,eabc_perm_ECBA,eabc_permutation,Permutation EABC->ECBA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,E(n),eabc_perm_ECBA,eabc_permutation,Permutation EABC->ECBA,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,H(n),eabc_perm_ECBA,eabc_permutation,Permutation EABC->ECBA,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,L(n),eabc_perm_ECBA,eabc_permutation,Permutation EABC->ECBA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,D(n),eabc_perm_ECBA,eabc_permutation,Permutation EABC->ECBA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,B(n),eabc_perm_ECBA,eabc_permutation,Permutation EABC->ECBA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,M_C,eabc_perm_AEBC,eabc_permutation,Permutation EABC->AEBC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,Omega,eabc_perm_AEBC,eabc_permutation,Permutation EABC->AEBC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,S,eabc_perm_AEBC,eabc_permutation,Permutation EABC->AEBC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,E(n),eabc_perm_AEBC,eabc_permutation,Permutation EABC->AEBC,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,H(n),eabc_perm_AEBC,eabc_permutation,Permutation EABC->AEBC,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,L(n),eabc_perm_AEBC,eabc_permutation,Permutation EABC->AEBC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,D(n),eabc_perm_AEBC,eabc_permutation,Permutation EABC->AEBC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,B(n),eabc_perm_AEBC,eabc_permutation,Permutation EABC->AEBC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,M_C,eabc_perm_AECB,eabc_permutation,Permutation EABC->AECB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,Omega,eabc_perm_AECB,eabc_permutation,Permutation EABC->AECB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,S,eabc_perm_AECB,eabc_permutation,Permutation EABC->AECB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,E(n),eabc_perm_AECB,eabc_permutation,Permutation EABC->AECB,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,H(n),eabc_perm_AECB,eabc_permutation,Permutation EABC->AECB,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,L(n),eabc_perm_AECB,eabc_permutation,Permutation EABC->AECB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,D(n),eabc_perm_AECB,eabc_permutation,Permutation EABC->AECB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,B(n),eabc_perm_AECB,eabc_permutation,Permutation EABC->AECB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,M_C,eabc_perm_ABEC,eabc_permutation,Permutation EABC->ABEC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,Omega,eabc_perm_ABEC,eabc_permutation,Permutation EABC->ABEC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,S,eabc_perm_ABEC,eabc_permutation,Permutation EABC->ABEC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,E(n),eabc_perm_ABEC,eabc_permutation,Permutation EABC->ABEC,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,H(n),eabc_perm_ABEC,eabc_permutation,Permutation EABC->ABEC,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,L(n),eabc_perm_ABEC,eabc_permutation,Permutation EABC->ABEC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,D(n),eabc_perm_ABEC,eabc_permutation,Permutation EABC->ABEC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,B(n),eabc_perm_ABEC,eabc_permutation,Permutation EABC->ABEC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,M_C,eabc_perm_ABCE,eabc_permutation,Permutation EABC->ABCE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,Omega,eabc_perm_ABCE,eabc_permutation,Permutation EABC->ABCE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,S,eabc_perm_ABCE,eabc_permutation,Permutation EABC->ABCE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,E(n),eabc_perm_ABCE,eabc_permutation,Permutation EABC->ABCE,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,H(n),eabc_perm_ABCE,eabc_permutation,Permutation EABC->ABCE,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,L(n),eabc_perm_ABCE,eabc_permutation,Permutation EABC->ABCE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,D(n),eabc_perm_ABCE,eabc_permutation,Permutation EABC->ABCE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,B(n),eabc_perm_ABCE,eabc_permutation,Permutation EABC->ABCE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,M_C,eabc_perm_ACEB,eabc_permutation,Permutation EABC->ACEB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,Omega,eabc_perm_ACEB,eabc_permutation,Permutation EABC->ACEB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,S,eabc_perm_ACEB,eabc_permutation,Permutation EABC->ACEB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,E(n),eabc_perm_ACEB,eabc_permutation,Permutation EABC->ACEB,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,H(n),eabc_perm_ACEB,eabc_permutation,Permutation EABC->ACEB,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,L(n),eabc_perm_ACEB,eabc_permutation,Permutation EABC->ACEB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,D(n),eabc_perm_ACEB,eabc_permutation,Permutation EABC->ACEB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,B(n),eabc_perm_ACEB,eabc_permutation,Permutation EABC->ACEB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,M_C,eabc_perm_ACBE,eabc_permutation,Permutation EABC->ACBE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,Omega,eabc_perm_ACBE,eabc_permutation,Permutation EABC->ACBE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,S,eabc_perm_ACBE,eabc_permutation,Permutation EABC->ACBE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,E(n),eabc_perm_ACBE,eabc_permutation,Permutation EABC->ACBE,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,H(n),eabc_perm_ACBE,eabc_permutation,Permutation EABC->ACBE,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,L(n),eabc_perm_ACBE,eabc_permutation,Permutation EABC->ACBE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,D(n),eabc_perm_ACBE,eabc_permutation,Permutation EABC->ACBE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,B(n),eabc_perm_ACBE,eabc_permutation,Permutation EABC->ACBE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,M_C,eabc_perm_BEAC,eabc_permutation,Permutation EABC->BEAC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,Omega,eabc_perm_BEAC,eabc_permutation,Permutation EABC->BEAC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,S,eabc_perm_BEAC,eabc_permutation,Permutation EABC->BEAC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,E(n),eabc_perm_BEAC,eabc_permutation,Permutation EABC->BEAC,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,H(n),eabc_perm_BEAC,eabc_permutation,Permutation EABC->BEAC,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,L(n),eabc_perm_BEAC,eabc_permutation,Permutation EABC->BEAC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,D(n),eabc_perm_BEAC,eabc_permutation,Permutation EABC->BEAC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,B(n),eabc_perm_BEAC,eabc_permutation,Permutation EABC->BEAC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,M_C,eabc_perm_BECA,eabc_permutation,Permutation EABC->BECA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,Omega,eabc_perm_BECA,eabc_permutation,Permutation EABC->BECA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,S,eabc_perm_BECA,eabc_permutation,Permutation EABC->BECA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,E(n),eabc_perm_BECA,eabc_permutation,Permutation EABC->BECA,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,H(n),eabc_perm_BECA,eabc_permutation,Permutation EABC->BECA,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,L(n),eabc_perm_BECA,eabc_permutation,Permutation EABC->BECA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,D(n),eabc_perm_BECA,eabc_permutation,Permutation EABC->BECA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,B(n),eabc_perm_BECA,eabc_permutation,Permutation EABC->BECA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,M_C,eabc_perm_BAEC,eabc_permutation,Permutation EABC->BAEC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,Omega,eabc_perm_BAEC,eabc_permutation,Permutation EABC->BAEC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,S,eabc_perm_BAEC,eabc_permutation,Permutation EABC->BAEC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,E(n),eabc_perm_BAEC,eabc_permutation,Permutation EABC->BAEC,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,H(n),eabc_perm_BAEC,eabc_permutation,Permutation EABC->BAEC,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,L(n),eabc_perm_BAEC,eabc_permutation,Permutation EABC->BAEC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,D(n),eabc_perm_BAEC,eabc_permutation,Permutation EABC->BAEC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,B(n),eabc_perm_BAEC,eabc_permutation,Permutation EABC->BAEC,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,M_C,eabc_perm_BACE,eabc_permutation,Permutation EABC->BACE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,Omega,eabc_perm_BACE,eabc_permutation,Permutation EABC->BACE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,S,eabc_perm_BACE,eabc_permutation,Permutation EABC->BACE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,E(n),eabc_perm_BACE,eabc_permutation,Permutation EABC->BACE,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,H(n),eabc_perm_BACE,eabc_permutation,Permutation EABC->BACE,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,L(n),eabc_perm_BACE,eabc_permutation,Permutation EABC->BACE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,D(n),eabc_perm_BACE,eabc_permutation,Permutation EABC->BACE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,B(n),eabc_perm_BACE,eabc_permutation,Permutation EABC->BACE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,M_C,eabc_perm_BCEA,eabc_permutation,Permutation EABC->BCEA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,Omega,eabc_perm_BCEA,eabc_permutation,Permutation EABC->BCEA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,S,eabc_perm_BCEA,eabc_permutation,Permutation EABC->BCEA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,E(n),eabc_perm_BCEA,eabc_permutation,Permutation EABC->BCEA,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,H(n),eabc_perm_BCEA,eabc_permutation,Permutation EABC->BCEA,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,L(n),eabc_perm_BCEA,eabc_permutation,Permutation EABC->BCEA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,D(n),eabc_perm_BCEA,eabc_permutation,Permutation EABC->BCEA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,B(n),eabc_perm_BCEA,eabc_permutation,Permutation EABC->BCEA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,M_C,eabc_perm_BCAE,eabc_permutation,Permutation EABC->BCAE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,Omega,eabc_perm_BCAE,eabc_permutation,Permutation EABC->BCAE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,S,eabc_perm_BCAE,eabc_permutation,Permutation EABC->BCAE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,E(n),eabc_perm_BCAE,eabc_permutation,Permutation EABC->BCAE,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,H(n),eabc_perm_BCAE,eabc_permutation,Permutation EABC->BCAE,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,L(n),eabc_perm_BCAE,eabc_permutation,Permutation EABC->BCAE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,D(n),eabc_perm_BCAE,eabc_permutation,Permutation EABC->BCAE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,B(n),eabc_perm_BCAE,eabc_permutation,Permutation EABC->BCAE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,M_C,eabc_perm_CEAB,eabc_permutation,Permutation EABC->CEAB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,Omega,eabc_perm_CEAB,eabc_permutation,Permutation EABC->CEAB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,S,eabc_perm_CEAB,eabc_permutation,Permutation EABC->CEAB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,E(n),eabc_perm_CEAB,eabc_permutation,Permutation EABC->CEAB,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,H(n),eabc_perm_CEAB,eabc_permutation,Permutation EABC->CEAB,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,L(n),eabc_perm_CEAB,eabc_permutation,Permutation EABC->CEAB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,D(n),eabc_perm_CEAB,eabc_permutation,Permutation EABC->CEAB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,B(n),eabc_perm_CEAB,eabc_permutation,Permutation EABC->CEAB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,M_C,eabc_perm_CEBA,eabc_permutation,Permutation EABC->CEBA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,Omega,eabc_perm_CEBA,eabc_permutation,Permutation EABC->CEBA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,S,eabc_perm_CEBA,eabc_permutation,Permutation EABC->CEBA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,E(n),eabc_perm_CEBA,eabc_permutation,Permutation EABC->CEBA,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,H(n),eabc_perm_CEBA,eabc_permutation,Permutation EABC->CEBA,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,L(n),eabc_perm_CEBA,eabc_permutation,Permutation EABC->CEBA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,D(n),eabc_perm_CEBA,eabc_permutation,Permutation EABC->CEBA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,B(n),eabc_perm_CEBA,eabc_permutation,Permutation EABC->CEBA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,M_C,eabc_perm_CAEB,eabc_permutation,Permutation EABC->CAEB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,Omega,eabc_perm_CAEB,eabc_permutation,Permutation EABC->CAEB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,S,eabc_perm_CAEB,eabc_permutation,Permutation EABC->CAEB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,E(n),eabc_perm_CAEB,eabc_permutation,Permutation EABC->CAEB,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,H(n),eabc_perm_CAEB,eabc_permutation,Permutation EABC->CAEB,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,L(n),eabc_perm_CAEB,eabc_permutation,Permutation EABC->CAEB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,D(n),eabc_perm_CAEB,eabc_permutation,Permutation EABC->CAEB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,B(n),eabc_perm_CAEB,eabc_permutation,Permutation EABC->CAEB,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,M_C,eabc_perm_CABE,eabc_permutation,Permutation EABC->CABE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,Omega,eabc_perm_CABE,eabc_permutation,Permutation EABC->CABE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,S,eabc_perm_CABE,eabc_permutation,Permutation EABC->CABE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,E(n),eabc_perm_CABE,eabc_permutation,Permutation EABC->CABE,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,H(n),eabc_perm_CABE,eabc_permutation,Permutation EABC->CABE,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,L(n),eabc_perm_CABE,eabc_permutation,Permutation EABC->CABE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,D(n),eabc_perm_CABE,eabc_permutation,Permutation EABC->CABE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,B(n),eabc_perm_CABE,eabc_permutation,Permutation EABC->CABE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,M_C,eabc_perm_CBEA,eabc_permutation,Permutation EABC->CBEA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,Omega,eabc_perm_CBEA,eabc_permutation,Permutation EABC->CBEA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,S,eabc_perm_CBEA,eabc_permutation,Permutation EABC->CBEA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,E(n),eabc_perm_CBEA,eabc_permutation,Permutation EABC->CBEA,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,H(n),eabc_perm_CBEA,eabc_permutation,Permutation EABC->CBEA,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,L(n),eabc_perm_CBEA,eabc_permutation,Permutation EABC->CBEA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,D(n),eabc_perm_CBEA,eabc_permutation,Permutation EABC->CBEA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,B(n),eabc_perm_CBEA,eabc_permutation,Permutation EABC->CBEA,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,M_C,eabc_perm_CBAE,eabc_permutation,Permutation EABC->CBAE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,Omega,eabc_perm_CBAE,eabc_permutation,Permutation EABC->CBAE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,S,eabc_perm_CBAE,eabc_permutation,Permutation EABC->CBAE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,E(n),eabc_perm_CBAE,eabc_permutation,Permutation EABC->CBAE,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,H(n),eabc_perm_CBAE,eabc_permutation,Permutation EABC->CBAE,0.0,0.0,0.0,0.0024937655860349127,7983,invariant
+catalan,L(n),eabc_perm_CBAE,eabc_permutation,Permutation EABC->CBAE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,D(n),eabc_perm_CBAE,eabc_permutation,Permutation EABC->CBAE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+catalan,B(n),eabc_perm_CBAE,eabc_permutation,Permutation EABC->CBAE,0.0,0.0,0.0,0.0024937655860349127,8000,invariant
+gap,H(delta_r),identity,identity,No transformation,0.0,0.0,0.0,0.0024937655860349127,15,invariant
+gap,DeltaH_cramer,identity,identity,No transformation,0.0,0.0,0.0,0.0024937655860349127,15,invariant
+gap,Q_cramer,identity,identity,No transformation,0.0,0.0,0.0,0.0024937655860349127,15,invariant
+gap,H(delta_r),dr_cycle_shift_1,gap_cycle,Cycle shift over ordered delta_r list by 1,1.1161466666666664,0.48733786647395044,1.0687962519138048,0.39900249376558605,15,strong_symmetry_breaking
+gap,DeltaH_cramer,dr_cycle_shift_1,gap_cycle,Cycle shift over ordered delta_r list by 1,0.7138666666666665,0.9071962315931333,1.0297952691691328,0.3516209476309227,15,strong_symmetry_breaking
+gap,Q_cramer,dr_cycle_shift_1,gap_cycle,Cycle shift over ordered delta_r list by 1,0.3356430103382715,0.23173399950009274,1.0497326880468318,0.3516209476309227,15,strong_symmetry_breaking
+gap,H(delta_r),dr_cycle_shift_2,gap_cycle,Cycle shift over ordered delta_r list by 2,1.6459599999999999,0.7186677689026505,1.576133255008344,1.0,15,strong_symmetry_breaking
+gap,DeltaH_cramer,dr_cycle_shift_2,gap_cycle,Cycle shift over ordered delta_r list by 2,1.0779333333333334,1.3698595319975138,1.5549831627937722,1.0,15,strong_symmetry_breaking
+gap,Q_cramer,dr_cycle_shift_2,gap_cycle,Cycle shift over ordered delta_r list by 2,0.5287965663721808,0.36509070492438356,1.6538257134816012,1.0,15,strong_symmetry_breaking
+gap,H(delta_r),dr_cycle_shift_3,gap_cycle,Cycle shift over ordered delta_r list by 3,1.64596,0.7186677689026506,1.5761332550083442,1.0,15,strong_symmetry_breaking
+gap,DeltaH_cramer,dr_cycle_shift_3,gap_cycle,Cycle shift over ordered delta_r list by 3,1.0779333333333334,1.3698595319975138,1.5549831627937722,1.0,15,strong_symmetry_breaking
+gap,Q_cramer,dr_cycle_shift_3,gap_cycle,Cycle shift over ordered delta_r list by 3,0.5287965663721808,0.36509070492438356,1.6538257134816012,1.0,15,strong_symmetry_breaking
+gap,H(delta_r),dr_cycle_shift_4,gap_cycle,Cycle shift over ordered delta_r list by 4,1.1161466666666664,0.48733786647395044,1.0687962519138048,0.4139650872817955,15,strong_symmetry_breaking
+gap,DeltaH_cramer,dr_cycle_shift_4,gap_cycle,Cycle shift over ordered delta_r list by 4,0.7138666666666665,0.9071962315931333,1.0297952691691328,0.3541147132169576,15,strong_symmetry_breaking
+gap,Q_cramer,dr_cycle_shift_4,gap_cycle,Cycle shift over ordered delta_r list by 4,0.3356430103382716,0.23173399950009282,1.0497326880468323,0.33915211970074816,15,strong_symmetry_breaking
+gap,H(delta_r),dr_chirality_reverse,gap_chirality,Reverse ordered delta_r labels,1.6459599999999999,0.7186677689026505,1.576133255008344,0.9925187032418953,15,strong_symmetry_breaking
+gap,DeltaH_cramer,dr_chirality_reverse,gap_chirality,Reverse ordered delta_r labels,1.0779333333333332,1.3698595319975135,1.5549831627937718,1.0,15,strong_symmetry_breaking
+gap,Q_cramer,dr_chirality_reverse,gap_chirality,Reverse ordered delta_r labels,0.5287965663721808,0.36509070492438356,1.6538257134816012,1.0,15,strong_symmetry_breaking
+gap,H(delta_r),dr_transposition_2_6,gap_transposition,Swap delta_r=2 and delta_r=6,0.18145333333333333,0.07922711501288951,0.17375551829861036,0.0024937655860349127,15,weak_sensitive
+gap,DeltaH_cramer,dr_transposition_2_6,gap_transposition,Swap delta_r=2 and delta_r=6,0.08009333333333336,0.10178423166193416,0.11553941318451595,0.0024937655860349127,15,weak_sensitive
+gap,Q_cramer,dr_transposition_2_6,gap_transposition,Swap delta_r=2 and delta_r=6,0.05790142439283497,0.03997618969565632,0.1810882872501175,0.0024937655860349127,15,weak_sensitive
+gap,H(delta_r),dr_transposition_2_10,gap_transposition,Swap delta_r=2 and delta_r=10,0.4069866666666666,0.17770067298504216,0.38972102583193347,0.0024937655860349127,15,strong_symmetry_breaking
+gap,DeltaH_cramer,dr_transposition_2_10,gap_transposition,Swap delta_r=2 and delta_r=10,0.21959999999999996,0.2790721317582911,0.3167861054018606,0.0024937655860349127,15,strong_symmetry_breaking
+gap,Q_cramer,dr_transposition_2_10,gap_transposition,Swap delta_r=2 and delta_r=10,0.13899411260752711,0.09596404700651034,0.4347078859265808,0.0024937655860349127,15,weak_sensitive
+gap,H(delta_r),dr_transposition_2_14,gap_transposition,Swap delta_r=2 and delta_r=14,0.7112666666666666,0.3105570174415894,0.6810925213931494,0.017456359102244388,15,strong_symmetry_breaking
+gap,DeltaH_cramer,dr_transposition_2_14,gap_transposition,Swap delta_r=2 and delta_r=14,0.44416000000000005,0.5644475320663143,0.640727306809155,0.014962593516209476,15,strong_symmetry_breaking
+gap,Q_cramer,dr_transposition_2_14,gap_transposition,Swap delta_r=2 and delta_r=14,0.2510549804267441,0.17333289511994704,0.7851813126848863,0.034912718204488775,15,strong_symmetry_breaking
+gap,H(delta_r),dr_transposition_2_18,gap_transposition,Swap delta_r=2 and delta_r=18,1.1161466666666664,0.48733786647395044,1.0687962519138048,0.42643391521197005,15,strong_symmetry_breaking
+gap,DeltaH_cramer,dr_transposition_2_18,gap_transposition,Swap delta_r=2 and delta_r=18,0.7138666666666666,0.9071962315931336,1.029795269169133,0.3865336658354115,15,strong_symmetry_breaking
+gap,Q_cramer,dr_transposition_2_18,gap_transposition,Swap delta_r=2 and delta_r=18,0.33564301033827154,0.23173399950009277,1.049732688046832,0.3167082294264339,15,strong_symmetry_breaking
+gap,H(delta_r),dr_transposition_6_10,gap_transposition,Swap delta_r=6 and delta_r=10,0.22553333333333328,0.09847355797215267,0.21596550753332308,0.0024937655860349127,15,weak_sensitive
+gap,DeltaH_cramer,dr_transposition_6_10,gap_transposition,Swap delta_r=6 and delta_r=10,0.1395066666666666,0.17728790009635698,0.20124669221734467,0.0024937655860349127,15,strong_symmetry_breaking
+gap,Q_cramer,dr_transposition_6_10,gap_transposition,Swap delta_r=6 and delta_r=10,0.08109268821469214,0.05598785731085402,0.2536195986764633,0.0024937655860349127,15,weak_sensitive
+gap,H(delta_r),dr_transposition_6_14,gap_transposition,Swap delta_r=6 and delta_r=14,0.5298133333333334,0.23132990242869994,0.5073370030945391,0.0024937655860349127,15,strong_symmetry_breaking
+gap,DeltaH_cramer,dr_transposition_6_14,gap_transposition,Swap delta_r=6 and delta_r=14,0.3640666666666667,0.46266330040438014,0.5251878936246391,0.0024937655860349127,15,strong_symmetry_breaking
+gap,Q_cramer,dr_transposition_6_14,gap_transposition,Swap delta_r=6 and delta_r=14,0.1931535560339092,0.13335670542429076,0.6040930254347691,0.014962593516209476,15,weak_sensitive
+gap,H(delta_r),dr_transposition_6_18,gap_transposition,Swap delta_r=6 and delta_r=18,0.9346933333333333,0.40811075146106107,0.8950407336151947,0.14962593516209477,15,strong_symmetry_breaking
+gap,DeltaH_cramer,dr_transposition_6_18,gap_transposition,Swap delta_r=6 and delta_r=18,0.6337733333333333,0.8054119999311994,0.914255855984617,0.18703241895261846,15,strong_symmetry_breaking
+gap,Q_cramer,dr_transposition_6_18,gap_transposition,Swap delta_r=6 and delta_r=18,0.27774158594543663,0.1917578098044365,0.8686444007967148,0.12219451371571072,15,strong_symmetry_breaking
+gap,H(delta_r),dr_transposition_10_14,gap_transposition,Swap delta_r=10 and delta_r=14,0.3042800000000001,0.1328563444565473,0.291371495561216,0.0024937655860349127,15,weak_sensitive
+gap,DeltaH_cramer,dr_transposition_10_14,gap_transposition,Swap delta_r=10 and delta_r=14,0.22456000000000007,0.28537540030802316,0.32394120140729443,0.0024937655860349127,15,strong_symmetry_breaking
+gap,Q_cramer,dr_transposition_10_14,gap_transposition,Swap delta_r=10 and delta_r=14,0.11206086781921704,0.07736884811343672,0.3504734267583057,0.0024937655860349127,15,weak_sensitive
+gap,H(delta_r),dr_transposition_10_18,gap_transposition,Swap delta_r=10 and delta_r=18,0.7091599999999999,0.30963719348890834,0.6790752260818714,0.014962593516209476,15,strong_symmetry_breaking
+gap,DeltaH_cramer,dr_transposition_10_18,gap_transposition,Swap delta_r=10 and delta_r=18,0.49426666666666663,0.6281240998348423,0.7130091637672723,0.0399002493765586,15,strong_symmetry_breaking
+gap,Q_cramer,dr_transposition_10_18,gap_transposition,Swap delta_r=10 and delta_r=18,0.19664889773074445,0.13576995249358245,0.6150248021202515,0.004987531172069825,15,weak_sensitive
+gap,H(delta_r),dr_transposition_14_18,gap_transposition,Swap delta_r=14 and delta_r=18,0.40487999999999985,0.17678084903236108,0.3877037305206555,0.0024937655860349127,15,strong_symmetry_breaking
+gap,DeltaH_cramer,dr_transposition_14_18,gap_transposition,Swap delta_r=14 and delta_r=18,0.2697066666666666,0.3427486995268192,0.38906796235997787,0.0024937655860349127,15,strong_symmetry_breaking
+gap,Q_cramer,dr_transposition_14_18,gap_transposition,Swap delta_r=14 and delta_r=18,0.0845880299115274,0.058401104380145716,0.26455137536194573,0.0024937655860349127,15,weak_sensitive
+gap,H(delta_r),wheel30_add4k_1,wheel30_congruence,delta_r -> delta_r + 4*1 (wrapped over sampled classes),1.1161466666666664,0.48733786647395044,1.0687962519138048,0.4314214463840399,15,strong_symmetry_breaking
+gap,DeltaH_cramer,wheel30_add4k_1,wheel30_congruence,delta_r -> delta_r + 4*1 (wrapped over sampled classes),0.7138666666666665,0.9071962315931333,1.0297952691691328,0.3865336658354115,15,strong_symmetry_breaking
+gap,Q_cramer,wheel30_add4k_1,wheel30_congruence,delta_r -> delta_r + 4*1 (wrapped over sampled classes),0.3356430103382715,0.23173399950009274,1.0497326880468318,0.3566084788029925,15,strong_symmetry_breaking
+gap,H(delta_r),wheel210_add8k_1,wheel210_congruence,delta_r -> delta_r + 8*1 (wrapped over sampled classes),1.6459599999999999,0.7186677689026505,1.576133255008344,1.0,15,strong_symmetry_breaking
+gap,DeltaH_cramer,wheel210_add8k_1,wheel210_congruence,delta_r -> delta_r + 8*1 (wrapped over sampled classes),1.0779333333333334,1.3698595319975138,1.5549831627937722,1.0,15,strong_symmetry_breaking
+gap,Q_cramer,wheel210_add8k_1,wheel210_congruence,delta_r -> delta_r + 8*1 (wrapped over sampled classes),0.5287965663721808,0.36509070492438356,1.6538257134816012,0.9975062344139651,15,strong_symmetry_breaking
+gap,H(delta_r),wheel30_add4k_2,wheel30_congruence,delta_r -> delta_r + 4*2 (wrapped over sampled classes),1.6459599999999999,0.7186677689026505,1.576133255008344,0.9975062344139651,15,strong_symmetry_breaking
+gap,DeltaH_cramer,wheel30_add4k_2,wheel30_congruence,delta_r -> delta_r + 4*2 (wrapped over sampled classes),1.0779333333333334,1.3698595319975138,1.5549831627937722,0.9950124688279302,15,strong_symmetry_breaking
+gap,Q_cramer,wheel30_add4k_2,wheel30_congruence,delta_r -> delta_r + 4*2 (wrapped over sampled classes),0.5287965663721808,0.36509070492438356,1.6538257134816012,1.0,15,strong_symmetry_breaking
+gap,H(delta_r),wheel210_add8k_2,wheel210_congruence,delta_r -> delta_r + 8*2 (wrapped over sampled classes),1.1161466666666664,0.48733786647395044,1.0687962519138048,0.40648379052369077,15,strong_symmetry_breaking
+gap,DeltaH_cramer,wheel210_add8k_2,wheel210_congruence,delta_r -> delta_r + 8*2 (wrapped over sampled classes),0.7138666666666665,0.9071962315931333,1.0297952691691328,0.3765586034912718,15,strong_symmetry_breaking
+gap,Q_cramer,wheel210_add8k_2,wheel210_congruence,delta_r -> delta_r + 8*2 (wrapped over sampled classes),0.3356430103382716,0.23173399950009282,1.0497326880468323,0.3865336658354115,15,strong_symmetry_breaking
+gap,H(delta_r),wheel30_add4k_3,wheel30_congruence,delta_r -> delta_r + 4*3 (wrapped over sampled classes),1.64596,0.7186677689026506,1.5761332550083442,1.0,15,strong_symmetry_breaking
+gap,DeltaH_cramer,wheel30_add4k_3,wheel30_congruence,delta_r -> delta_r + 4*3 (wrapped over sampled classes),1.0779333333333334,1.3698595319975138,1.5549831627937722,1.0,15,strong_symmetry_breaking
+gap,Q_cramer,wheel30_add4k_3,wheel30_congruence,delta_r -> delta_r + 4*3 (wrapped over sampled classes),0.5287965663721808,0.36509070492438356,1.6538257134816012,1.0,15,strong_symmetry_breaking
+gap,H(delta_r),wheel210_add8k_3,wheel210_congruence,delta_r -> delta_r + 8*3 (wrapped over sampled classes),1.1161466666666664,0.48733786647395044,1.0687962519138048,0.38902743142144636,15,strong_symmetry_breaking
+gap,DeltaH_cramer,wheel210_add8k_3,wheel210_congruence,delta_r -> delta_r + 8*3 (wrapped over sampled classes),0.7138666666666665,0.9071962315931333,1.0297952691691328,0.32917705735660846,15,strong_symmetry_breaking
+gap,Q_cramer,wheel210_add8k_3,wheel210_congruence,delta_r -> delta_r + 8*3 (wrapped over sampled classes),0.3356430103382715,0.23173399950009274,1.0497326880468318,0.2892768079800499,15,strong_symmetry_breaking
+gap,H(delta_r),wheel30_add4k_4,wheel30_congruence,delta_r -> delta_r + 4*4 (wrapped over sampled classes),1.1161466666666664,0.48733786647395044,1.0687962519138048,0.4389027431421446,15,strong_symmetry_breaking
+gap,DeltaH_cramer,wheel30_add4k_4,wheel30_congruence,delta_r -> delta_r + 4*4 (wrapped over sampled classes),0.7138666666666665,0.9071962315931333,1.0297952691691328,0.3192019950124688,15,strong_symmetry_breaking
+gap,Q_cramer,wheel30_add4k_4,wheel30_congruence,delta_r -> delta_r + 4*4 (wrapped over sampled classes),0.3356430103382716,0.23173399950009282,1.0497326880468323,0.34413965087281795,15,strong_symmetry_breaking
+gap,H(delta_r),wheel210_add8k_4,wheel210_congruence,delta_r -> delta_r + 8*4 (wrapped over sampled classes),1.64596,0.7186677689026506,1.5761332550083442,1.0,15,strong_symmetry_breaking
+gap,DeltaH_cramer,wheel210_add8k_4,wheel210_congruence,delta_r -> delta_r + 8*4 (wrapped over sampled classes),1.0779333333333334,1.3698595319975138,1.5549831627937722,1.0,15,strong_symmetry_breaking
+gap,Q_cramer,wheel210_add8k_4,wheel210_congruence,delta_r -> delta_r + 8*4 (wrapped over sampled classes),0.5287965663721808,0.36509070492438356,1.6538257134816012,1.0,15,strong_symmetry_breaking
