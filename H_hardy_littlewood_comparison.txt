@@ -1,0 +1,11 @@
+# Hardy-Littlewood Heuristic Comparison
+# Δr   H_emp   H_HL   c·H_HL   Residual
+  2  0.8340  0.7403  0.4006   0.4334
+  6  0.5400  1.0234  0.5537  -0.0137
+ 10  0.4220  0.9163  0.4958  -0.0738
+ 14  0.3290  0.8997  0.4868  -0.1578
+ 18  0.2410  1.0716  0.5798  -0.3388
+#
+# Correlation: -0.7617
+# Scaling factor: 0.5411
+# Relative error: 43.01%

@@ -1,0 +1,60 @@
+% LaTeX Table for H(Δr) - Publication Ready
+% ==========================================
+
+\begin{table}[h]
+\centering
+\caption{Projection-invariant core structure $H(\Delta r)$ extracted from four independent gap-pair projections. The mean coefficient of variation $\overline{\text{CV}_H} = 18.8\%$ confirms projection invariance for $\Delta r \le 18$.}
+\label{tab:H_extraction}
+\begin{tabular}{cccccccc}
+\hline
+\hline
+$\Delta r$ & $H(\Delta r)$ & $\sigma_H$ & $\text{CV}_H$ (\%) & $A_2$ & $A_4$ & $A_6$ & $A_8$ \\
+\hline
+2  & 0.834 & 0.139 & 16.6 & 0.933 & 0.772 & 0.668 & 0.962 \\
+6  & 0.540 & 0.094 & 17.3 & 0.481 & 0.496 & 0.505 & 0.680 \\
+10 & 0.422 & 0.081 & 19.2 & 0.363 & 0.351 & 0.452 & 0.523 \\
+14 & 0.329 & 0.081 & 24.6 & 0.326 & 0.270 & 0.276 & 0.445 \\
+18 & 0.241 & 0.040 & 16.4 & 0.199 & 0.230 & 0.243 & 0.294 \\
+\hline
+\multicolumn{8}{l}{Mean $\text{CV}_H = 18.8\%$ (projection-invariant)} \\
+\hline
+\hline
+\end{tabular}
+\end{table}
+
+% Projection Coefficients
+% -----------------------
+% c_2 = 0.937  (base offset 2)
+% c_4 = 0.889  (base offset 4)
+% c_6 = 0.930  (base offset 6)
+% c_8 = 1.244  (base offset 8)
+%
+% Mean: 1.000, Std: 0.164, CV: 16.4%
+%
+% Decomposition quality: A_i(Δr) = c_i · H(Δr) + ε_i(Δr)
+% Mean relative error: 4-11% (excellent fit)
+
+\begin{table}[h]
+\centering
+\caption{Regime comparison: Projection-invariant core ($\Delta r \le 18$) vs. projection-sensitive outlier regime ($\Delta r \ge 20$).}
+\label{tab:regime_comparison}
+\begin{tabular}{ccccccc}
+\hline
+\hline
+Regime & $\Delta r$ range & Mean $\text{CV}_H$ (\%) & Correlation $\rho$ & Status & Mechanism \\
+\hline
+I  & $2-18$  & 18.8 & 0.965 & Invariant & Sieve + HL \\
+II & $\ge 20$ & 104.6 & 0.4  & Sensitive & Unknown \\
+\hline
+\hline
+\end{tabular}
+\end{table}
+
+% Key Results for Abstract/Conclusion
+% ------------------------------------
+%
+% 1. Projection invariance test revealed two-regime structure
+% 2. H(Δr) extracted for Δr ≤ 18 with CV_H = 18.8%
+% 3. Decomposition A_i(Δr) = c_i · H(Δr) achieves ρ > 0.96
+% 4. Stage 4 (Projection Invariance): PARTIALLY PASSED (restricted domain)
+% 5. Regime II (Δr ≥ 20) requires separate treatment

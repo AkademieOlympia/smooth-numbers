@@ -1,0 +1,10 @@
+# Projection-Invariant Object H(Δr)
+# Extracted from A_2, A_4, A_6, A_8 projections
+# Domain: Δr ≤ 18 (Regime I)
+# Format: Δr  H(Δr)  [standard_error]
+#
+ 2  0.8337  0.0600
+ 6  0.5405  0.0405
+10  0.4223  0.0350
+14  0.3293  0.0351
+18  0.2415  0.0171
