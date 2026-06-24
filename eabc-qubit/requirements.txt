@@ -1,0 +1,24 @@
+# Numerische Berechnungen
+numpy>=1.24.0
+scipy>=1.10.0
+
+# Primzahlgenerierung
+sympy>=1.12
+
+# Visualisierung
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Optional: Fortschrittsanzeigen
+tqdm>=4.65.0
+
+# Optional: Jupyter Notebooks
+jupyter>=1.0.0
+ipykernel>=6.22.0
+
+# Optional: Wissenschaftliche Plots
+scienceplots>=2.0.0
+
+# Testing
+pytest>=7.3.0
+pytest-cov>=4.1.0
