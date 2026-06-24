@@ -1,0 +1,34 @@
+{
+  "timestamp": "2026-06-24T17:54:42.934697",
+  "config": {
+    "prime_limit": 100000,
+    "pivots": [
+      30,
+      36,
+      40,
+      42,
+      48,
+      60,
+      72,
+      84
+    ],
+    "n_primes": 9592,
+    "n_random_pivots": 100
+  },
+  "test_A": {
+    "is_special": true,
+    "var_40_rank": 6,
+    "E_40_rank": 1,
+    "H_40_rank": 8
+  },
+  "test_B": {
+    "chi2_40_rank": 1
+  },
+  "test_D": {
+    "E_percentile": 7.000000000000001,
+    "H_percentile": 90.0,
+    "omega_percentile": 21.0,
+    "chi2_percentile": 68.0,
+    "n_extreme": 1
+  }
+}

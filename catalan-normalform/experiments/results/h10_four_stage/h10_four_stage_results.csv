@@ -1,0 +1,5 @@
+stage,metric,value
+A,R2_MC_Omega,0.09528295538922271
+A,R2_S_Omega,0.8005441918016193
+B,corr_residuals,0.037974702928797364
+C,Z_global,0.0
