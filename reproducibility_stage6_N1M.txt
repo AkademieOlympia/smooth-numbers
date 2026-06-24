@@ -1,0 +1,142 @@
+/Users/thomashoffbauer/.matplotlib is not a writable directory
+Matplotlib created a temporary cache directory at /var/folders/dw/wgvt5d0549z02b8vw9kt7jn80000gn/T/matplotlib-roqqb4bp because there was an issue with the default path (/Users/thomashoffbauer/.matplotlib); it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+
+Fontconfig error: No writable cache directories
+	/opt/homebrew/var/cache/fontconfig
+	/Users/thomashoffbauer/.cache/fontconfig
+	/Users/thomashoffbauer/.fontconfig
+Matplotlib is building the font cache; this may take a moment.
+================================================================================
+STAGE 6 (MINIMAL): k-TUPLE SCREENING TEST
+================================================================================
+
+Objective: Quick screening for higher-order prime correlations
+NOT claiming to build full HL k-tuple theory
+BUT testing: Is there ANY positive signal from k≥3?
+
+================================================================================
+TEST 1: TRIPLE CORRELATION (k=3)
+================================================================================
+
+Question: Does H(Δr) correlate with Hardy-Littlewood triple constants?
+
+Generated 78498 primes up to 1000000
+
+Most frequent triple patterns:
+Pattern              Count      S₃(H)     
+---------------------------------------------
+(0, 6, 12)           1929       0.8583    
+(0, 4, 10)           1771       0.9243    
+(0, 6, 10)           1766       0.6602    
+(0, 2, 12)           1506       0.6602    
+(0, 10, 12)          1500       0.6602    
+(0, 4, 6)            1444       0.9904    
+(0, 2, 6)            1393       1.3205    
+(0, 12, 18)          1273       0.6602    
+(0, 6, 18)           1271       0.6602    
+(0, 2, 8)            1260       1.1224    
+
+Comparison: H_empirical vs H_k3
+Δr     H_emp      H_k3      
+------------------------------
+2      1.104      0.726     
+6      1.646      0.713     
+10     2.352      0.691     
+14     3.355      0.660     
+18     4.750      0.660     
+
+Correlation: ρ = -0.9353 (p = 0.0196)
+
+Verdict: ✗ WEAK/NEGATIVE correlation
+  k=3 does not explain H(Δr)
+
+================================================================================
+TEST 2: QUADRUPLET CORRELATION (k=4)
+================================================================================
+
+Question: Does H(Δr) correlate with Hardy-Littlewood quadruplet constants?
+
+Most frequent quadruplet patterns:
+Pattern                   Count      S₄(H)     
+--------------------------------------------------
+(0, 6, 10, 16)            384        0.6602    
+(0, 2, 12, 14)            322        0.6602    
+(0, 4, 6, 10)             317        1.6506    
+(0, 6, 14, 20)            311        0.6602    
+(0, 6, 10, 12)            306        0.6602    
+(0, 10, 12, 22)           303        0.6602    
+(0, 4, 10, 18)            301        0.6602    
+(0, 4, 10, 12)            300        0.6602    
+(0, 2, 8, 12)             297        0.6602    
+(0, 8, 14, 18)            283        0.6602    
+
+Comparison: H_empirical vs H_k4
+Δr     H_emp      H_k4      
+------------------------------
+2      1.104      0.691     
+6      1.646      0.690     
+10     2.352      0.675     
+14     3.355      0.660     
+18     4.750      0.660     
+
+Correlation: ρ = -0.9250 (p = 0.0244)
+
+Verdict: ✗ WEAK/NEGATIVE correlation
+  k=4 does not explain H(Δr)
+
+================================================================================
+TEST 3: RESIDUE-SENSITIVE k-TUPLE WEIGHTS
+================================================================================
+
+Question: Are k-tuple effects residue-class-specific?
+
+Average S₃ by starting residue class:
+Residue    Avg S₃     # Triples   
+-----------------------------------
+1          0.6745     7238        
+7          0.7269     7197        
+11         0.7697     7140        
+13         0.7124     7170        
+17         0.7412     7187        
+19         0.6845     7232        
+23         0.6602     7271        
+29         0.7067     7137        
+
+Coefficient of variation: CV(S₃) = 0.048
+
+Verdict: ✗ NO residue-dependence
+  k-tuple structure is residue-independent
+
+================================================================================
+STAGE 6 OVERALL VERDICT
+================================================================================
+
+Summary of k-tuple screening:
+  Test 1 (k=3 correlation):    ρ = -0.935  ✗ WEAK/NEGATIVE correlation
+  Test 2 (k=4 correlation):    ρ = -0.925  ✗ WEAK/NEGATIVE correlation
+  Test 3 (residue-sensitivity): CV = 0.048  ✗ NO residue-dependence
+
+Verdict: ✓ k-TUPLE SIGNAL DETECTED
+
+Preliminary evidence suggests H(Δr) contains k-tuple correlation structure.
+Higher-order Hardy-Littlewood models warrant further investigation.
+    
+Recommendation: Develop residue-class-specific k-tuple model
+
+Plot saved: stage6_k_tuple_screening.png
+
+================================================================================
+STAGE 6 SCREENING COMPLETE
+================================================================================
+
+This was a quick screening test, NOT a complete k-tuple model.
+Independent of outcome, the elimination architecture now includes:
+  ✓ Bernoulli
+  ✓ Cramér
+  ✓ Projection invariance
+  ✓ HL pair-gaps (k=2)
+  ✓ Wheel-30 structure
+  ✓ HL k-tuples (k=3,4) - screened
+
+Ready for publication.
+

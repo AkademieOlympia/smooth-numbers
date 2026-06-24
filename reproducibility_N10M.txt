@@ -1,0 +1,78 @@
+========================================
+STAGE 5.5: WHEEL-30 NULL HYPOTHESIS TEST
+========================================
+
+N = 10000000
+Seeds for random models: 5
+
+Generating real primes... done. Found 664579 primes.
+
+Computing H_Prime(Δr)...
+  Δr=2: H_Prime = 1.0749
+  Δr=6: H_Prime = 1.4975
+  Δr=10: H_Prime = 2.0119
+  Δr=14: H_Prime = 2.6855
+  Δr=18: H_Prime = 3.5540
+
+Computing H_WheelRandom(Δr)...
+  Δr=2: H_WheelRandom = 0.9813 ± 0.0017
+  Δr=6: H_WheelRandom = 1.1171 ± 0.0083
+  Δr=10: H_WheelRandom = 1.1974 ± 0.0075
+  Δr=14: H_WheelRandom = 1.2473 ± 0.0043
+  Δr=18: H_WheelRandom = 1.3793 ± 0.0038
+
+Computing H_WheelCramér(Δr)...
+  Δr=2: H_WheelCramér = 1.0212 ± 0.0010
+  Δr=6: H_WheelCramér = 1.2604 ± 0.0026
+  Δr=10: H_WheelCramér = 1.4618 ± 0.0028
+  Δr=14: H_WheelCramér = 1.6433 ± 0.0023
+  Δr=18: H_WheelCramér = 1.9505 ± 0.0049
+
+========================================
+COMPARISON: H_Prime vs Wheel Models
+========================================
+
+Δr   H_Prime   H_WheelRandom   H_WheelCramér   Diff_Rand   Diff_Cram
+---------------------------------------------------------------------------
+ 2   1.0749    0.9813        1.0212        0.0937      0.0537
+ 6   1.4975    1.1171        1.2604        0.3805      0.2371
+10   2.0119    1.1974        1.4618        0.8145      0.5501
+14   2.6855    1.2473        1.6433        1.4382      1.0422
+18   3.5540    1.3793        1.9505        2.1747      1.6035
+
+========================================
+STATISTICAL ASSESSMENT
+========================================
+
+Δr=2:
+  H_Prime vs H_WheelRandom: |diff| = 0.0937, z ≈ 55.09 (SIGNIFICANT)
+  H_Prime vs H_WheelCramér: |diff| = 0.0537, z ≈ 52.24 (SIGNIFICANT)
+
+Δr=6:
+  H_Prime vs H_WheelRandom: |diff| = 0.3805, z ≈ 45.93 (SIGNIFICANT)
+  H_Prime vs H_WheelCramér: |diff| = 0.2371, z ≈ 92.81 (SIGNIFICANT)
+
+Δr=10:
+  H_Prime vs H_WheelRandom: |diff| = 0.8145, z ≈ 108.68 (SIGNIFICANT)
+  H_Prime vs H_WheelCramér: |diff| = 0.5501, z ≈ 199.71 (SIGNIFICANT)
+
+Δr=14:
+  H_Prime vs H_WheelRandom: |diff| = 1.4382, z ≈ 334.23 (SIGNIFICANT)
+  H_Prime vs H_WheelCramér: |diff| = 1.0422, z ≈ 452.72 (SIGNIFICANT)
+
+Δr=18:
+  H_Prime vs H_WheelRandom: |diff| = 2.1747, z ≈ 573.43 (SIGNIFICANT)
+  H_Prime vs H_WheelCramér: |diff| = 1.6035, z ≈ 327.20 (SIGNIFICANT)
+
+========================================
+STAGE 5.5 VERDICT
+========================================
+
+VERDICT: H_Prime DIFFERS from both Wheel models
+  → H(Δr) contains PRIME-SPECIFIC information
+  → Wheel-30 structure alone insufficient
+  → Higher-order correlations (k ≥ 3) remain plausible
+
+To proceed to Stage 6 (HL k-tuples):
+  Require: H_Prime significantly differs from both Wheel models
+

@@ -1,0 +1,91 @@
+Phase Diagram Analysis: R(Δr)
+=============================
+Limit: 1000000
+Seeds per Δr: 20
+
+This will test Δr = 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24
+to identify where R_Prime crosses above R_Bernoulli.
+
+Computing phase diagram R(Δr)...
+Limit: 1000000, Seeds: 20
+
+Testing Δr = 2... done.
+Testing Δr = 4... done.
+Testing Δr = 6... done.
+Testing Δr = 8... done.
+Testing Δr = 10... done.
+Testing Δr = 12... done.
+Testing Δr = 14... done.
+Testing Δr = 16... done.
+Testing Δr = 18... done.
+Testing Δr = 20... done.
+Testing Δr = 22... done.
+Testing Δr = 24... done.
+
+=========================================
+PHASE DIAGRAM: R(Δr)
+=========================================
+
+Systematic analysis of gap asymmetry as function of residue distance.
+
+   Δr    R_Bernoulli        R_Prime      R_Cramér           Hierarchy
+-----------------------------------------------------------------------
+     2       1.058 ±0.00       1.118          1.068 ±0.01   Prime > Bern > Cram
+     4       1.184 ±0.01       1.165          1.058 ±0.01   Bern > Prime > Cram
+     6       1.749 ±0.02       1.473          1.203 ±0.01   Bern > Prime > Cram
+     8       1.819 ±0.02       1.608          1.283 ±0.02   Bern > Prime > Cram
+    10       2.409 ±0.03       2.033          1.504 ±0.02   Bern > Prime > Cram
+    12       2.815 ±0.04       2.675          1.718 ±0.03   Bern > Prime > Cram
+    14       2.818 ±0.04       3.043          1.697 ±0.02   Prime > Bern > Cram
+    16       3.440 ±0.05       3.347          1.806 ±0.02   Bern > Prime > Cram
+    18       4.533 ±0.05       4.289          2.057 ±0.03   Bern > Prime > Cram
+    20       4.960 ±0.05       5.328          2.419 ±0.04   Prime > Bern > Cram
+    22       6.026 ±0.07       6.353          2.580 ±0.04   Prime > Bern > Cram
+    24       6.210 ±0.07       7.338          2.527 ±0.04   Prime > Bern > Cram
+
+=========================================
+INTERPRETATION
+=========================================
+
+⭐ CROSSOVER DETECTED at Δr ≈ 2 ⭐
+
+The hierarchy REVERSES:
+  • Small Δr: R_Bern > R_Prime  (geometric bias dominates)
+  • Large Δr: R_Prime > R_Bern  (arithmetic correlations dominate)
+
+IMPLICATION: For large residue distances, Hardy-Littlewood
+correlations (twins, cousins, sexy primes) EXCEED the pure
+geometric short-gap bias of constant-p Bernoulli processes.
+
+Cramér model consistently shows LOWEST asymmetry (overdamping).
+
+=========================================
+THEORETICAL PREDICTION
+=========================================
+
+For constant-p Bernoulli with p ≈ 0.05:
+R(Δr) ≈ q^(-Δr) = (0.95)^(-Δr)
+
+       Δr         R_predicted
+------------------------------
+         2               1.108
+         4               1.228
+         6               1.360
+         8               1.507
+        10               1.670
+        12               1.851
+        14               2.051
+        16               2.272
+        18               2.518
+        20               2.790
+        22               3.091
+        24               3.425
+
+=========================================
+NEXT STEPS
+=========================================
+
+1. If crossover is robust: Document in MODULO30_RESULTS.md
+2. Rewrite paper to include regime-dependent interpretation
+3. Hardy-Littlewood analysis becomes ESSENTIAL, not optional
+
