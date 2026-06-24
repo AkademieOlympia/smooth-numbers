@@ -1,0 +1,83 @@
+# Kompilierte Dateien
+*.o
+*.out
+smooth_numbers
+smooth_numbers_extended
+
+# C++ Executables (project-specific binaries)
+gap_distribution
+gap_distribution_analysis
+gap_distribution_windowed
+gap_pair_robustness
+wheel30_test
+modulo30_test
+phase_diagram_delta_r
+poisson_cramer_hierarchy
+cramer_comparison
+ratio_asymptotic
+transition_matrix
+verify_poisson_formula
+autocorrelation_analysis
+
+# Temporäre Dateien
+*.swp
+*.swo
+*~
+
+# Test-Dateien
+test_input.txt
+
+# Export-Dateien (generiert vom Programm)
+*.json
+*.csv
+*.html
+
+# Benchmark-Ergebnisse
+benchmark_*.json
+benchmark_*.csv
+
+# LaTeX Build-Artefakte
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Output & Temp Directories
+output/
+tmp/
+.pr-snapshots/
+.pr-worktrees/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# Lean 4
+.lake/
+lakefile.olean
+lakefile.olean.trace
+
+# Results & Logs
+*.log
+results/
+figures/
