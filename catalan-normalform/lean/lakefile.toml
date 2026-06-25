@@ -1,0 +1,6 @@
+name = "CatalanNormalform"
+version = "0.1.0"
+defaultTargets = ["CatalanNormalform"]
+
+[[lean_lib]]
+name = "CatalanNormalform"
